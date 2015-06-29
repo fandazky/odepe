@@ -35,7 +35,7 @@
         <!-- Logo -->
         <a href="../../index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>SI</b>ODP</span>
+          <span class="logo-mini"><b>SI</b>O</span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>Sisfor</b>ODP</span>
         </a>
@@ -137,6 +137,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
+                <li><a href="<?php echo base_url(); ?>survey"><i class="fa fa-table"></i>Input Hasil Survey</a></li>
                 <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Cluster</a></li>
                 <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Wilayah</a></li>
                 <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP Witel Malang</a></li>
@@ -150,6 +151,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
+
                 <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Cluster</a></li>
                 <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Wilayah</a></li>
                 <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP Witel Malang</a></li>
