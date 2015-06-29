@@ -54,7 +54,8 @@ class Register extends CI_Controller
     public function accept_request($username)
     {
         $this->load->model('m_login');
-        $user_request = $this->m_login->getOneRegistrationRequest($username);
+        $this->load->model('m_manajemenuser');
+        $user_request = $this->m_manajemenuser->getOneRegistrationRequest($username);
         
         $data = array(
                 'username' => $user_request->username,
@@ -67,14 +68,17 @@ class Register extends CI_Controller
             ); 
 
         $this->db->insert('user', $data);
-        echo 'user berhasil disetujui';
-        redirect('access');
+        $this->m_manajemenuser->deleteRegistrationRequest($username);
+        redirect('manajemen_user/lihat_request');
+
         
     }
 
-    public function decline_request()
+    public function decline_request($username)
     {
-        
+        $this->load->model('m_manajemenuser');
+        $this->m_manajemenuser->deleteRegistrationRequest($username);
+        redirect('manajemen_user/lihat_request');
     }     
 
 }

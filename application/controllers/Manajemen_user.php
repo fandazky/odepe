@@ -18,7 +18,33 @@ class Manajemen_user extends CI_Controller {
     
     public function index()
     {
-
+        if($this->session->userdata('isLogin') == FALSE)
+        {
+            redirect('login/login_form');
+        }else
+        {
+            $this->load->model('m_login');
+            $this->load->model('m_manajemenuser');
+          
+            $user = $this->session->userdata('username');
+            
+            $data['level'] = $this->session->userdata('level');        
+            $data['namapengguna'] = $this->m_login->dataPengguna($user);
+            $data['active_user'] = $this->m_manajemenuser->getAllActiveUser();
+            if ($data['level'] == 1)
+            {
+                //echo 'masuk admin';
+                //$this->load->view('dashboard/admin', $data);
+                $this->load->view('design/header', $data);
+                $this->load->view('manajemen_user/lihat_user', $data);
+                $this->load->view('design/footer');
+                
+            }
+            else
+            {
+                echo 'Anda tidak memiliki akses pada ini' ;
+            }
+        }
     }
 
     public function lihat_request()
@@ -28,27 +54,23 @@ class Manajemen_user extends CI_Controller {
             redirect('login/login_form');
         }else
         {   
-            //echo 'masuk isLogin';
             $this->load->model('m_login');
-          
+            $this->load->model('m_manajemenuser');
+
             $user = $this->session->userdata('username');
             
             $data['level'] = $this->session->userdata('level');        
             $data['namapengguna'] = $this->m_login->dataPengguna($user);
-            $data['registration_request'] = $this->m_login->getAllRegistrationRequest();
+            $data['registration_request'] = $this->m_manajemenuser->getAllRegistrationRequest();
             if ($data['level'] == 1)
             {
-                //echo 'masuk admin';
-                //$this->load->view('dashboard/admin', $data);
-                $this->load->view('design/header');
+                $this->load->view('design/header', $data);
                 $this->load->view('manajemen_user/lihat_request', $data);
-                $this->load->view('design/footer');
-                
+                $this->load->view('design/footer');                
             }
             else
             {
-                $this->load->view('user', $data);
-                //echo 'masuk user';
+                echo 'Anda tidak memiliki akses pada ini' ;
             }
         }       
     }
