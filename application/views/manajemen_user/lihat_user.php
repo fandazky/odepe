@@ -15,7 +15,7 @@
 
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Registration Request</h3>
+              <h3 class="box-title">Lihat User</h3>
               <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -27,20 +27,21 @@
                   <thead>
                     <tr>
                       <th>Username</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Action</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>Last Login</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
-                      foreach ($registration_request->result() as $req) {
+                      foreach ($active_user->result() as $req) {
                         echo "
                         <tr>
                         <td>".$req->username."</td>
                         <td>".$req->first_name." ".$req->last_name."</td>
                         <td>".$req->address."</td>
-                        <td>".anchor('register/accept_request/'.$req->username,'accept').anchor('register/decline_request/'.$req->username,' decline')."</td>
+                        <td>03-03-2003 12.00</td>
+                        
                         </tr>
                         ";
                       }
