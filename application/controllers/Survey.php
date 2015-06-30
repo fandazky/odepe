@@ -18,43 +18,28 @@ class Survey extends CI_Controller {
     
     public function index()
     {
-        $this->load->model('survey_model');
-        $data['list']= $this->M_survey->getKluster();
+        //kluster
+        $this->load->model('m_survey');
+        $data['nama_kluster'] = $this->m_survey->getKluster();
+
+        //odp
+        $this->load->model('m_survey');
+        $data['nama_odp'] = $this->m_survey->getODP();
+
+        //error
+        $this->load->model('m_survey');
+        $data['nama_error'] = $this->m_survey->getError();
 
         $this->load->view('design/header');
-        $this->load->view('report/input_survey', $data);
+        $this->load->view('survey/input_survey', $data);
         $this->load->view('design/footer');
     }
 
-    // public function lihat_request()
-    // {
-    //     if($this->session->userdata('isLogin') == FALSE)
-    //     {
-    //         redirect('login/login_form');
-    //     }else
-    //     {   
-    //         //echo 'masuk isLogin';
-    //         $this->load->model('m_login');
-          
-    //         $user = $this->session->userdata('username');
-            
-    //         $data['level'] = $this->session->userdata('level');        
-    //         $data['namapengguna'] = $this->m_login->dataPengguna($user);
-    //         $data['registration_request'] = $this->m_login->getAllRegistrationRequest();
-    //         if ($data['level'] == 1)
-    //         {
-    //             //echo 'masuk admin';
-    //             //$this->load->view('dashboard/admin', $data);
-    //             $this->load->view('design/header');
-    //             $this->load->view('manajemen_user/lihat_request', $data);
-    //             $this->load->view('design/footer');
-                
-    //         }
-    //         else
-    //         {
-    //             $this->load->view('user', $data);
-    //             //echo 'masuk user';
-    //         }
-    //     }       
-    // }
+    public function inputSurvey()
+    {
+        
+    }
+
+
+
 }

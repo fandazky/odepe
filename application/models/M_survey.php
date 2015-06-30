@@ -1,12 +1,11 @@
 <?php
 
-class Survey_model extends CI_Model
+class M_survey extends CI_Model
 {
 	public function getKluster()
  	{
  		$this->db->select('nama_kluster');
- 		$this->db->from('kluster');
- 		$query = $this->db->get();
+		$query = $this->db->get('kluster');
 
 		if ($query->num_rows() > 0)
 		{
@@ -21,6 +20,44 @@ class Survey_model extends CI_Model
         	return false;	
         }
  	}
+
+	public function getODP()
+	 	{
+	 		$this->db->select('nama_odp');
+			$query = $this->db->get('odp');
+
+			if ($query->num_rows() > 0)
+			{
+	            foreach ($query->result() as $row) 
+	            {
+	                $data[] = $row;
+	            }
+	            return $data;
+	        }
+	        else
+	        {
+	        	return false;	
+	        }
+	 	}
+
+	public function getError()
+	 	{
+	 		$this->db->select('nama_error');
+			$query = $this->db->get('error');
+
+			if ($query->num_rows() > 0)
+			{
+	            foreach ($query->result() as $row) 
+	            {
+	                $data[] = $row;
+	            }
+	            return $data;
+	        }
+	        else
+	        {
+	        	return false;	
+	        }
+	 	}
 
 // 	public function addMedia($nama_media)
 // 	{
