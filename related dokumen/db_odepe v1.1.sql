@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2015 at 10:31 AM
+-- Generation Time: Jun 29, 2015 at 10:53 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `daftar` (
-  `ID_DAFTAR` int(11) NOT NULL,
+`ID_DAFTAR` int(11) NOT NULL,
   `ID_TAG` smallint(6) NOT NULL,
   `ID_ODP` int(11) NOT NULL,
   `ID_ERROR` int(11) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `daftar` (
 --
 
 CREATE TABLE IF NOT EXISTS `error` (
-  `ID_ERROR` int(11) NOT NULL,
+`ID_ERROR` int(11) NOT NULL,
   `NAMA_ERROR` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -55,10 +55,18 @@ CREATE TABLE IF NOT EXISTS `error` (
 --
 
 CREATE TABLE IF NOT EXISTS `kluster` (
-  `ID_KLUSTER` int(11) NOT NULL,
+`ID_KLUSTER` int(11) NOT NULL,
   `NAMA_KLUSTER` varchar(100) NOT NULL,
   `WILAYAH` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kluster`
+--
+
+INSERT INTO `kluster` (`ID_KLUSTER`, `NAMA_KLUSTER`, `WILAYAH`) VALUES
+(1, 'AHASS HONDA TLOGOMAS', 'Klojen'),
+(2, 'AHMAD YANI ADIREJO KEPANJEN', 'Kepanjen');
 
 -- --------------------------------------------------------
 
@@ -78,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `kompetisi` (
 --
 
 CREATE TABLE IF NOT EXISTS `kompetitor` (
-  `ID_COMPETITOR` int(11) NOT NULL,
+`ID_COMPETITOR` int(11) NOT NULL,
   `NAMA_COMPETITOR` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -89,10 +97,27 @@ CREATE TABLE IF NOT EXISTS `kompetitor` (
 --
 
 CREATE TABLE IF NOT EXISTS `odp` (
-  `ID_ODP` int(11) NOT NULL,
+`ID_ODP` int(11) NOT NULL,
   `ID_KLUSTER` int(11) DEFAULT NULL,
-  `NAMA_ODP` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `NAMA_ODP` varchar(25) NOT NULL,
+  `availability` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `odp`
+--
+
+INSERT INTO `odp` (`ID_ODP`, `ID_KLUSTER`, `NAMA_ODP`, `availability`) VALUES
+(1, 1, 'ODP-KLJ-FQ/27', 13),
+(2, 1, 'ODP-KLJ-FQ/28', 16),
+(3, 1, 'ODP-KLJ-FQ/29', 15),
+(4, 1, 'ODP-KLJ-FQ/30', 14),
+(5, 1, 'ODP-KLJ-FQ/31', 0),
+(6, 1, 'ODP-KLJ-FQ/32', 0),
+(7, 2, 'ODP-KPN-FB/19', 15),
+(8, 2, 'ODP-KPN-FB/20', 8),
+(9, 2, 'ODP-KPN-FB/21', 16),
+(10, 2, 'ODP-KPN-FB/22', 8);
 
 -- --------------------------------------------------------
 
@@ -125,7 +150,7 @@ INSERT INTO `registration_request` (`username`, `password`, `first_name`, `last_
 --
 
 CREATE TABLE IF NOT EXISTS `segmen` (
-  `ID_SEGMEN` int(11) NOT NULL,
+`ID_SEGMEN` int(11) NOT NULL,
   `KURANG_DARI_500JT` smallint(6) NOT NULL,
   `500JT_SD_1M` smallint(6) NOT NULL,
   `LEBIH_DARI_1M` smallint(6) NOT NULL,
@@ -154,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `segmentasi` (
 --
 
 CREATE TABLE IF NOT EXISTS `tagging` (
-  `ID_TAG` smallint(6) NOT NULL,
+`ID_TAG` smallint(6) NOT NULL,
   `VALID_TAG` smallint(6) NOT NULL,
   `LATITUDE` varchar(20) DEFAULT NULL,
   `LONGITUDE` varchar(20) DEFAULT NULL
@@ -253,6 +278,45 @@ ALTER TABLE `tagging`
 ALTER TABLE `user`
  ADD PRIMARY KEY (`username`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `daftar`
+--
+ALTER TABLE `daftar`
+MODIFY `ID_DAFTAR` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `error`
+--
+ALTER TABLE `error`
+MODIFY `ID_ERROR` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `kluster`
+--
+ALTER TABLE `kluster`
+MODIFY `ID_KLUSTER` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `kompetitor`
+--
+ALTER TABLE `kompetitor`
+MODIFY `ID_COMPETITOR` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `odp`
+--
+ALTER TABLE `odp`
+MODIFY `ID_ODP` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `segmen`
+--
+ALTER TABLE `segmen`
+MODIFY `ID_SEGMEN` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tagging`
+--
+ALTER TABLE `tagging`
+MODIFY `ID_TAG` smallint(6) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --

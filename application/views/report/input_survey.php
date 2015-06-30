@@ -26,12 +26,17 @@
                 <div class="box-body">
                   <!-- Date dd/mm/yyyy -->
                   <div class="form-group">
-                    <label>Date masks:</label>
+                    <label>Kluster</label>
                     <div class="input-group">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+                      <select class="form-control">
+                        <?php foreach ($list->result as $row) 
+                        {
+                          echo "<option>".$row->nama_kluster."</option>";
+                        
+                        }
+                        ?>
+                        
+                      </select>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
 

@@ -18,8 +18,11 @@ class Survey extends CI_Controller {
     
     public function index()
     {
+        $this->load->model('survey_model');
+        $data['list']= $this->M_survey->getKluster();
+
         $this->load->view('design/header');
-        $this->load->view('report/input_survey');
+        $this->load->view('report/input_survey', $data);
         $this->load->view('design/footer');
     }
 
