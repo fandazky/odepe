@@ -33,8 +33,8 @@ class Register extends CI_Controller
   
     public function register_form()
     {
-        $username = $this->input->post('email');
-        $password = $this->input->post('passwd');
+        $username = $this->input->post('username');
+        $password = md5($this->input->post('passwd'));
         $firstname = $this->input->post('firstname');
         $lastname = $this->input->post('lastname');
         $address = $this->input->post('address');
@@ -48,6 +48,7 @@ class Register extends CI_Controller
         );
 
         $this->db->insert('registration_request',$data);
+        redirect('login');
         
     }
 

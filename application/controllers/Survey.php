@@ -18,21 +18,32 @@ class Survey extends CI_Controller {
     
     public function index()
     {
-        //kluster
-        $this->load->model('m_survey');
-        $data['nama_kluster'] = $this->m_survey->getKluster();
+        $session = $this->session->userdata('isLogin');
+        $user = $this->session->userdata('username');
+        if($session == FALSE)
+        {
+            $this->load->view('access/login-form');
+        }else
+        {
+            $this->load->model('m_login'); 
+            $this->load->model('m_survey');
+            $data['pengguna'] = $this->m_login->dataPengguna($user);
 
-        //odp
-        $this->load->model('m_survey');
-        $data['nama_odp'] = $this->m_survey->getODP();
+            //kluster
+            $data['nama_kluster'] = $this->m_survey->getKluster();
 
-        //error
-        $this->load->model('m_survey');
-        $data['nama_error'] = $this->m_survey->getError();
+            //odp
+            $data['nama_odp'] = $this->m_survey->getODP();
 
-        $this->load->view('design/header');
-        $this->load->view('survey/input_survey', $data);
-        $this->load->view('design/footer');
+            //error
+            $data['nama_error'] = $this->m_survey->getError();
+
+            $this->load->view('design/header', $data);
+            $this->load->view('survey/input_survey', $data);
+            $this->load->view('design/footer');
+        } 
+        
+        
     }
 
     public function inputSurvey()

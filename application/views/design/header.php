@@ -33,7 +33,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="../../index2.html" class="logo">
+        <a href="" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>SI</b>O</span>
           <!-- logo for regular state and mobile devices -->
@@ -48,13 +48,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
+
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+              
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<?php echo base_url() ?>assets/dist/img/user2.png" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">Admin</span>
+                  <span class="hidden-xs"><?php echo $pengguna['username']?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -85,6 +87,28 @@
               
             </ul>
           </div>
+
+          <div class="navbar-custom-menu pull-left">
+            <ul class="nav navbar-nav">
+              
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="user ">
+                <a >
+                  <span class="hidden-xs"><?php
+                    setlocale(LC_ALL,'IND');
+                    echo strftime("%A, ");
+                    echo date('d ');
+                    echo strftime("%B");
+                    echo date(' Y');
+                  ?></span>
+                </a>
+                
+              </li>
+              <!-- Control Sidebar Toggle Button -->
+              
+            </ul>
+          </div>
+
         </nav>
       </header>        
       <!-- Left side column. contains the logo and sidebar -->
@@ -96,15 +120,13 @@
             <div class="pull-left image">
               <img src="<?php echo base_url() ?>assets/dist/img/user.png" class="img-circle" alt="User Image" />
             </div>
-            <div class="pull-left info">
-              <!-- <p><?php //echo $nama ?></p> -->
-            </div>
+            
           </div>
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
             <li>
-              <a href="<?php echo base_url() ?>dashboard">
+              <a href="<?php echo base_url() ?>access">
                 <i class="fa fa-home"></i> <span>Home</span>
               </a>
             </li>
@@ -174,3 +196,11 @@
         </section>
         <!-- /.sidebar -->
       </aside>
+
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Selamat Datang <?php echo $pengguna['first_name']." ".$pengguna['last_name'];?>
+          </h1>
+          

@@ -23,9 +23,19 @@ class Dashboard extends CI_Controller{
         parent::__construct();
     }    
     
-    public function index() {        
-        $this->load->view('design/header');
-        $this->load->view('dashboard/home');
-        $this->load->view('design/footer');
+    public function index() {  
+        $session = $this->session->userdata('isLogin');
+    
+        if($session == FALSE)
+        {
+            $this->load->view('access/login-form');
+            //redirect('login/login_form');
+        }else
+        {
+            $this->load->view('design/header');
+            $this->load->view('dashboard/home');
+            $this->load->view('design/footer');
+        }      
+        
     }
 }

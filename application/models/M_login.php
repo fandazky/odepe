@@ -23,11 +23,13 @@ class M_login extends CI_Model
   
     public function dataPengguna($username)
     {
-        //$this->db->select('username');
+        $this->db->select('username');
         $this->db->select('first_name');
+        $this->db->select('last_name');
+        $this->db->select('level');
         $this->db->where('username', $username);
         $query = $this->db->get('user');
-        return $query->row();
+        return $query->row_array();
     }
 
     public function getAllRegistrationRequest()

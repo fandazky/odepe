@@ -29,7 +29,7 @@ class Manajemen_user extends CI_Controller {
             $user = $this->session->userdata('username');
             
             $data['level'] = $this->session->userdata('level');        
-            $data['namapengguna'] = $this->m_login->dataPengguna($user);
+            $data['pengguna'] = $this->m_login->dataPengguna($user);
             $data['active_user'] = $this->m_manajemenuser->getAllActiveUser();
             if ($data['level'] == 1)
             {
@@ -60,7 +60,7 @@ class Manajemen_user extends CI_Controller {
             $user = $this->session->userdata('username');
             
             $data['level'] = $this->session->userdata('level');        
-            $data['namapengguna'] = $this->m_login->dataPengguna($user);
+            $data['pengguna'] = $this->m_login->dataPengguna($user);
             $data['registration_request'] = $this->m_manajemenuser->getAllRegistrationRequest();
             if ($data['level'] == 1)
             {
