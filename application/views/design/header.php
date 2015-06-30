@@ -78,7 +78,7 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div> -->
                     <div class="pull-right">
-                      <a href="<?php echo base_url() ?>login/logout" class="btn btn-default btn-flat">Keluar <i class="fa fa-sign-out"></i></a>
+                      <a href="<?php echo base_url() ?>login/logout" class="btn btn-warning btn-flat">Keluar <i class="fa fa-sign-out"></i></a>
                     </div>
                   </li>
                 </ul>
@@ -134,7 +134,7 @@
             <!-- <?php //if($jabatan == "Admin"){ ?> -->
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-group text-aqua"></i>
+                <i class="fa fa-user text-aqua"></i>
                 <span>Manajemen User</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -146,49 +146,50 @@
             <!-- <?php //} ?> -->
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-phone-square text-aqua"></i>
+                <i class="fa fa-tablet text-aqua"></i>
                 <span>Manajemen ODP</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url() ?>media/tambah"><i class="fa fa-plus-square"></i>Tambah ODP</a></li>
                 <li><a href="<?php echo base_url() ?>media/tambah"><i class="fa fa-plus-square"></i>Tambah Cluster</a></li>
-                <li><a href="<?php echo base_url() ?>media"><i class="fa fa-table"></i>Manajemen</a></li>
+                <li><a href="<?php echo base_url() ?>media"><i class="fa fa-edit"></i>Manajemen</a></li>
               </ul>
             </li>
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-list text-aqua"></i>
+                <i class="fa fa-road text-aqua"></i>
                 <span>Survey ODP</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url(); ?>survey"><i class="fa fa-table"></i>Input Hasil Survey</a></li>
+                <li><a href="<?php echo base_url(); ?>survey"><i class="fa fa-plus-square"></i>Input Hasil Survey</a></li>
+                <li><a href="<?php echo base_url(); ?>survey"><i class="fa fa-table"></i>Lihat Hasil Survey</a></li>
               </ul>
             </li>
             
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-list text-aqua"></i>
+                <i class="fa fa-pie-chart text-aqua"></i>
                 <span>Report ODP</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Cluster</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Set Operation</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP Witel Malang</a></li>
+                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report per Cluster</a></li>
+                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report per Set Operation</a></li>
+                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report Witel Malang</a></li>
               </ul>
             </li>
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-list text-aqua"></i>
+                <i class="fa fa-info-circle text-aqua"></i>
                 <span>Support</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../charts/morris.html"><i class="fa fa-table"></i>User Manual</a></li>
+                <li><a href="../charts/morris.html"><i class="fa fa-book"></i>User Manual</a></li>
               </ul>
             </li>
 
