@@ -61,8 +61,13 @@
                   <li class="user-header">
                     <img src="<?php echo base_url() ?>assets/dist/img/user2.png" class="img-circle" alt="User Image" />
                     <p>
-                      Admin
-                      <small>Fandazky</small>
+                      <?php 
+                        echo $pengguna['first_name'];
+                        if($pengguna['level']==1)
+                          echo "<small>Administrator</small>";
+                        else
+                          echo "<small>Operator</small>"
+                      ?>
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -71,7 +76,7 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div> -->
                     <div class="pull-right">
-                      <a href="<?php echo base_url() ?>auth/doLogout" class="btn btn-default btn-flat">Keluar <i class="fa fa-sign-out"></i></a>
+                      <a href="<?php echo base_url() ?>login/logout" class="btn btn-default btn-flat">Keluar <i class="fa fa-sign-out"></i></a>
                     </div>
                   </li>
                 </ul>
@@ -129,6 +134,17 @@
                 <li><a href="<?php echo base_url() ?>media"><i class="fa fa-table"></i>Manajemen</a></li>
               </ul>
             </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-list text-aqua"></i>
+                <span>Survey ODP</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo base_url(); ?>survey"><i class="fa fa-table"></i>Input Hasil Survey</a></li>
+              </ul>
+            </li>
             
             <li class="treeview">
               <a href="#">
@@ -137,9 +153,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url(); ?>survey"><i class="fa fa-table"></i>Input Hasil Survey</a></li>
                 <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Cluster</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Wilayah</a></li>
+                <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Set Operation</a></li>
                 <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP Witel Malang</a></li>
               </ul>
             </li>
@@ -151,10 +166,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-
-                <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Cluster</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP per Wilayah</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-table"></i>Report ODP Witel Malang</a></li>
+                <li><a href="../charts/morris.html"><i class="fa fa-table"></i>User Manual</a></li>
               </ul>
             </li>
 
