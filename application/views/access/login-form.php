@@ -25,7 +25,7 @@
                                     
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email" >                                        
+                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username" >                                        
                     </div>
                                 
                     <div style="margin-bottom: 25px" class="input-group">
@@ -36,9 +36,9 @@
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <select name="level" class="form-control">
-                            <option selected="selected" class="hide-select">Select login privilege</option>
+                            <option selected="selected" class="hide-select">--Select login privilege--</option>
                             <option value="1">Admin</option>
-                            <option value="2">User</option>
+                            <option value="2">Operator</option>
                         </select>
                     </div>
                     
