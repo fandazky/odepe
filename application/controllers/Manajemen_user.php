@@ -4,11 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Manajemen_user extends CI_Controller {
     public function __construct()
     {
-        /*
-        parent::__construct();
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        */
+
         parent::__construct();        
         $this->load->library(array('session'));         
         $this->load->helper('url');         
@@ -23,7 +19,7 @@ class Manajemen_user extends CI_Controller {
             redirect('login/login_form');
         }else
         {
-            $this->load->model('m_login');
+            // $this->load->model('m_login');
             $this->load->model('m_manajemenuser');
           
             $user = $this->session->userdata('username');
@@ -54,7 +50,7 @@ class Manajemen_user extends CI_Controller {
             redirect('login/login_form');
         }else
         {   
-            $this->load->model('m_login');
+            // $this->load->model('m_login');
             $this->load->model('m_manajemenuser');
 
             $user = $this->session->userdata('username');

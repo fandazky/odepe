@@ -15,7 +15,7 @@
         <div class="panel panel-danger">
             <div style="background: #DD4B39;" class="panel-heading">
                 <div style="color: white;" class="panel-title">Sign Up</div>
-                <div style="float:right; font-size: 85%; position: relative; top:-20px"><a id="signinlink" href="<?php echo base_url()?>login">Sign In</a></div>
+                
             </div>
 
 
@@ -37,7 +37,18 @@
                         </div>
                     <!-- </div> -->
 
-                        
+                    <!-- <div class="form-group"> -->
+                        <!-- <label for="username" class="col-md-3 control-label">Username</label> -->
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <select name="level" class="form-control">
+                                <option selected="selected" class="hide-select">-- Pilih Hak Akses --</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Operator</option>
+                            </select>                                          
+                        </div>
+                    <!-- </div> -->
+
                     
                     <!-- <div class="form-group"> -->
                         <!-- <label for="password" class="col-md-3 control-label">Password</label> -->
@@ -51,7 +62,7 @@
                         <!-- <label for="firstname" class="col-md-3 control-label">First Name</label> -->
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="fa fa-font"></i></span>
-                            <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                            <input type="text" class="form-control" name="firstname" placeholder="Nama Depan">
                         </div>
                     <!-- </div> -->
                     
@@ -59,7 +70,7 @@
                         <!-- <label for="lastname" class="col-md-3 control-label">Last Name</label> -->
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="fa fa-bold"></i></span>
-                            <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                            <input type="text" class="form-control" name="lastname" placeholder="Nama Belakang">
                         </div>
                     <!-- </div> -->
                
@@ -68,7 +79,7 @@
                         <div style="margin-bottom: 25px" class="input-group">
                             <!-- <input type="text" class="form-control" name="icode" placeholder=""> -->
                             <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                            <textarea class="form-control" rows="3" name ="address" placeholder="Address"></textarea>
+                            <textarea class="form-control" rows="3" name ="address" placeholder="Alamat"></textarea>
                         </div> 
                     <!-- </div> -->
 
