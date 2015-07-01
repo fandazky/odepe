@@ -22,6 +22,7 @@
                   <thead>
                     <tr>
                       <th>Username</th>
+                      <th>Hak Akses</th>
                       <th>Nama</th>
                       <th>Alamat</th>
                       <th>Last Login</th>
@@ -29,14 +30,20 @@
                   </thead>
                   <tbody>
                     <?php
-                      foreach ($active_user->result() as $req) {
-                        echo "
+                      foreach ($active_user->result() as $active) {
+                      echo "
                         <tr>
-                        <td>".$req->username."</td>
-                        <td>".$req->first_name." ".$req->last_name."</td>
-                        <td>".$req->address."</td>
-                        <td>03-03-2003 12.00</td>
-                        
+                        <td>".$active->username."</td> ";
+
+                        if($active->level==1)
+                          { echo "<td> Administrator </td>";} 
+                        else
+                          { echo "<td> Operator </td>";}
+
+                        echo "
+                        <td>".$active->first_name." ".$active->last_name."</td>
+                        <td>".$active->address."</td>
+                        <td>01-07-2015 10.08</td>
                         </tr>
                         ";
                       }

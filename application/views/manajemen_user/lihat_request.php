@@ -22,9 +22,10 @@
                   <thead>
                     <tr>
                       <th>Username</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Action</th>
+                      <th>Hak Akses</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -32,10 +33,17 @@
                       foreach ($registration_request->result() as $req) {
                         echo "
                         <tr>
-                        <td>".$req->username."</td>
+                        <td>".$req->username."</td> ";
+
+                        if($req->level==1)
+                          { echo "<td> Administrator </td>";} 
+                        else
+                          { echo "<td> Operator </td>";}
+
+                        echo "
                         <td>".$req->first_name." ".$req->last_name."</td>
                         <td>".$req->address."</td>
-                        <td>".anchor('register/accept_request/'.$req->username,'accept').anchor('register/decline_request/'.$req->username,' decline')."</td>
+                        <td>".anchor('register/accept_request/'.$req->username,'<span><i class="fa fa-check fa-2x"></i></span> ').anchor('register/decline_request/'.$req->username,' <span><i class="fa fa-times fa-2x"></i></span>')."</td>
                         </tr>
                         ";
                       }
