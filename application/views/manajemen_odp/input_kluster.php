@@ -20,6 +20,7 @@
                   <form action="<?php echo base_url('manajemen_odp/inputDataKluster'); ?>" method="post" role="form">
           
                     <div class="form-group">
+                       <label>Kluster</label>
                       <div class="input-group">
                         <div class="input-group-addon">
                           <i class="fa fa-map-marker"></i>
