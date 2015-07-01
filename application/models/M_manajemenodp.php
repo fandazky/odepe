@@ -4,7 +4,7 @@ class M_manajemenodp extends CI_Model
 {
     public function getKluster()
     {
-        $this->db->select('nama_kluster, id_kluster');
+        $this->db->select('nama_kluster');
         $query = $this->db->get('kluster');
 
         if ($query->num_rows() > 0)
@@ -20,12 +20,4 @@ class M_manajemenodp extends CI_Model
             return false;   
         }
     }
-
-// function setDataTambah($data)
-//     {
-//         $this->db->insert('odp',$data);
-//     }
-
-
-
 }
