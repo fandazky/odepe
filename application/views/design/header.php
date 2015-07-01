@@ -153,7 +153,7 @@
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url() ?>manajemen_odp/index"><i class="fa fa-plus-square"></i>Tambah ODP</a></li>
                 <li><a href="<?php echo base_url() ?>manajemen_odp/inputKluster"><i class="fa fa-plus-square"></i>Tambah Cluster</a></li>
-                <li><a href="<?php echo base_url() ?>manajemen_odp/manajemen"><i class="fa fa-edit"></i>Manajemen</a></li>
+                <li><a href="<?php echo base_url() ?>manajemen_odp/manajemenOdp"><i class="fa fa-edit"></i>Manajemen</a></li>
               </ul>
             </li>
 
@@ -165,7 +165,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url(); ?>survey"><i class="fa fa-plus-square"></i>Input Hasil Survey</a></li>
-                <li><a href="<?php echo base_url(); ?>survey"><i class="fa fa-table"></i>Lihat Hasil Survey</a></li>
+                <li><a href="<?php echo base_url(); ?>survey/showSurvey"><i class="fa fa-table"></i>Lihat Hasil Survey</a></li>
               </ul>
             </li>
             
@@ -202,6 +202,6 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Selamat Datang <?php echo $pengguna['first_name']." ".$pengguna['last_name'];?>
+            Selamat Datang, <?php echo $pengguna['first_name']." ".$pengguna['last_name'];?>!
           </h1>
           

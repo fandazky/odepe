@@ -4,7 +4,7 @@ class M_survey extends CI_Model
 {
 	public function getKluster()
  	{
- 		$this->db->select('nama_kluster');
+ 		$this->db->select('nama_kluster, id_kluster');
 		$query = $this->db->get('kluster');
 
 		if ($query->num_rows() > 0)
@@ -22,42 +22,64 @@ class M_survey extends CI_Model
  	}
 
 	public function getODP()
-	 	{
-	 		$this->db->select('nama_odp');
-			$query = $this->db->get('odp');
+ 	{
+ 		$this->db->select('nama_odp, id_odp');
+		$query = $this->db->get('odp');
 
-			if ($query->num_rows() > 0)
-			{
-	            foreach ($query->result() as $row) 
-	            {
-	                $data[] = $row;
-	            }
-	            return $data;
-	        }
-	        else
-	        {
-	        	return false;	
-	        }
-	 	}
+		if ($query->num_rows() > 0)
+		{
+            foreach ($query->result() as $row) 
+            {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else
+        {
+        	return false;	
+        }
+ 	}
 
 	public function getError()
-	 	{
-	 		$this->db->select('nama_error');
-			$query = $this->db->get('error');
+ 	{
+ 		$this->db->select('nama_error, id_error');
+		$query = $this->db->get('error');
 
-			if ($query->num_rows() > 0)
-			{
-	            foreach ($query->result() as $row) 
-	            {
-	                $data[] = $row;
-	            }
-	            return $data;
-	        }
-	        else
-	        {
-	        	return false;	
-	        }
-	 	}
+		if ($query->num_rows() > 0)
+		{
+            foreach ($query->result() as $row) 
+            {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else
+        {
+        	return false;	
+        }
+ 	}
+
+	public function getSurvey()
+ 	{	
+ 		$query = $this->db->get('daftar');
+
+		if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else{
+        	return false;	
+        }
+ 	}
+
+ 	public function insertDaftar($dataSurvey)
+ 	{
+ 		$this->db->set($dataSurvey); 
+		$this->db->insert('daftar');
+		return TRUE;
+ 	}
 
 // 	public function addMedia($nama_media)
 // 	{
