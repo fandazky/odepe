@@ -34,7 +34,7 @@ class Manajemen_odp extends CI_Controller {
 
 
             $this->load->view('design/header', $data);
-            $this->load->view('media/tambah', $data);
+            $this->load->view('manajemen_odp/input_odp', $data);
             $this->load->view('design/footer');
         } 
         
@@ -59,5 +59,43 @@ class Manajemen_odp extends CI_Controller {
 
        // echo "COBA".$nama_kluster ;
     }
+
+
+    public function inputKluster()
+    {
+        $session = $this->session->userdata('isLogin');
+        $user = $this->session->userdata('username');
+        if($session == FALSE)
+        {
+            $this->load->view('access/login-form');
+        }else
+        {
+            $this->load->model('m_login'); 
+            $this->load->model('m_manajemenodp');
+            $data['pengguna'] = $this->m_login->dataPengguna($user);
+
+            $this->load->view('design/header', $data);
+            $this->load->view('manajemen_odp/input_kluster', $data);
+            $this->load->view('design/footer');
+        } 
+        
+        
+    }
+
+    public function inputDataKluster()
+    {
+        $nama_kluster = $this->input->post('NAMA_KLUSTER');
+        $set_operation = $this->input->post('SET_OPERATION');
+
+        $data = array(
+                'NAMA_KLUSTER' => $nama_kluster,
+                'SET_OPERATION' => $set_operation
+        );
+        $this->db->insert('kluster',$data);
+        redirect('manajemen_odp');
+
+       // echo "COBA".$nama_kluster ;
+    }
+
 
 }

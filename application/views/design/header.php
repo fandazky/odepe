@@ -151,9 +151,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url() ?>media/tambah"><i class="fa fa-plus-square"></i>Tambah ODP</a></li>
-                <li><a href="<?php echo base_url() ?>media/tambah"><i class="fa fa-plus-square"></i>Tambah Cluster</a></li>
-                <li><a href="<?php echo base_url() ?>media"><i class="fa fa-edit"></i>Manajemen</a></li>
+                <li><a href="<?php echo base_url() ?>manajemen_odp/index"><i class="fa fa-plus-square"></i>Tambah ODP</a></li>
+                <li><a href="<?php echo base_url() ?>manajemen_odp/inputKluster"><i class="fa fa-plus-square"></i>Tambah Cluster</a></li>
+                <li><a href="<?php echo base_url() ?>manajemen_odp/manajemen"><i class="fa fa-edit"></i>Manajemen</a></li>
               </ul>
             </li>
 
