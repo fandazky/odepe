@@ -32,6 +32,7 @@ class Manajemen_odp extends CI_Controller {
             //kluster
             $data['nama_kluster'] = $this->m_manajemenodp->getKluster();
 
+
             $this->load->view('design/header', $data);
             $this->load->view('media/tambah', $data);
             $this->load->view('design/footer');
@@ -42,22 +43,21 @@ class Manajemen_odp extends CI_Controller {
 
     public function inputOdp()
     {
-        $nama_kluster = $this->input->post('NAMA_KLUSTER');
-        $nama_odp = md5($this->input->post('NAMA_ODP'));
-        $latitude = $this->input->post('LT');
-        $longtitude = $this->input->post('LG');
+        $nama_kluster = $this->input->post('ID_KLUSTER');
+        $nama_odp = $this->input->post('NAMA_ODP');
+        $latitude = $this->input->post('LATITUDE');
+        $longtitude = $this->input->post('LONGTITUDE');
 
         $data = array(
-                'NAMA_KLUSTER' => $nama_kluster,
+                'ID_KLUSTER' => $nama_kluster,
                 'NAMA_ODP' => $nama_odp,
                 'LT' => $latitude,
                 'LG' => $longtitude
         );
-
         $this->db->insert('odp',$data);
-        redirect('management_odp');
+        redirect('manajemen_odp');
+
+       // echo "COBA".$nama_kluster ;
     }
-
-
 
 }

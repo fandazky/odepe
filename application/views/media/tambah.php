@@ -17,14 +17,14 @@
                   <h3 class="box-title">Data Survey</h3>
                 </div> -->
                 <div class="box-body">
-                  <form action="<?php echo site_url('media/inputOdp'); ?>" method="post" role="form">
+                  <form action="<?php echo base_url('manajemen_odp/inputOdp'); ?>" method="post" role="form">
                     <div class="form-group">
                       <label>Kluster</label>
                       <div class="input-group">
-                        <select class="form-control">
+                        <select class="form-control" name='ID_KLUSTER'>
                           <?php
                           foreach ($nama_kluster as $row) {
-                            echo '<option value="'.$row->id_kluster.'">'.$row->nama_kluster.'</option>';
+                            echo '<option value="'.$row->id_kluster.'">'.$row->nama_kluster. ' ' . $row->id_kluster .  '</option>';
                           }
                           ?>
                         </select>
@@ -36,7 +36,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-map-marker"></i>
                         </div>
-                        <input type="text" class="form-control" placeholder="Latitude">
+                        <input type="text" class="form-control" placeholder="Latitude" name='LATITUDE'>
                       </div><!-- /.input group -->
                     </div><!-- /.form group -->
 
@@ -45,7 +45,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-map-marker"></i>
                         </div>
-                        <input type="text" class="form-control" placeholder="Longitude">
+                        <input type="text" class="form-control" placeholder="Longitude" name='LONGTITUDE'>
                       </div><!-- /.input group -->
                     </div><!-- /.form group -->
 
@@ -55,7 +55,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-flag-checkered"></i>
                         </div>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name='NAMA_ODP'>
                       </div><!-- /.input group -->
                     </div><!-- /.form group -->
 
