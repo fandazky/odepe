@@ -16,7 +16,8 @@ class Manajemen_user extends CI_Controller {
     {
         if($this->session->userdata('isLogin') == FALSE)
         {
-            redirect('login/login_form');
+            //redirect('login/login_form');
+            redirect('login');
         }else
         {
             // $this->load->model('m_login');
@@ -47,7 +48,8 @@ class Manajemen_user extends CI_Controller {
     {
         if($this->session->userdata('isLogin') == FALSE)
         {
-            redirect('login/login_form');
+            //redirect('login/login_form');
+            redirect('login');
         }else
         {   
             // $this->load->model('m_login');

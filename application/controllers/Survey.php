@@ -22,7 +22,8 @@ class Survey extends CI_Controller {
         $user = $this->session->userdata('username');
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            //$this->load->view('access/login-form');
+            redirect('login');
         }
         else
         {
@@ -92,7 +93,7 @@ class Survey extends CI_Controller {
     {       
         if($this->session->userdata('isLogin') == FALSE)
         {
-            redirect('login/login_form');
+            redirect('login');
         }else
         {   
             $this->load->model('m_login');

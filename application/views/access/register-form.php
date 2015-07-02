@@ -22,7 +22,7 @@
             <div style="padding-top:30px" class="panel-body" >
 
                 <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                <form id="signupform" class="form-horizontal" role="form" method="POST" action="<?php base_url()?>register/register_form">
+                <form id="signupform" class="form-horizontal" role="form" method="POST" action="<?php echo base_url()?>register/register_form">
                                 
                     <div id="signupalert" style="display:none" class="alert alert-danger">
                         <p>Error:</p>
@@ -82,14 +82,6 @@
                             <textarea class="form-control" rows="3" name ="address" placeholder="Alamat"></textarea>
                         </div> 
                     <!-- </div> -->
-
-                    <!--
-                    <div style="margin-top:10px" class="form-group">
-                        <div class="col-sm-12 controls">
-                            <input id="btn-login" class="btn btn-success" type="submit" value="Login">
-                        </div>
-                    </div>
-                    -->
 
                     <!-- Button -->                                        
                         <div style="margin-bottom: 25px">

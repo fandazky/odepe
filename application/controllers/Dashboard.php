@@ -28,8 +28,8 @@ class Dashboard extends CI_Controller{
     
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
-            //redirect('login/login_form');
+            //$this->load->view('access/login-form');
+            redirect('login');
         }else
         {
             $this->load->view('design/header');

@@ -22,7 +22,8 @@ class Manajemen_odp extends CI_Controller {
         $user = $this->session->userdata('username');
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            //$this->load->view('access/login-form');
+            redirect('login');
         }else
         {
             $this->load->model('m_login'); 
@@ -65,7 +66,8 @@ class Manajemen_odp extends CI_Controller {
         $user = $this->session->userdata('username');
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            //$this->load->view('access/login-form');
+            redirect('login');
         }else
         {
             $this->load->model('m_login'); 

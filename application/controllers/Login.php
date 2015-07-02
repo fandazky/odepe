@@ -23,8 +23,8 @@ class Login extends CI_Controller
     
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
-            //redirect('login/login_form');
+            //$this->load->view('access/login-form');
+            redirect('login');
         }else
         {
             redirect('access');
@@ -79,7 +79,7 @@ class Login extends CI_Controller
     {
         $this->session->sess_destroy();
    
-        redirect('login/');
+        redirect('login');
     }
 
 }

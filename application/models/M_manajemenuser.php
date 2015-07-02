@@ -27,6 +27,26 @@ class M_manajemenuser extends CI_Model
         $this->db->where('username',$id); 
         $this->db->delete('registration_request');
     }
+
+    public function username_exists($id)
+    {
+        // $this->db->where('username',$id);
+        // $query = $this->db->get('user');
+        $query = $this->db->get_where('user', array('username'=>$id));
+
+        //return $query->num_rows();
+        
+        
+        if ($query->num_rows() > 0){
+            return true;
+            //return "lebih";
+        }
+        else{
+            return false;
+            //return "sama";
+        }
+        
+    }
 }
   
 ?>
