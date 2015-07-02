@@ -23,8 +23,8 @@ class Login extends CI_Controller
     
         if($session == FALSE)
         {
-            //$this->load->view('access/login-form');
-            redirect('login');
+            $this->load->view('access/login-form');
+            //redirect('login');
         }else
         {
             redirect('access');
