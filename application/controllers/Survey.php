@@ -102,7 +102,6 @@ class Survey extends CI_Controller {
             
             $data['level'] = $this->session->userdata('level');        
             $data['pengguna'] = $this->m_login->dataPengguna($user);
-            
             $data['list'] = $this->m_survey->getSurvey();
 
             $this->load->view('design/header', $data);

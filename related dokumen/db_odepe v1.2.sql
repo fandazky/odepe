@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2015 at 04:02 AM
+-- Generation Time: Jul 02, 2015 at 09:51 AM
 -- Server version: 5.6.21
--- PHP Version: 5.5.19
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,22 +32,31 @@ CREATE TABLE IF NOT EXISTS `daftar` (
   `ID_ERROR` int(11) NOT NULL,
   `TGL_SURVEY` date NOT NULL,
   `TGL_INPUT` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `VALID_TAG` smallint(6) NOT NULL,
+  `VALID_TAG` varchar(15) NOT NULL,
   `LATITUDE` varchar(20) DEFAULT NULL,
   `LONGITUDE` varchar(20) DEFAULT NULL,
-  `Label` smallint(6) NOT NULL,
-  `Availability` varchar(2) NOT NULL,
-  `Bangunan` varchar(2) NOT NULL,
-  `KURANG_DARI_500JT` smallint(6) NOT NULL,
-  `500JT_SD_1M` smallint(6) NOT NULL,
-  `LEBIH_DARI_1M` smallint(6) NOT NULL,
-  `PERKAMPUNGAN` smallint(6) NOT NULL,
-  `RUKO` smallint(6) NOT NULL,
-  `KANTOR_KECIL` smallint(6) NOT NULL,
-  `KANTOR_BESAR` smallint(6) NOT NULL,
-  `PERGURUAN_TINGGI` smallint(6) NOT NULL,
+  `LABEL` varchar(15) NOT NULL,
+  `AVAILABILITY` varchar(2) NOT NULL,
+  `BANGUNAN` varchar(2) NOT NULL,
+  `KURANG_DARI_500JT` smallint(6) DEFAULT '0',
+  `ANTARA_500JT_SD_1M` smallint(6) DEFAULT '0',
+  `LEBIH_DARI_1M` smallint(6) DEFAULT '0',
+  `PERKAMPUNGAN` smallint(6) DEFAULT '0',
+  `RUKO` smallint(6) DEFAULT '0',
+  `KANTOR_KECIL` smallint(6) DEFAULT '0',
+  `KANTOR_BESAR` smallint(6) DEFAULT '0',
+  `PERGURUAN_TINGGI` smallint(6) DEFAULT '0',
   `KETERANGAN` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `daftar`
+--
+
+INSERT INTO `daftar` (`ID_DAFTAR`, `ID_ODP`, `ID_ERROR`, `TGL_SURVEY`, `TGL_INPUT`, `VALID_TAG`, `LATITUDE`, `LONGITUDE`, `LABEL`, `AVAILABILITY`, `BANGUNAN`, `KURANG_DARI_500JT`, `ANTARA_500JT_SD_1M`, `LEBIH_DARI_1M`, `PERKAMPUNGAN`, `RUKO`, `KANTOR_KECIL`, `KANTOR_BESAR`, `PERGURUAN_TINGGI`, `KETERANGAN`) VALUES
+(3, 1, 1, '0000-00-00', '2015-07-01 04:08:16', 'Ya', '-7.239', '112.3887', 'Ada', '12', '21', 0, 1, 1, NULL, NULL, NULL, NULL, NULL, 'Bismillah'),
+(4, 3, 2, '2015-07-01', '2015-07-01 04:18:09', 'Ya', '-7', '112', 'Ada', '5', '4', 0, 0, 0, 0, 0, 0, 0, 0, 'Y'),
+(5, 9, 3, '2015-07-01', '2015-07-01 04:35:29', 'Tidak', '-7.239', '112.3887', 'Ada', '3', '4', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'Ya');
 
 -- --------------------------------------------------------
 
@@ -58,18 +67,19 @@ CREATE TABLE IF NOT EXISTS `daftar` (
 CREATE TABLE IF NOT EXISTS `error` (
 `ID_ERROR` int(11) NOT NULL,
   `NAMA_ERROR` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `error`
 --
 
 INSERT INTO `error` (`ID_ERROR`, `NAMA_ERROR`) VALUES
-(1, 'Salah Posisi'),
+(1, 'No Error'),
 (2, 'Tidak Ada di Lokasi'),
 (3, 'Tidak Ada di Starclick'),
 (4, 'Wrong Label'),
-(5, 'ID dan Kluster beda, tetapi koordinat sama');
+(5, 'ID dan Kluster beda, tetapi koordinat sama'),
+(6, 'Salah Posisi');
 
 -- --------------------------------------------------------
 
@@ -132,24 +142,26 @@ INSERT INTO `kompetitor` (`ID_COMPETITOR`, `NAMA_COMPETITOR`) VALUES
 CREATE TABLE IF NOT EXISTS `odp` (
 `ID_ODP` int(11) NOT NULL,
   `ID_KLUSTER` int(11) DEFAULT NULL,
-  `NAMA_ODP` varchar(25) NOT NULL
+  `NAMA_ODP` varchar(25) NOT NULL,
+  `LT` varchar(10) NOT NULL,
+  `LG` varchar(10) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `odp`
 --
 
-INSERT INTO `odp` (`ID_ODP`, `ID_KLUSTER`, `NAMA_ODP`) VALUES
-(1, 1, 'ODP-KLJ-FQ/27'),
-(2, 1, 'ODP-KLJ-FQ/28'),
-(3, 1, 'ODP-KLJ-FQ/29'),
-(4, 1, 'ODP-KLJ-FQ/30'),
-(5, 1, 'ODP-KLJ-FQ/31'),
-(6, 1, 'ODP-KLJ-FQ/32'),
-(7, 2, 'ODP-KPN-FB/19'),
-(8, 2, 'ODP-KPN-FB/20'),
-(9, 2, 'ODP-KPN-FB/21'),
-(10, 2, 'ODP-KPN-FB/22');
+INSERT INTO `odp` (`ID_ODP`, `ID_KLUSTER`, `NAMA_ODP`, `LT`, `LG`) VALUES
+(1, 1, 'ODP-KLJ-FQ/27', '', ''),
+(2, 1, 'ODP-KLJ-FQ/28', '', ''),
+(3, 1, 'ODP-KLJ-FQ/29', '', ''),
+(4, 1, 'ODP-KLJ-FQ/30', '', ''),
+(5, 1, 'ODP-KLJ-FQ/31', '', ''),
+(6, 1, 'ODP-KLJ-FQ/32', '', ''),
+(7, 2, 'ODP-KPN-FB/19', '', ''),
+(8, 2, 'ODP-KPN-FB/20', '', ''),
+(9, 2, 'ODP-KPN-FB/21', '', ''),
+(10, 2, 'ODP-KPN-FB/22', '', '');
 
 -- --------------------------------------------------------
 
@@ -163,8 +175,8 @@ CREATE TABLE IF NOT EXISTS `registration_request` (
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) DEFAULT NULL,
   `address` varchar(50) DEFAULT NULL,
-  `level` int(1) NOT NULL,
-  `status` int(1) NOT NULL
+  `level` int(11) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -198,7 +210,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `first_name`, `last_name`, `address`, `level`, `status`) VALUES
-('Admin', '827ccb0eea8a706c4c34a16891f84e7b', 'Administrator', NULL, NULL, 1, 1);
+('Admin', '827ccb0eea8a706c4c34a16891f84e7b', 'Administrator', NULL, NULL, 1, 1),
+('nisrinabia', '63ca7e6f77c76d6175cc1831b2473a96', 'Nisrina', 'Madjid', 'Jl. Safir Malang', 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -260,12 +273,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `daftar`
 --
 ALTER TABLE `daftar`
-MODIFY `ID_DAFTAR` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `ID_DAFTAR` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `error`
 --
 ALTER TABLE `error`
-MODIFY `ID_ERROR` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `ID_ERROR` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `kluster`
 --

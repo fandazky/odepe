@@ -25,23 +25,23 @@
                     <thead>
                       <tr>
                         <th>NO</th>
-                        <th>NAMA KLUSTER</th>
-                        <th>NAMA ODP</th>
-                        <th>VALID TAGING</th>
+                        <th>NAMA_KLUSTER</th>
+                        <th>NAMA_ODP</th>
+                        <th>VALID_TAGING</th>
                         <th>LATITUDE</th>
                         <th>LONGITUDE</th>
                         <th>LABEL</th>
                         <th>ERROR</th>
                         <th>AVAILABLITY</th>
-                        <th>BANGUNAN BERPENGHUNI</th>
+                        <th>BANGUNAN</th>
                         <th><i class="fa fa-angle-left">500JT</th>
-                        <th>500JT - 1M</th>
+                        <th>500JT-1M</th>
                         <th><i class="fa fa-angle-right">1M </th>
                         <th>PERKAMPUNGAN</th>
                         <th>RUKO</th>
-                        <th>KANTOR KECIL</th>
-                        <th>KANTOR BESAR</th>
-                        <th>PERGURUAN TINGGI</th>
+                        <th>KANTOR_KECIL</th>
+                        <th>KANTOR_BESAR</th>
+                        <th>PERGURUAN_TINGGI</th>
                         <th>KOMPETITOR</th>
                         <th>KETERANGAN</th>
                       </tr>
@@ -88,7 +88,11 @@
                       ?>
                       <tr>
                         <th><?php echo $count; ?></th>
-                        <th></th>
+                        <th><?php
+                          $nama = $this->db->query('select nama_kluster from daftar, odp, kluster where daftar.id_odp = odp.id_odp and odp.id_kluster = kluster.id_kluster')->row_array();                         
+                          echo $nama['nama_kluster'];
+                        ?>
+                        </th>
                         <th><?php echo $row->ID_ODP; ?></th>
                         <th><?php echo $row->VALID_TAG; ?></th>
                         <th><?php echo $row->LATITUDE; ?></th>
@@ -121,9 +125,9 @@
                         <th>LABEL</th>
                         <th>ERROR</th>
                         <th>AVAILABLITY</th>
-                        <th>BANGUNAN BERPENGHUNI</th>
+                        <th>BANGUNAN</th>
                         <th><i class="fa fa-angle-left">500JT</th>
-                        <th>500JT - 1M</th>
+                        <th>500JT-1M</th>
                         <th><i class="fa fa-angle-right">1M </th>
                         <th>PERKAMPUNGAN</th>
                         <th>RUKO</th>

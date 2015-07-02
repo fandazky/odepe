@@ -59,12 +59,33 @@ class M_survey extends CI_Model
         }
  	}
 
+    // public function funcname($id)
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('kluster a');
+    //     $this->db->join('odp b', 'b.id_kluster=a.id_kluster', 'left');
+    //     $this->db->join('daftar c', 'c.id_odp=b.id_odp', 'left');
+    //     $this->db->where('c.id_odp',$id);
+    //     // $this->db->order_by('c.track_title','asc');
+    //     $query = $this->db->get();
+    //     if($query->num_rows() != 0)
+    //     {
+    //         return $query->result_array();
+    //     }
+    //     else
+    //     {
+    //         return false;
+    //     }
+    // }
+
 	public function getSurvey()
  	{	
  		$query = $this->db->get('daftar');
 
 		if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
+                // $id = $row->id_odp;
+
                 $data[] = $row;
             }
             return $data;
@@ -74,74 +95,14 @@ class M_survey extends CI_Model
         }
  	}
 
+   
+
  	public function insertDaftar($dataSurvey)
  	{
  		$this->db->set($dataSurvey); 
 		$this->db->insert('daftar');
 		return TRUE;
  	}
-
-// 	public function addMedia($nama_media)
-// 	{
-// 		$result = $this->db->get_where('media',
-// 			array
-// 			(
-// 				'NAMA_MEDIA' => $nama_media
-// 			)
-// 		);
-
-// 		if ($result->num_rows() > 0)
-// 		{
-// 			return FALSE;
-// 		}
-// 		else
-// 		{
-// 			$this->db->insert('media',
-// 				array
-// 				(
-// 					'NAMA_MEDIA' => $nama_media
-// 				)
-// 			); 
-// 			return TRUE;
-// 		}
-// 	}
-
-// 	public function editMedia($id)
-// 	{
-//     	$query = $this->db->get_where('media', array('ID_MEDIA' => $id));
-//     	if ($query->num_rows() > 0) 
-//         {
-//             return $query->result_array();
-//         }
-//         else 
-//         {
-//             return FALSE;
-//         }
-//     }
-
-//     public function updateMedia($id, $nama_media)
-//     {
-//     	$q = $this->db->get_where('media', array('ID_MEDIA' => $id));
-//     	$media =  $q->row()->NAMA_MEDIA;
-// 		$result = $this->db->get_where('media', array('NAMA_MEDIA' => $nama_media));
-
-// 		if ($result->num_rows() > 0)
-// 		{
-// 			//echo "apakah disini?";
-// 			if ($nama_media != $media)
-// 			{
-// 				return FALSE;
-// 			}
-// 		}
-// 		$this->db->where('ID_MEDIA', $id);
-// 		$this->db->update('media', array('NAMA_MEDIA' => $nama_media));
-// 		return TRUE;
-// 	}
-
-// 	public function deleteMedia($id)
-// 	{
-// 		$this->db->delete('media', array('ID_MEDIA' => $id));
-// 	}
 }
 
 // /* End of file media_model.php */
