@@ -97,6 +97,85 @@ class Manajemen_odp extends CI_Controller {
     }
 
 
+     public function manajemenOdp()
+    {       
+        if($this->session->userdata('isLogin') == FALSE)
+        {
+            redirect('login');
+        }else
+        {   
+            $this->load->model('m_login');
+            $this->load->model('m_manajemenodp');
 
+            $user = $this->session->userdata('username');
+            
+            $data['level'] = $this->session->userdata('level');        
+            $data['pengguna'] = $this->m_login->dataPengguna($user);
+            $data['list'] = $this->m_manajemenodp->getDataOdp();
+
+            $this->load->view('design/header', $data);
+            $this->load->view('manajemen_odp/manajemen', $data);
+            $this->load->view('design/footer');
+        }
+    }
+
+    public function delete($id) {
+        $this->load->model('m_manajemenodp');
+        $this->odp->delete($id);
+        echo '<script language="javascript">';
+        echo 'alert("Akun berhasil dihapus");';
+        echo 'window.location.href = "' . site_url('manajemen_odp/manajemenOdp') . '";';
+        echo '</script>';
+    }
+
+    public function edit($id) 
+    {
+        $session = $this->session->userdata('isLogin');
+        $user = $this->session->userdata('username');
+        if($session == FALSE)
+        {
+            //$this->load->view('access/login-form');
+            redirect('login');
+        }else
+        {
+            $this->load->model('m_login');
+            $this->load->model('m_manajemenodp');   
+            $data['pengguna'] = $this->m_login->dataPengguna($user);
+             
+            $data['result'] = $this->m_manajemenodp->edit($id);
+
+            $this->load->view('design/header', $data);
+            $this->load->view('manajemen_odp/edit_odp', $data);
+            $this->load->view('design/footer'); 
+    
+        }
+    }
+
+
+    public function update($id) {
+        $nama_odp = $this->input->post('NAMA_ODP');
+        $latitude = $this->input->post('LT');
+        $longtitude = $this->input->post('LG');
+        $data = array(
+            'NAMA_ODP' => $this->input->post('nama_odp'),
+            'LG' => $this->input->post('longtitude'),
+            'LT' => $this->input->post('latitude'));
+        $this->load->model('manajemen_odp');
+        if($this->akun->update($id, $data))
+        {
+              echo '<script language="javascript">';
+              echo 'alert("Akun berhasil diupdate");';
+              echo 'window.location.href = "' . site_url('manajemen_odp/manajemenOdp') . '";';
+              echo '</script>';
+        }
+        else
+        {
+              echo '<script language="javascript">';
+              echo 'alert("Gagal mengupdate akun. Username telah terpakai");';
+              echo 'window.history.back();';
+              echo '</script>';
+        }
+    }
+    
 
 }
