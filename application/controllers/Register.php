@@ -23,8 +23,8 @@ class Register extends CI_Controller
     
         if($session == FALSE)
         {
-            //$this->load->view('access/register-form');
-            redirect('login');
+            $this->load->view('access/register-form');
+            //redirect('login');
         }else
         {
             redirect('access');
