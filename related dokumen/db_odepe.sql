@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2015 at 03:36 PM
+-- Generation Time: Jul 02, 2015 at 09:51 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `daftar` (
   `KANTOR_BESAR` smallint(6) DEFAULT '0',
   `PERGURUAN_TINGGI` smallint(6) DEFAULT '0',
   `KETERANGAN` mediumtext NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `daftar`
@@ -56,8 +56,7 @@ CREATE TABLE IF NOT EXISTS `daftar` (
 INSERT INTO `daftar` (`ID_DAFTAR`, `ID_ODP`, `ID_ERROR`, `TGL_SURVEY`, `TGL_INPUT`, `VALID_TAG`, `LATITUDE`, `LONGITUDE`, `LABEL`, `AVAILABILITY`, `BANGUNAN`, `KURANG_DARI_500JT`, `ANTARA_500JT_SD_1M`, `LEBIH_DARI_1M`, `PERKAMPUNGAN`, `RUKO`, `KANTOR_KECIL`, `KANTOR_BESAR`, `PERGURUAN_TINGGI`, `KETERANGAN`) VALUES
 (3, 1, 1, '0000-00-00', '2015-07-01 04:08:16', 'Ya', '-7.239', '112.3887', 'Ada', '12', '21', 0, 1, 1, NULL, NULL, NULL, NULL, NULL, 'Bismillah'),
 (4, 3, 2, '2015-07-01', '2015-07-01 04:18:09', 'Ya', '-7', '112', 'Ada', '5', '4', 0, 0, 0, 0, 0, 0, 0, 0, 'Y'),
-(5, 9, 3, '2015-07-01', '2015-07-01 04:35:29', 'Tidak', '-7.239', '112.3887', 'Ada', '3', '4', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'Ya'),
-(6, 1, 1, '2015-07-03', '2015-07-03 03:55:38', 'Tidak', '2', '1', 'Tidak Ada', '12', '12', 0, 0, 0, 0, 0, 0, 0, 0, 'we');
+(5, 9, 3, '2015-07-01', '2015-07-01 04:35:29', 'Tidak', '-7.239', '112.3887', 'Ada', '3', '4', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'Ya');
 
 -- --------------------------------------------------------
 
@@ -274,7 +273,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `daftar`
 --
 ALTER TABLE `daftar`
-MODIFY `ID_DAFTAR` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `ID_DAFTAR` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `error`
 --
@@ -303,8 +302,8 @@ MODIFY `ID_ODP` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 -- Constraints for table `daftar`
 --
 ALTER TABLE `daftar`
-ADD CONSTRAINT `FK_DAFTAR_MEMILIKI_ERROR` FOREIGN KEY (`ID_ERROR`) REFERENCES `error` (`ID_ERROR`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `FK_DAFTAR_OE_ODP` FOREIGN KEY (`ID_ODP`) REFERENCES `odp` (`ID_ODP`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `FK_DAFTAR_MEMILIKI_ERROR` FOREIGN KEY (`ID_ERROR`) REFERENCES `error` (`ID_ERROR`),
+ADD CONSTRAINT `FK_DAFTAR_OE_ODP` FOREIGN KEY (`ID_ODP`) REFERENCES `odp` (`ID_ODP`);
 
 --
 -- Constraints for table `kompetisi`
