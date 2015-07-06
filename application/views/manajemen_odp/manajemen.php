@@ -43,7 +43,7 @@
                       <tr>
                         <th><?php echo $count; ?></th>
                         <th><?php
-                          $nama = $this->db->query('select nama_kluster from odp,kluster where odp.id_kluster = kluster.id_kluster')->row_array();                         
+                          $nama = $this->db->query('select nama_kluster from odp,kluster where odp.id_kluster = kluster.id_kluster and odp.id_kluster = '.$row->ID_KLUSTER)->row_array();                         
                           echo $nama['nama_kluster'];
                         ?> </th>
                         <th><?php echo $row->NAMA_ODP; ?></th>

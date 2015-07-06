@@ -120,7 +120,7 @@ class Manajemen_odp extends CI_Controller {
     }
 
     public function delete($id) {
-        $this->load->model('m_manajemenodp');
+        $this->load->model('m_manajemenodp', 'odp');
         $this->odp->delete($id);
         echo '<script language="javascript">';
         echo 'alert("Akun berhasil dihapus");';
@@ -153,25 +153,24 @@ class Manajemen_odp extends CI_Controller {
 
 
     public function update($id) {
-        $nama_odp = $this->input->post('NAMA_ODP');
-        $latitude = $this->input->post('LT');
-        $longtitude = $this->input->post('LG');
         $data = array(
-            'NAMA_ODP' => $this->input->post('nama_odp'),
-            'LG' => $this->input->post('longtitude'),
-            'LT' => $this->input->post('latitude'));
-        $this->load->model('manajemen_odp');
-        if($this->akun->update($id, $data))
+            'NAMA_ODP' => $this->input->post('NAMA_ODP'),
+            'LG' => $this->input->post('LG'),
+            'LT' => $this->input->post('LT'));
+        $this->load->model('M_manajemenodp');
+        //var_dump($id);
+        //var_dump($data);
+        if($this->M_manajemenodp->update($id, $data))
         {
               echo '<script language="javascript">';
-              echo 'alert("Akun berhasil diupdate");';
+              echo 'alert("ODP berhasil diupdate");';
               echo 'window.location.href = "' . site_url('manajemen_odp/manajemenOdp') . '";';
               echo '</script>';
         }
         else
         {
               echo '<script language="javascript">';
-              echo 'alert("Gagal mengupdate akun. Username telah terpakai");';
+              echo 'alert("Gagal mengupdate ODP. "");';
               echo 'window.history.back();';
               echo '</script>';
         }

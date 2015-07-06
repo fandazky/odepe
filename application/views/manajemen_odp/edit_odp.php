@@ -29,7 +29,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-user"></i>
                       </div>
-                      <input id="nama" class="form-control" name="nama" placeholder="Nama ODP" value="<?php echo $row['NAMA_ODP'] ?>"/>
+                      <input class="form-control" name="NAMA_ODP" placeholder="Nama ODP" value="<?php echo $row['NAMA_ODP'] ?>"/>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
 
@@ -39,7 +39,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-at"></i>
                       </div>
-                      <input id="username" class="form-control" name="username" placeholder="Latitude" value="<?php echo $row['LT'] ?>"/>
+                      <input class="form-control" name="LT" placeholder="Latitude" value="<?php echo $row['LT'] ?>"/>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
 
@@ -49,7 +49,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-at"></i>
                       </div>
-                      <input id="username" class="form-control" name="username" placeholder="Longtitude" value="<?php echo $row['LG'] ?>"/>
+                      <input class="form-control" name="LG" placeholder="Longtitude" value="<?php echo $row['LG'] ?>"/>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
 
