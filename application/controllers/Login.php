@@ -73,7 +73,42 @@ class Login extends CI_Controller
         //} 
         
     }
-  
+
+    public function update_profile()
+    {
+        $this->load->model('m_manajemenuser');
+        $user = $this->session->userdata('username');
+        $row = $this->m_login->getUSerData($user);
+
+        $data['pengguna'] = $this->m_login->dataPengguna($user);
+        if ($row) {
+            $data['username'] = $row->username;
+            $data['namadepan'] = $row->first_name;
+            $data['namabelakang'] = $row->last_name;
+            $data['alamat'] = $row->address;
+
+            $this->load->view('design/header', $data);
+            $this->load->view('access/update-profile', $data);
+            $this->load->view('design/footer', $data);
+
+        }
+    } 
+
+    public function simpan_update()
+    {
+        $username = $this->input->post('username');
+        $data = array(
+            'first_name' => $this->input->post('namadepan'),
+            'last_name' => $this->input->post('namabelakang'),
+            'address' => $this->input->post('alamat')
+        );
+
+        $this->m_login->updateProfile($username, $data);
+        // echo $this->input->post('namadepan')." ".$this->input->post('namabelakang')." ".$this->input->post('alamat');
+        // $this->db->where('username', $username);
+        // $this->db->set('user', $data);
+        //redirect('access');
+    }
   
     public function logout()
     {

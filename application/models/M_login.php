@@ -41,6 +41,18 @@ class M_login extends CI_Model
     {
         return $this->db->get_where('registration_request', array('username'=>$username))->row();
     }
+
+    public function getUserData($username)
+    {
+        return $this->db->get_where('user', array('username'=>$username))->row();
+    }
+
+    public function updateProfile($username, $data)
+    {
+        echo $username." ".$this->input->post('namadepan')." ".$this->input->post('namabelakang')." ".$this->input->post('alamat');
+        $this->db->where('username', $username);
+        $this->db->update('user', $data);
+    }
 }  
 
 ?>
