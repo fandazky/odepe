@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2015 at 03:36 PM
+-- Generation Time: Jul 07, 2015 at 04:48 AM
 -- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- PHP Version: 5.5.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -199,7 +199,7 @@ INSERT INTO `registration_request` (`username`, `password`, `first_name`, `last_
 CREATE TABLE IF NOT EXISTS `user` (
   `username` varchar(50) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `first_name` varchar(100) DEFAULT NULL,
+  `first_name` varchar(100) NOT NULL,
   `last_name` varchar(20) DEFAULT NULL,
   `address` varchar(50) DEFAULT NULL,
   `level` int(1) NOT NULL,
