@@ -176,9 +176,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report per Cluster</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report per Set Operation</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report Witel Malang</a></li>
+                <li><a href="<?php echo base_url() ?>report/report_kluster"><i class="fa fa-file-text"></i>Report per Cluster</a></li>
+                <li><a href="<?php echo base_url() ?>report/report_wilayah"><i class="fa fa-file-text"></i>Report per Set Operation</a></li>
+                <li><a href="<?php echo base_url() ?>report/report_witel"><i class="fa fa-file-text"></i>Report Witel Malang</a></li>
               </ul>
             </li>
 
