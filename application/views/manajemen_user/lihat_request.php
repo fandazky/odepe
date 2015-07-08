@@ -10,8 +10,9 @@
         <!-- Main content -->
         
         <section class="content">
+        
         <div class="row">
-          <div class="col-md-11">
+          <div class="col-md-11"> 
           <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"><B>Permintaan Pembuatan User</B></h3>
@@ -58,9 +59,9 @@
                     ?>
                   </tbody>
                 </table>
-                <script src="<?php echo base_url('assets/bootstrap/js/jquery-1.11.2.min.js') ?>"></script>
-                <script src="<?php echo base_url('assets/datatables/jquery.dataTables.js') ?>"></script>
-                <script src="<?php echo base_url('assets/datatables/dataTables.bootstrap.js') ?>"></script>
+                <script src="<?php echo base_url('assets/plugins/jQuery/jQuery-2.1.3.min.js') ?>"></script>
+                <script src="<?php echo base_url('assets/plugins/datatables/jquery.dataTables.js') ?>"></script>
+                <script src="<?php echo base_url('assets/plugins/datatables/dataTables.bootstrap.js') ?>"></script>
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#mytable").dataTable();

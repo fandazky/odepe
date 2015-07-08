@@ -10,7 +10,8 @@
         <!-- Main content -->
         
         <section class="content">
-
+        <div class="row">
+        <div class="col-md-11"> 
           <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"><B>Semua User</B></h3>
@@ -63,9 +64,9 @@
                     
                   </tbody>
                 </table>
-                <script src="<?php echo base_url('assets/bootstrap/js/jquery-1.11.2.min.js') ?>"></script>
-                <script src="<?php echo base_url('assets/datatables/jquery.dataTables.js') ?>"></script>
-                <script src="<?php echo base_url('assets/datatables/dataTables.bootstrap.js') ?>"></script>
+                <script src="<?php echo base_url('assets/plugins/jQuery/jQuery-2.1.3.min.js') ?>"></script>
+                <script src="<?php echo base_url('assets/plugins/datatables/jquery.dataTables.js') ?>"></script>
+                <script src="<?php echo base_url('assets/plugins/datatables/dataTables.bootstrap.js') ?>"></script>
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#mytable").dataTable();
@@ -73,51 +74,10 @@
                 </script>
               </div><!-- /.table-responsive -->
               </div>
-              <!--
-                <table class="table no-margin">
-                  <thead>
-                    <tr>
-                      <th>No.</th>
-                      <th>Username</th>
-                      <th>Hak Akses</th>
-                      <th>Nama</th>
-                      <th>Alamat</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    /*
-                      $i = 0;
-                      foreach ($active_user->result() as $active) {
-                      echo "
-                        <tr>
-                        <td>".++$i."</td>
-                        <td>".$active->username."</td> ";
-
-                        if($active->level==1)
-                          { echo "<td> Administrator </td>";} 
-                        else
-                          { echo "<td> Operator </td>";}
-
-                        echo "
-                        <td>".$active->first_name." ".$active->last_name."</td>
-                        <td>".$active->address."</td>
-                        <td>".anchor('manajemen_user/edit_user/'.$active->username,'<span title="Edit User"><i class="fa fa-pencil-square-o"></i></span>')." | ".anchor('register/delete_user/'.$active->username,'<span title="Hapus User"><i class="fa fa-trash-o"></i></span>')."</td>
-                        
-                        
-                        </tr>
-                        ";
-                      }
-                      */
-                    ?>
-                    
-                    
-                  </tbody>
-                </table> -->
+              
               </div><!-- /.table-responsive --> 
             </div><!-- /.box-body -->
-
+            </div>
           </div><!-- /.box -->
         </section><!-- /.content -->
         
