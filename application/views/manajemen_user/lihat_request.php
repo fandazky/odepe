@@ -1,16 +1,20 @@
 
+
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#">Manajemen User</a></li>
+            <li class="active">Lihat User Request</li>
           </ol>
         </section>
 
         <!-- Main content -->
         
         <section class="content">
-
+        <div class="row">
+          <div class="col-md-11">
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Permintaan Pembuatan User</h3>
+              <h3 class="box-title"><B>Permintaan Pembuatan User</B></h3>
               <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -18,10 +22,11 @@
             </div><!-- /.box-header -->
             <div class="box-body">
               <div class="table-responsive">
-                <table class="table no-margin">
+              <div class="col-md-11"> 
+                <table class="table table-bordered table-striped" id="mytable">
                   <thead>
                     <tr>
-                      <th>No.</th>
+                      <th class="col-md-1">No.</th>
                       <th>Username</th>
                       <th>Hak Akses</th>
                       <th>Nama</th>
@@ -46,19 +51,28 @@
                         echo "
                         <td>".$req->first_name." ".$req->last_name."</td>
                         <td>".$req->address."</td>
-                        <td>".anchor('register/accept_request/'.$req->username,'<span><i class="fa fa-check fa-2x"></i></span> ').anchor('register/decline_request/'.$req->username,' <span><i class="fa fa-times fa-2x"></i></span>')."</td>
-                        </tr>
+                        <td>".anchor('register/accept_request/'.$req->username,'<span title="Terima Request"><i class="fa fa-check"></i></span>')." | ".anchor('register/decline_request/'.$req->username,'  <span title="Tolak Request"><i class="fa fa-times"></i></span>')."</td>
+                        </tr>  
                         ";
                       }
                     ?>
-                    
-                    
                   </tbody>
                 </table>
+                <script src="<?php echo base_url('assets/bootstrap/js/jquery-1.11.2.min.js') ?>"></script>
+                <script src="<?php echo base_url('assets/datatables/jquery.dataTables.js') ?>"></script>
+                <script src="<?php echo base_url('assets/datatables/dataTables.bootstrap.js') ?>"></script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#mytable").dataTable();
+                    });
+                </script>
               </div><!-- /.table-responsive -->
+              </div>
             </div><!-- /.box-body -->
 
           </div><!-- /.box -->
+          </div>
+        </div>
         </section><!-- /.content -->
         
       </div><!-- /.content-wrapper -->

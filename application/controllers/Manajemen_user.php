@@ -52,7 +52,6 @@ class Manajemen_user extends CI_Controller {
             redirect('login');
         }else
         {   
-            // $this->load->model('m_login');
             $this->load->model('m_manajemenuser');
 
             $user = $this->session->userdata('username');
@@ -71,5 +70,30 @@ class Manajemen_user extends CI_Controller {
                 echo 'Anda tidak memiliki akses pada ini' ;
             }
         }       
+    }
+
+    public function edit_user($username)
+    {
+        $this->load->model('m_manajemenuser');
+        $user = $this->session->userdata('username');
+        $row = $this->m_login->getUSerData($username);
+
+        $data['pengguna'] = $this->m_login->dataPengguna($user);
+        if ($row) {
+            $data['username'] = $row->username;
+            $data['namadepan'] = $row->first_name;
+            $data['namabelakang'] = $row->last_name;
+            $data['alamat'] = $row->address;
+
+            $this->load->view('design/header', $data);
+            $this->load->view('access/update-profile', $data);
+            $this->load->view('design/footer', $data);
+
+        }
+    }
+
+    public function delete_user($username)
+    {
+
     }
 }
