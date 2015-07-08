@@ -21,6 +21,7 @@
                 <table class="table no-margin">
                   <thead>
                     <tr>
+                      <th>No.</th>
                       <th>Username</th>
                       <th>Hak Akses</th>
                       <th>Nama</th>
@@ -30,9 +31,11 @@
                   </thead>
                   <tbody>
                     <?php
+                      $i = 0;
                       foreach ($active_user->result() as $active) {
                       echo "
                         <tr>
+                        <td>".++$i."</td>
                         <td>".$active->username."</td> ";
 
                         if($active->level==1)

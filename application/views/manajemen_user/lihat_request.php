@@ -10,7 +10,7 @@
 
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Registration Request</h3>
+              <h3 class="box-title">Permintaan Pembuatan User</h3>
               <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -21,6 +21,7 @@
                 <table class="table no-margin">
                   <thead>
                     <tr>
+                      <th>No.</th>
                       <th>Username</th>
                       <th>Hak Akses</th>
                       <th>Nama</th>
@@ -30,9 +31,11 @@
                   </thead>
                   <tbody>
                     <?php
+                      $i = 0;
                       foreach ($registration_request->result() as $req) {
                         echo "
                         <tr>
+                        <td>".++$i."</td>
                         <td>".$req->username."</td> ";
 
                         if($req->level==1)
