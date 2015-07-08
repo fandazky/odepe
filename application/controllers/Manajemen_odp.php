@@ -10,7 +10,9 @@ class Manajemen_odp extends CI_Controller {
         $this->load->library('form_validation');
         */
         parent::__construct();        
-        $this->load->library(array('session'));         
+        $this->load->library(array('session')); 
+        $this->load->library('form_validation');   
+        $this->load->helper('form');     
         $this->load->helper('url');         
         $this->load->model('m_login');        
         $this->load->database();    
@@ -26,12 +28,15 @@ class Manajemen_odp extends CI_Controller {
             redirect('login');
         }else
         {
-            $this->load->model('m_login'); 
+            //$this->load->model('m_login'); 
             $this->load->model('m_manajemenodp');
             $data['pengguna'] = $this->m_login->dataPengguna($user);
 
+
             //kluster
             $data['nama_kluster'] = $this->m_manajemenodp->getKluster();
+
+           
 
             $this->load->view('design/header', $data);
             $this->load->view('manajemen_odp/input_odp', $data);
@@ -43,8 +48,17 @@ class Manajemen_odp extends CI_Controller {
 
     public function inputOdp()
     {
+
+        $this->form_validation->set_rules('NAMA_ODP','NAMA ODP','required|min_length[5]|max_length[12]');
+        $this->form_validation->set_rules('LT','LATITUDE','required|min_length[5]|max_length[12]|');
+        $this->form_validation->set_rules('LG','LONGTITUDE','required|min_length[5]|max_length[12]|');
+        $this->form_validation->set_message('required', '%s must be filled');
+       
+        if($this->form_validation->run() == TRUE)
+        {
         $nama_kluster = $this->input->post('ID_KLUSTER');
         $nama_odp = $this->input->post('NAMA_ODP');
+        //$this->form_validation->set_rules('NAMA_ODP','NAMA ODP','required|valid_email');
         $latitude = $this->input->post('LATITUDE');
         $longtitude = $this->input->post('LONGTITUDE');
 
@@ -57,7 +71,25 @@ class Manajemen_odp extends CI_Controller {
 
         $this->db->insert('odp',$data);
         redirect('manajemen_odp');
-        //echo "coba".$nama_kluster;
+        }
+        else {
+
+       // $this->load->view('manajemen_odp/input_odp');
+        echo '<script>alert("Data tidak sesuai!");</script>';
+        //$this->load->model('m_login'); 
+            $this->load->model('m_manajemenodp');
+             $user = $this->session->userdata('username');
+            $data['pengguna'] = $this->m_login->dataPengguna($user);
+
+            //kluster
+            $data['nama_kluster'] = $this->m_manajemenodp->getKluster();
+
+            $this->load->view('design/header', $data);
+            $this->load->view('manajemen_odp/input_odp', $data);
+            $this->load->view('design/footer');
+        }
+       //var_dump($data);
+        //echo "coba".$nama_kluster; 
     }
 
      public function inputKluster()
@@ -175,6 +207,5 @@ class Manajemen_odp extends CI_Controller {
               echo '</script>';
         }
     }
-    
 
 }

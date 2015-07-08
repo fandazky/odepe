@@ -17,6 +17,7 @@
                   <h3 class="box-title">Data Survey</h3>
                 </div> -->
                 <div class="box-body">
+                  <?php echo validation_errors()?>
                   <form action="<?php echo base_url('manajemen_odp/inputOdp'); ?>" method="post" role="form">
                     <div class="form-group">
                       <label>Kluster</label>
@@ -45,17 +46,18 @@
                         <div class="input-group-addon">
                           <i class="fa fa-map-marker"></i>
                         </div>
-                        <input type="text" class="form-control" placeholder="Longitude" name='LONGTITUDE'>
+                        <input type="text" class="form-control" placeholder="Longitude" name='LONGTITUDE' >
                       </div><!-- /.input group -->
                     </div><!-- /.form group -->
 
                     <div class="form-group">
-                      <label>Nama ODP</label>
+                      <label>Nama ODP </label>
+                      <div class="kotak"><?php echo form_error('NAMA_ODP'); ?></div>
                       <div class="input-group">
                         <div class="input-group-addon">
                           <i class="fa fa-flag-checkered"></i>
-                        </div>
-                        <input type="text" class="form-control" name='NAMA_ODP'>
+                        </div> 
+                        <input type="text" class="form-control" name='NAMA_ODP' <?php echo set_value('NAMA_ODP');?>>
                       </div><!-- /.input group -->
                     </div><!-- /.form group -->
 
