@@ -10,6 +10,11 @@
     <link href="<?php echo base_url() ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     
+<!-- jQuery 2.1.4 -->
+    <script src="<?php echo base_url() ?>assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/jQueryUI/jquery-ui-1.10.3.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/jQueryUI/jquery-ui-1.10.3.js"></script>
+    
     <link href="<?php echo base_url() ?>assets/ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- daterange picker -->
     <link href="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
@@ -28,7 +33,7 @@
     <link href="<?php echo base_url() ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
   </head>
-  <body class="skin-red-light sidebar-mini">
+  <body class="skin-red-light sidebar-mini fixed">
     <div class="wrapper">
       
       <header class="main-header">
@@ -77,10 +82,6 @@
                     <!-- <div class="pull-left">
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div> -->
-                    <div class="pull-left">
-                      <a href="<?php echo base_url() ?>login/update_profile" class="btn btn-warning btn-flat">Edit Profile <i class="fa fa-pencil-square-o"></i></a>
-                    </div>
-                    
                     <div class="pull-right">
                       <a href="<?php echo base_url() ?>login/logout" class="btn btn-warning btn-flat">Keluar <i class="fa fa-sign-out"></i></a>
                     </div>
@@ -105,6 +106,23 @@
                     echo strftime("%B");
                     echo date(' Y');
                   ?></span>
+                </a>
+                
+              </li>
+              <!-- Control Sidebar Toggle Button -->
+              
+            </ul>
+          </div>
+
+          <div class="navbar-custom-menu pull-right">
+            <ul class="nav navbar-nav">
+              
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="user ">
+                <a >
+                  <span class="hidden-xs">
+                    Selamat Datang, <?php echo $pengguna['first_name']." ".$pengguna['last_name'];?>
+                  </span>
                 </a>
                 
               </li>
@@ -180,9 +198,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url() ?>report/report_cluster"><i class="fa fa-file-text"></i>Report per Cluster</a></li>
-                <li><a href="<?php echo base_url() ?>report/report_wilayah"><i class="fa fa-file-text"></i>Report per Set Operation</a></li>
-                <li><a href="<?php echo base_url() ?>report/report_witel"><i class="fa fa-file-text"></i>Report Witel Malang</a></li>
+                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report per Cluster</a></li>
+                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report per Set Operation</a></li>
+                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report Witel Malang</a></li>
               </ul>
             </li>
 
@@ -203,9 +221,5 @@
       </aside>
 
       <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-            Selamat Datang, <?php echo $pengguna['first_name']." ".$pengguna['last_name'];?>!
-          </h1>
           
