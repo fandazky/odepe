@@ -15,7 +15,13 @@
               <div class="box box-danger">
                 <div class="box-header with-border">
                   <h1 class="box-title">
-                    Chart Witel <?php echo $noerror1;?>
+                    Chart Kluster 
+                    <br>noerror=<?php echo $noerror1;?>
+                    <br>nolocation=<?php echo $nolocation2;?>
+                    <br>nostarclick=<?php echo $nostarclick3;?>
+                    <br>wronglabel=<?php echo $wronglabel4;?>
+                    <br>irisan=<?php echo $irisan5;?>
+                    <br>wrongpos=<?php echo $wrongpos6;?>
                   </h1>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>

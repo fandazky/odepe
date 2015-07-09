@@ -23,11 +23,42 @@ class Report extends CI_Controller{
         }else
         {   
             $data['pengguna'] = $this->m_login->dataPengguna($user);
+            $data['nama_kluster'] = $this->m_report->getKluster();
+            $data['nama_odp'] = $this->m_report->getODP();
             
             $this->load->view('design/header',$data);
-            $this->load->view('report/report_cluster');
+            $this->load->view('report/report_cluster',$data);
             $this->load->view('design/footer');
         }
+    }
+
+    public function show_cluster()
+    {
+        $idkluster = $this->input->post('id_kluster');
+         $session = $this->session->userdata('isLogin');
+        $user = $this->session->userdata('username');
+        
+        if($session == FALSE)
+        {
+            $this->load->view('access/login-form');
+        }
+        else
+        {   
+            $data['pengguna'] = $this->m_login->dataPengguna($user);
+            //$data['errorid'] = $this->m_report->getReport();
+            $data['noerror1'] = $this->m_report->ambilErrorCluster($idkluster,1);
+            $data['nolocation2']= $this->m_report->ambilErrorCluster($idkluster,2);
+            $data['nostarclick3'] = $this->m_report->ambilErrorCluster($idkluster,3);
+            $data['wronglabel4'] = $this->m_report->ambilErrorCluster($idkluster,4);
+            $data['irisan5'] = $this->m_report->ambilErrorCluster($idkluster,5);
+            $data['wrongpos6'] = $this->m_report->ambilErrorCluster($idkluster,6);
+
+                    
+            $this->load->view('design/header',$data);
+            $this->load->view('report/hasil_cluster',$data);
+            $this->load->view('design/footer');
+        }
+
     }
 
     public function report_wilayah() {        
@@ -61,44 +92,12 @@ class Report extends CI_Controller{
             //$data['errorid'] = $this->m_report->getReport();
             $data['noerror1'] = $this->m_report->ambilError(1);
             $data['nolocation2']= $this->m_report->ambilError(2);
-            $data['nostarclck3'] = $this->m_report->ambilError(3);
+            $data['nostarclick3'] = $this->m_report->ambilError(3);
             $data['wronglabel4'] = $this->m_report->ambilError(4);
             $data['irisan5'] = $this->m_report->ambilError(5);
             $data['wrongpos6'] = $this->m_report->ambilError(6);
 
-            /*foreach ($data['errorid'] <7)
-            {
-                if($data['errorid'] == 1)
-                {
-                    $data['noerror1'] =+ 1;
-                }
-                elseif ($data['errorid'] == 2) 
-                {
-                    $data['nolocation2'] =+ 1; 
-                }
-                elseif ($data['errorid'] == 3) 
-                {
-                    $data['nostarclck3'] =+ 1;
-                }
-                elseif ($data['errorid'] == 4) 
-                {
-                    $data['wronglabel4'] =+ 1;
-                }
-                elseif ($data['errorid'] == 5) 
-                {
-                    $data['irisan5'] =+ 1;
-                }
-                elseif($data['errorid'] == 6)
-                {
-                    $data['wrongpos6'] =+ 1;
-                }
-                else
-                {
-                    return false;
-                }
-
-            }*/
-            
+                    
             $this->load->view('design/header',$data);
             $this->load->view('report/report_witel',$data);
             $this->load->view('design/footer');
