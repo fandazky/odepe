@@ -13,6 +13,7 @@ class Survey extends CI_Controller {
         $this->load->library(array('session'));         
         $this->load->helper('url');         
         $this->load->model('m_login');        
+        $this->load->model('m_survey');        
         $this->load->database();    
     }  
     
@@ -27,13 +28,12 @@ class Survey extends CI_Controller {
         }
         else
         {
-            $this->load->model('m_login'); 
-            $this->load->model('m_survey');
             $data['pengguna'] = $this->m_login->dataPengguna($user);
 
             //kluster
             $data['nama_kluster'] = $this->m_survey->getKluster();
-
+            // print_r($data['nama_kluster']);
+            // exit();
             //odp
             $data['nama_odp'] = $this->m_survey->getODP();
 
@@ -60,7 +60,7 @@ class Survey extends CI_Controller {
             'AVAILABILITY'       => $this->input->post('availability'),
             'BANGUNAN'           => $this->input->post('bangunan'),
             'KURANG_DARI_500JT'  => $this->input->post('kurang_dari_500jt'),
-            'ANTARA_500JT_SD_1M'        => $this->input->post('500jt_sd_1m'),
+            'ANTARA_500JT_SD_1M' => $this->input->post('500jt_sd_1m'),
             'LEBIH_DARI_1M'      => $this->input->post('lebih_dari_1m'),
             'PERKAMPUNGAN'       => $this->input->post('perkampungan'),
             'RUKO'               => $this->input->post('ruko'),
@@ -71,6 +71,7 @@ class Survey extends CI_Controller {
             );
 
         $this->load->model('m_survey');
+
         
         if($this->m_survey->insertDaftar($dataSurvey))
         {
@@ -87,6 +88,70 @@ class Survey extends CI_Controller {
               //echo 'window.history.back();';
               echo '</script>';
         }
+    }
+
+    public function insertSurvey()
+    {
+        print_r( $_POST);
+        exit();
+
+        for ($i=0; $i < 5; $i++) { 
+            # code...
+            $dataSurvey = array(
+            'ID_ODP'             => $this->input->post('id_odp'),
+            'TGL_SURVEY'         => $this->input->post('tgl_survey'),
+            'VALID_TAG'          => $this->input->post('valid_tag'),
+            'LATITUDE'           => $this->input->post('latitude'),
+            'LONGITUDE'          => $this->input->post('longitude'),
+            'LABEL'              => $this->input->post('label'),
+            'ID_ERROR'           => $this->input->post('id_error'),
+            'AVAILABILITY'       => $this->input->post('availability'),
+            'BANGUNAN'           => $this->input->post('bangunan'),
+            'KURANG_DARI_500JT'  => $this->input->post('kurang_dari_500jt'),
+            'ANTARA_500JT_SD_1M' => $this->input->post('500jt_sd_1m'),
+            'LEBIH_DARI_1M'      => $this->input->post('lebih_dari_1m'),
+            'PERKAMPUNGAN'       => $this->input->post('perkampungan'),
+            'RUKO'               => $this->input->post('ruko'),
+            'KANTOR_KECIL'       => $this->input->post('kantor_kecil'),
+            'KANTOR_BESAR'       => $this->input->post('kantor_besar'),
+            'PERGURUAN_TINGGI'   => $this->input->post('perguruan_tinggi'),
+            'KETERANGAN'         => $this->input->post('keterangan'),
+            );
+        }
+        
+
+        $this->load->model('m_survey');
+
+        
+        if($this->m_survey->insertDaftar($dataSurvey))
+        {
+              echo '<script language="javascript">';
+              echo 'alert("Data berhasil dimasukkan");';
+              echo 'window.location.href = "' . site_url('survey') . '";';
+              //echo 'window.history.back();';
+              echo '</script>';
+        }
+        else
+        {
+              echo '<script language="javascript">';
+              echo 'alert("Gagal memasukkan data");';
+              //echo 'window.history.back();';
+              echo '</script>';
+        }
+    }
+
+    public function showData()
+    {
+           
+          $id_kluster = $this->input->post('id',TRUE);
+           
+          $data['odp']=$this->m_survey->getODP($id_kluster);  
+          
+          $data['error']=$this->m_survey->getError();
+
+          $data['kompetitor']=$this->m_survey->getKompetitor();  
+            
+          echo json_encode($data);
     }
 
     public function showSurvey()

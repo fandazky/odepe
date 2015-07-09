@@ -22,7 +22,7 @@
                 <div class="box-body">
 
                   <table id="example1" class="table table-bordered table-striped">
-                    <thead>
+                    <thead style="background-color: rgb(222, 227, 221)">
                       <tr>
                         <th>NO</th>
                         <th>NAMA_KLUSTER</th>
@@ -63,7 +63,8 @@
                           // echo $nama['nama_kluster'];
                           $nama = $this->db->query
                           ("SELECT nama_kluster FROM daftar, kluster, odp
-                            WHERE daftar.id_odp = odp.id_odp and odp.id_kluster = kluster.id_kluster and odp.id_odp = ".$row->ID_ODP.";")->row_array();                         
+                            WHERE daftar.id_odp = odp.id_odp and odp.id_kluster = kluster.id_kluster and odp.id_odp = ".$row->ID_ODP.";
+                          ")->row_array();                         
                           echo $nama['nama_kluster'];
                         ?>
                         </td>
@@ -88,7 +89,7 @@
                       </tr>
                       <?php $count = $count + 1; } }?>
                     </tbody>
-                    <tfoot>
+                    <tfoot style="background-color: rgb(222, 227, 221)">
                       <tr>
                         <th>NO</th>
                         <th>NAMA_KLUSTER</th>

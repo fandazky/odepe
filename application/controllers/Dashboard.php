@@ -21,21 +21,15 @@ class Dashboard extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
+        if($this->session->userdata('isLogin') != TRUE)
+        {
+            redirect('login');
+        }
     }    
     
-    public function index() {  
-        $session = $this->session->userdata('isLogin');
-    
-        if($session == FALSE)
-        {
-            //$this->load->view('access/login-form');
-            redirect('login');
-        }else
-        {
-            $this->load->view('design/header');
-            $this->load->view('dashboard/home');
-            $this->load->view('design/footer');
-        }      
+    public function index()
+    {  
+              
         
     }
 }

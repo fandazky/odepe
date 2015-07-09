@@ -32,6 +32,12 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="<?php echo base_url() ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
+<!-- Dropdown Search -->
+    <script src="<?php  echo base_url() ?>/assets/plugins/chartjs/Chart.js"></script>
+    <script src="<?php  echo base_url() ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php  echo base_url() ?>/assets/plugins/bootstrap-select-master/dist/css/bootstrap-select.css">
+    <script src="<?php  echo base_url() ?>/assets/plugins/bootstrap-select-master/dist/js/bootstrap-select.js"></script>
+
   </head>
   <body class="skin-red-light sidebar-mini fixed">
     <div class="wrapper">
@@ -198,9 +204,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report per Cluster</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report per Set Operation</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-file-text"></i>Report Witel Malang</a></li>
+                <li><a href="<?php echo base_url(); ?>report/report_cluster"><i class="fa fa-file-text"></i>Report per Cluster</a></li>
+                <li><a href="<?php echo base_url(); ?>report/report_wilayah"><i class="fa fa-file-text"></i>Report per Set Operation</a></li>
+                <li><a href="<?php echo base_url(); ?>report/report_witel"><i class="fa fa-file-text"></i>Report Witel Malang</a></li>
               </ul>
             </li>
 

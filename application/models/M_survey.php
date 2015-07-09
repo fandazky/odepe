@@ -4,70 +4,61 @@ class M_survey extends CI_Model
 {
 	public function getKluster()
  	{
- 		$this->db->select('nama_kluster, id_kluster');
-        $this->db->order_by('nama_kluster', 'asc'); 
-		$query = $this->db->get('kluster');
+ 	
+        $this->db->select('id_kluster, nama_kluster');  
+        $this->db->from('kluster');  
+        $query = $this->db->get();  
+        foreach ($query->result() as $row) {
 
-		if ($query->num_rows() > 0)
-		{
-            foreach ($query->result() as $row) 
-            {
                 $data[] = $row;
             }
-            return $data;
-        }
-        else
-        {
-        	return false;	
-        }
+        return $data;
  	}
 
-	public function getODP()
+	public function getODP($id_kluster = 'string')
  	{
- 		$this->db->select('nama_odp, id_odp');
-        $this->db->order_by('nama_odp', 'asc');
-
-        //$query = $this->db->get_where('odp', array('id_kluster' => $id_kluster));
-
-		$query = $this->db->get('odp');
-
-		if ($query->num_rows() > 0)
-		{
-            foreach ($query->result() as $row) 
-            {
-                $data[] = $row;
-            }
-            return $data;
-        }
-        else
-        {
-        	return false;	
-        }
+ 	
+        $this->db->select('nama_odp, id_odp');  
+        $this->db->from('odp');  
+        $this->db->where('id_kluster',$id_kluster);  
+        $query = $this->db->get();  
+        return $query->result(); 
  	}
 
-    // public function loadODP()
-    // {
-        
-    // }
-
+   
 	public function getError()
  	{
  		$this->db->select('nama_error, id_error');
-		$query = $this->db->get('error');
-
-		if ($query->num_rows() > 0)
-		{
-            foreach ($query->result() as $row) 
-            {
+		$this->db->from('error');  
+        $query = $this->db->get();  
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
                 $data[] = $row;
             }
             return $data;
         }
-        else
-        {
-        	return false;	
+        else{
+            return false;   
         }
+
  	}
+
+    public function getKompetitor()
+    {
+        $this->db->select('nama_kompetitor, id_kompetitor');
+        $this->db->from('kompetitor');  
+        $query = $this->db->get();  
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else{
+            return false;   
+        }
+
+    }
 
     public function getSurvey()
  	{	
@@ -75,8 +66,6 @@ class M_survey extends CI_Model
 
 		if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
-                // $id = $row->id_odp;
-
                 $data[] = $row;
             }
             return $data;
