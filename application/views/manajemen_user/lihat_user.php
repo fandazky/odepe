@@ -29,21 +29,23 @@
                     <tr>
                       <th class="col-md-1">No.</th>
                       <th>Username</th>
+                      <th>NIK</th>
                       <th>Hak Akses</th>
                       <th>Nama</th>
                       <th>Alamat</th>
+                      <th>Area Kerja</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
-                  
                       $i = 0;
                       foreach ($active_user->result() as $active) {
-                      echo "
+                        echo "
                         <tr>
                         <td>".++$i."</td>
-                        <td>".$active->username."</td> ";
+                        <td>".$active->username."</td>
+                        <td>".$active->nik."</td>";
 
                         if($active->level==1)
                           { echo "<td> Administrator </td>";} 
@@ -53,13 +55,10 @@
                         echo "
                         <td>".$active->first_name." ".$active->last_name."</td>
                         <td>".$active->address."</td>
-                        <td align=\"center\">".anchor('manajemen_user/edit_user/'.$active->username,'<span title="Edit User"><i class="fa fa-pencil-square-o"></i></span>')." | ".anchor('register/delete_user/'.$active->username,'<span title="Hapus User"><i class="fa fa-trash-o"></i></span>')."</td>
-                        
-                        
-                        </tr>
-                        ";
+                        <td>".$active->nama_area."</td>
+                        <td align=\"center\">".anchor('manajemen_user/edit_user/'.$active->username,'<span title="Edit User"><i class="fa fa-pencil-square-o"></i></span>')." | ".anchor('manajemen_user/delete_user/'.$active->username,'<span title="Hapus User"><i class="fa fa-trash-o"></i></span>')."</td>
+                        </tr>  ";
                       }
-                      
                     ?>
                     
                     

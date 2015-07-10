@@ -26,7 +26,6 @@ class Register extends CI_Controller
         {
             $data['areakerja'] = $this->m_login->getArea();
             $this->load->view('access/register-form', $data);
-            //redirect('login');
         }else
         {
             redirect('access');

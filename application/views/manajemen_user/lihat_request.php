@@ -30,9 +30,11 @@
                     <tr>
                       <th class="col-md-1">No.</th>
                       <th>Username</th>
+                      <th>NIK</th>
                       <th>Hak Akses</th>
                       <th>Nama</th>
                       <th>Alamat</th>
+                      <th>Area Kerja</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -43,7 +45,8 @@
                         echo "
                         <tr>
                         <td>".++$i."</td>
-                        <td>".$req->username."</td> ";
+                        <td>".$req->username."</td> 
+                        <td>".$req->nik."</td>";
 
                         if($req->level==1)
                           { echo "<td> Administrator </td>";} 
@@ -53,6 +56,7 @@
                         echo "
                         <td>".$req->first_name." ".$req->last_name."</td>
                         <td>".$req->address."</td>
+                        <td>".$req->nama_area."</td>
                         <td align=\"center\">".anchor('register/accept_request/'.$req->username,'<span title="Terima Request" align="center"><i class="fa fa-check"></i></span>')." | ".anchor('register/decline_request/'.$req->username,'  <span title="Tolak Request"><i class="fa fa-times"></i></span>')."</td>
                         </tr>  
                         ";

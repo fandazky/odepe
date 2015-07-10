@@ -94,6 +94,15 @@ class Manajemen_user extends CI_Controller {
 
     public function delete_user($username)
     {
-
+        if($this->session->userdata('isLogin') == FALSE)
+        {
+            //redirect('login/login_form');
+            redirect('login');
+        }else
+        {   
+            $this->load->model('m_manajemenuser');
+            $this->m_manajemenuser->deleteActiveUser($username);
+            redirect('manajemen_user');
+        }
     }
 }
