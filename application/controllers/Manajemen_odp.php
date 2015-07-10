@@ -205,6 +205,7 @@ class Manajemen_odp extends CI_Controller {
             $data['level'] = $this->session->userdata('level');        
             $data['pengguna'] = $this->m_login->dataPengguna($user);
             $data['list'] = $this->m_manajemenodp->getDataOdp();
+           // $data['site_operation'] = $this->m_manajemenodp->getSo();
 
             $this->load->view('design/header', $data);
             $this->load->view('manajemen_odp/manajemen', $data);

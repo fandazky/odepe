@@ -32,6 +32,7 @@ class M_manajemenodp extends CI_Model
 
     public function getSo()
     {
+
         $this->db->select('nama_so');
         $this->db->select('id_so');
         $query = $this->db->get('site_operation');
@@ -60,8 +61,11 @@ class M_manajemenodp extends CI_Model
 
     public function getDataOdp()
     {   
-        
-        $query = $this->db->get('odp');
+        $q = "SELECT site_operation.NAMA_SO, kluster.NAMA_KLUSTER, odp.NAMA_ODP, odp.ID_ODP FROM site_operation, kluster, odp WHERE odp.id_kluster = kluster.id_kluster and kluster.id_so = site_operation.id_so";
+        $query = $this->db->query($q);
+       // $query = $this->db->get('odp');
+        //$query = $this->db->get('site_operation');
+
 
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
@@ -75,6 +79,7 @@ class M_manajemenodp extends CI_Model
             return false;   
         }
     }
+
 
     public function delete($id)
     {
