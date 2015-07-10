@@ -49,7 +49,7 @@ class M_login extends CI_Model
 
     public function updateProfile($username, $data)
     {
-        echo $username." ".$this->input->post('namadepan')." ".$this->input->post('namabelakang')." ".$this->input->post('alamat');
+        //echo $username." ".$this->input->post('namadepan')." ".$this->input->post('namabelakang')." ".$this->input->post('alamat');
         $this->db->where('username', $username);
         $this->db->update('user', $data);
     }

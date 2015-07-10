@@ -88,6 +88,9 @@
                     <!-- <div class="pull-left">
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div> -->
+                    <div class="pull-left">
+                      <a href="<?php echo base_url() ?>login/update_profile" class="btn btn-warning btn-flat">Edit Profile <i class="fa fa-pencil-square-o"></i></a>
+                    </div>
                     <div class="pull-right">
                       <a href="<?php echo base_url() ?>login/logout" class="btn btn-warning btn-flat">Keluar <i class="fa fa-sign-out"></i></a>
                     </div>

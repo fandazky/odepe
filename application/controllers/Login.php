@@ -107,7 +107,7 @@ class Login extends CI_Controller
         // echo $this->input->post('namadepan')." ".$this->input->post('namabelakang')." ".$this->input->post('alamat');
         // $this->db->where('username', $username);
         // $this->db->set('user', $data);
-        //redirect('access');
+        redirect('access');
     }
   
     public function logout()
