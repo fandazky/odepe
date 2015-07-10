@@ -42,8 +42,6 @@
                             <option value="2">Operator</option>
                         </select>
                     </div>
-                    
-                    
      
                     <div class="input-group">
                         <div class="checkbox">

@@ -53,6 +53,11 @@ class M_login extends CI_Model
         $this->db->where('username', $username);
         $this->db->update('user', $data);
     }
+
+    public function getArea()
+    {
+        return $this->db->get('area')->result();
+    }
 }  
 
 ?>

@@ -1,10 +1,11 @@
 
+          <div class="col-md-11">
           <ol class="breadcrumb">
             <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="#">Manajemen User</a></li>
             <li class="active">Lihat Semua User</li>
           </ol>
-          </ol>
+          </div>
         </section>
 
         <!-- Main content -->
@@ -14,7 +15,7 @@
         <div class="col-md-11"> 
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title"><B>Semua User</B></h3>
+              <h3 class="box-title"><B>User Aktif</B></h3>
               <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -52,7 +53,7 @@
                         echo "
                         <td>".$active->first_name." ".$active->last_name."</td>
                         <td>".$active->address."</td>
-                        <td>".anchor('manajemen_user/edit_user/'.$active->username,'<span title="Edit User"><i class="fa fa-pencil-square-o"></i></span>')." | ".anchor('register/delete_user/'.$active->username,'<span title="Hapus User"><i class="fa fa-trash-o"></i></span>')."</td>
+                        <td align=\"center\">".anchor('manajemen_user/edit_user/'.$active->username,'<span title="Edit User"><i class="fa fa-pencil-square-o"></i></span>')." | ".anchor('register/delete_user/'.$active->username,'<span title="Hapus User"><i class="fa fa-trash-o"></i></span>')."</td>
                         
                         
                         </tr>

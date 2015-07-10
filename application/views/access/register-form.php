@@ -40,6 +40,14 @@
                     <!-- <div class="form-group"> -->
                         <!-- <label for="username" class="col-md-3 control-label">Username</label> -->
                         <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-suitcase"></i></span>
+                            <input type="text" class="form-control" name="nik" placeholder="NIK">                                        
+                        </div>
+                    <!-- </div> -->
+
+                    <!-- <div class="form-group"> -->
+                        <!-- <label for="username" class="col-md-3 control-label">Username</label> -->
+                        <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <select name="level" class="form-control">
                                 <option selected="selected" class="hide-select">-- Pilih Hak Akses --</option>
@@ -82,6 +90,19 @@
                             <textarea class="form-control" rows="3" name ="address" placeholder="Alamat"></textarea>
                         </div> 
                     <!-- </div> -->
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <select name="area" class="form-control">
+                                <option selected="selected" class="hide-select">-- Pilih Area Kerja --</option>
+                                <?php 
+                                    foreach ($areakerja as $area) {
+                                        echo "<option value=\"".$area->id_area."\">".$area->nama_area."</option>";
+                                    }
+                                ?>
+                                
+                            </select>                                          
+                        </div>
 
                     <!-- Button -->                                        
                         <div style="margin-bottom: 25px">

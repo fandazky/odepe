@@ -7,6 +7,7 @@ class Register extends CI_Controller
         parent::__construct();
         
         $this->load->model('m_login');
+        $this->load->model('m_manajemenuser');
         
         $this->load->library(array('form_validation','session'));
         
@@ -23,7 +24,8 @@ class Register extends CI_Controller
     
         if($session == FALSE)
         {
-            $this->load->view('access/register-form');
+            $data['areakerja'] = $this->m_login->getArea();
+            $this->load->view('access/register-form', $data);
             //redirect('login');
         }else
         {
@@ -34,18 +36,19 @@ class Register extends CI_Controller
   
     public function register_form()
     {
-        $this->form_validation->set_rules('username', 'Username', 'callback_username_exists');
+        //$this->form_validation->set_rules('username', 'Username', 'callback_username_exists');
 
 
         $username = $this->input->post('username');
+        $nik = $this->input->post('nik');
         $password = md5($this->input->post('passwd'));
         $firstname = $this->input->post('firstname');
         $lastname = $this->input->post('lastname');
         $address = $this->input->post('address');
         $level = $this->input->post('level');
-
-        $this->load->model('m_manajemenuser');
-        echo $this->m_manajemenuser->username_exists($username);
+        $area = $this->input->post('area');
+        //$this->load->model('m_manajemenuser');
+        //echo $this->m_manajemenuser->username_exists($username);
         
         /*
         if($this->form_validation->run()==FALSE)
@@ -58,37 +61,39 @@ class Register extends CI_Controller
         }
         */
         
-        /*
+        
         $data = array(
                 'username' => $username,
+                'NIK' => $nik,
                 'password' => $password,
                 'first_name' => $firstname,
                 'last_name' => $lastname,
                 'address' => $address,
                 'level' => $level,
-                'status' => '1'
+                'status' => '1',
+                'id_area' => $area
         );
 
         $this->db->insert('registration_request',$data);
         redirect('login');
-        */
-        
     }
 
     public function accept_request($username)
     {
-        $this->load->model('m_login');
-        $this->load->model('m_manajemenuser');
+        //$this->load->model('m_login');
+        //$this->load->model('m_manajemenuser');
         $user_request = $this->m_manajemenuser->getOneRegistrationRequest($username);
         
         $data = array(
                 'username' => $user_request->username,
+                'NIK' => $user_request->NIK,
                 'password' => $user_request->password,
                 'first_name' => $user_request->first_name,
                 'last_name' => $user_request->last_name,
                 'address' => $user_request->address,
                 'level' => '2',
-                'status' => '1'
+                'status' => '1',
+                'id_area' => $user_request->id_area
             ); 
 
         $this->db->insert('user', $data);
@@ -100,7 +105,7 @@ class Register extends CI_Controller
 
     public function decline_request($username)
     {
-        $this->load->model('m_manajemenuser');
+        //$this->load->model('m_manajemenuser');
         $this->m_manajemenuser->deleteRegistrationRequest($username);
         redirect('manajemen_user/lihat_request');
     }  
@@ -109,7 +114,7 @@ class Register extends CI_Controller
     //validation username
     function username_exists($id)
     {
-        $this->load->model('m_manajemenuser');
+        //$this->load->model('m_manajemenuser');
         $this->m_manajemenuser->username_exists($id);
     }   
 

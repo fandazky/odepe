@@ -1,10 +1,11 @@
 
-
+          <div class="col-md-11">
           <ol class="breadcrumb">
             <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="#">Manajemen User</a></li>
             <li class="active">Lihat User Request</li>
           </ol>
+          </div>
         </section>
 
         <!-- Main content -->
@@ -52,7 +53,7 @@
                         echo "
                         <td>".$req->first_name." ".$req->last_name."</td>
                         <td>".$req->address."</td>
-                        <td>".anchor('register/accept_request/'.$req->username,'<span title="Terima Request"><i class="fa fa-check"></i></span>')." | ".anchor('register/decline_request/'.$req->username,'  <span title="Tolak Request"><i class="fa fa-times"></i></span>')."</td>
+                        <td align=\"center\">".anchor('register/accept_request/'.$req->username,'<span title="Terima Request" align="center"><i class="fa fa-check"></i></span>')." | ".anchor('register/decline_request/'.$req->username,'  <span title="Tolak Request"><i class="fa fa-times"></i></span>')."</td>
                         </tr>  
                         ";
                       }
