@@ -193,6 +193,21 @@ th {
   display: none;
   color: #999;
 }
+
+.running{
+  width: 100%;
+  height: 40px;
+  float: left;
+  padding: 0.5%;
+  background: rgb(254,254,254); /* Old browsers */
+  background: -moz-linear-gradient(left,  rgba(254,254,254,1) 66%, rgba(226,226,226,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(66%,rgba(254,254,254,1)), color-stop(100%,rgba(226,226,226,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(254,254,254,1) 66%,rgba(226,226,226,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  rgba(254,254,254,1) 66%,rgba(226,226,226,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  rgba(254,254,254,1) 66%,rgba(226,226,226,1) 100%); /* IE10+ */
+  background: linear-gradient(to right,  rgba(254,254,254,1) 66%,rgba(226,226,226,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e2e2e2',GradientType=1 ); /* IE6-9 */
+}
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
   *,

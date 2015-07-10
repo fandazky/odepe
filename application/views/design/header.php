@@ -32,6 +32,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="<?php echo base_url() ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
+
 <!-- Dropdown Search -->
     <script src="<?php  echo base_url() ?>/assets/plugins/chartjs/Chart.js"></script>
     <script src="<?php  echo base_url() ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
@@ -184,6 +185,7 @@
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url() ?>manajemen_odp/index"><i class="fa fa-plus-square"></i>Tambah ODP</a></li>
                 <li><a href="<?php echo base_url() ?>manajemen_odp/inputKluster"><i class="fa fa-plus-square"></i>Tambah Cluster</a></li>
+                <li><a href="<?php echo base_url() ?>manajemen_odp/inputSO"><i class="fa fa-plus-square"></i>Tambah Site Operation</a></li>
                 <li><a href="<?php echo base_url() ?>manajemen_odp/manajemenOdp"><i class="fa fa-edit"></i>Manajemen</a></li>
               </ul>
             </li>
@@ -208,7 +210,8 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url(); ?>report/report_cluster"><i class="fa fa-file-text"></i>Report per Cluster</a></li>
-                <li><a href="<?php echo base_url(); ?>report/report_wilayah"><i class="fa fa-file-text"></i>Report per Set Operation</a></li>
+                <li><a href="<?php echo base_url(); ?>report/report_wilayah"><i class="fa fa-file-text"></i>Report per Site Operation</a></li>
+                <li><a href="<?php echo base_url(); ?>report/report_area"><i class="fa fa-file-text"></i>Report per Area</a></li>
                 <li><a href="<?php echo base_url(); ?>report/report_witel"><i class="fa fa-file-text"></i>Report Witel Malang</a></li>
               </ul>
             </li>
