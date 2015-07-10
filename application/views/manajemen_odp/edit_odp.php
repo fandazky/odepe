@@ -34,24 +34,17 @@
                   </div><!-- /.form group -->
 
                   <div class="form-group">
-                    <label>LATITUDE :</label>
-                    <div class="input-group">
-                      <div class="input-group-addon">
-                        <i class="fa fa-at"></i>
-                      </div>
-                      <input class="form-control" name="LT" placeholder="Latitude" value="<?php echo $row['LT'] ?>"/>
-                    </div><!-- /.input group -->
-                  </div><!-- /.form group -->
-
-                  <div class="form-group">
-                    <label>LONGTITUDE :</label>
-                    <div class="input-group">
-                      <div class="input-group-addon">
-                        <i class="fa fa-at"></i>
-                      </div>
-                      <input class="form-control" name="LG" placeholder="Longtitude" value="<?php echo $row['LG'] ?>"/>
-                    </div><!-- /.input group -->
-                  </div><!-- /.form group -->
+                      <label>Site Operation</label>
+                      <div class="input-group">
+                        <select class="form-control" name='ID_SO'>
+                          <?php
+                          foreach ($nama_so as $row) {
+                            echo '<option value="'.$row->id_so.'">'.$row->nama_so. ' ' . $row->id_so .  '</option>';
+                          }
+                          ?>
+                        </select>
+                      </div><!-- /.input group -->
+                    </div><!-- /.form group -->
 
                   <div class="box-footer">
                     <button type="submit" class="btn btn-primary" style="float:right" onclick="return checkNull()">Update</button>
