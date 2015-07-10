@@ -1,4 +1,21 @@
 
+<script type="text/javascript">
+  function checkNull()
+  {
+    var nama_kluster = document.getElementById("nama_kluster").value;
+    if(nama_kluster == "")
+    {
+      alert("Isian NAMA KLUSTER tidak boleh kosong. Silahkan isi kembali");
+      document.getElementById("nama_kluster").focus();
+      return false;
+    }
+    else 
+    {
+      return true;
+    }
+  }
+
+  </script>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
           </ol>
@@ -20,7 +37,7 @@
                   <form action="<?php echo base_url('manajemen_odp/inputDataKluster'); ?>" method="post" role="form">
       
                     <div class="form-group">
-                       <label>Kluster</label>
+                       <label>Kluster</label><span class="error"></span>
                       <div class="input-group">
                         <div class="input-group-addon">
                           <i class="fa fa-map-marker"></i>
@@ -30,18 +47,21 @@
                     </div><!-- /.form group -->
 
                     <div class="form-group">
-                      <label>Wilayah</label>
+                      <label>Site Operation</label>
                       <div class="input-group">
-                        <div class="input-group-addon">
-                          <i class="fa fa-map-marker"></i>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Wilayah" name='SET_OPERATION'>
+                         <select class="form-control" name='ID_SO'>
+                          <?php
+                          foreach ($nama_so as $row) {
+                            echo '<option value="'.$row->id_so.'">'.$row->nama_so. ' ' . $row->id_so .  '</option>';
+                          }
+                          ?>
+                        </select>
                       </div><!-- /.input group -->
                     </div><!-- /.form group -->
 
                     <div class="box-footer">
                       <div class="pull-right">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" onclick="checkNull()">Submit</button>
                       </div>
                     </div>
                   </form>
