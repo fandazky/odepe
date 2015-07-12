@@ -33,7 +33,7 @@
     <link href="<?php echo base_url() ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
 
-<!-- Dropdown Search -->
+    <!-- Dropdown Search -->
     <script src="<?php  echo base_url() ?>/assets/plugins/chartjs/Chart.js"></script>
     <script src="<?php  echo base_url() ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php  echo base_url() ?>/assets/plugins/bootstrap-select-master/dist/css/bootstrap-select.css">
