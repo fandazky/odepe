@@ -1,80 +1,122 @@
-<html>
-<head>
-    <title>
-        Form Login
-    </title>
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap-theme.css">
-    <link href="<?php echo base_url() ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
-</head>
+<!DOCTYPE html>
+<html lang="en">
 
-<body>
-<div class="container">    
-    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-        <div class="panel panel-danger" >
-            <div style="background: #DD4B39;" class="panel-heading">
-                <div style="color: white;" class="panel-title">Please login first</div>
-                <!-- <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div> -->
-            </div>     
+    <head>
 
-            <div style="padding-top:30px" class="panel-body" >
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap Registration Form Template</title>
 
-                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                            
-                <form id="loginform" class="form-horizontal" role="form" action="<?php echo base_url()?>login/login_form" method="POST">
-                                    
-                    <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-at"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username" >                                        
-                    </div>
-                                
-                    <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password" >
-                    </div>
-                    
-                    <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <select name="level" class="form-control">
-                            <option selected="selected" class="hide-select">-- Pilih Hak Akses --</option>
-                            <option value="1">Admin</option>
-                            <option value="2">Operator</option>
-                        </select>
-                    </div>
-     
-                    <div class="input-group">
-                        <div class="checkbox">
-                        <label>
-                            <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
-                        </label>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assets/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" href="<?php echo base_url()?>assets/style/css/form-elements.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assets/style/css/style.css">
+
+        <!-- Favicon and touch icons -->
+        <!-- <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"> -->
+
+    </head>
+
+    <body>
+
+		<!-- Top menu -->
+        <!--
+		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">Bootstrap Registration Form Template</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling
+				<div class="collapse navbar-collapse" id="top-navbar-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<span class="li-text">
+								Put some text or
+							</span> 
+							<a href="#"><strong>links</strong></a> 
+							<span class="li-text">
+								here, or some icons: 
+							</span> 
+							<span class="li-social">
+								<a href="#"><i class="fa fa-facebook"></i></a> 
+								<a href="#"><i class="fa fa-twitter"></i></a> 
+								<a href="#"><i class="fa fa-envelope"></i></a> 
+								<a href="#"><i class="fa fa-skype"></i></a>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+        -->
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="col-sm-4 form-box col-sm-offset-4">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                        	<h3 align="center"><B>SIMODI</B></h3>
+                            <p align="center">Silahkan Login Terlebih Dahulu</p>
+                        </div>
+                        <div class="form-top-right">
+                        	<i class="fa fa-lock"></i>
                         </div>
                     </div>
+                    <div class="form-bottom">
+                        <form role="form" action="<?php echo base_url()?>login/login_form" method="post" class="registration-form">
 
-                    <!-- Button -->
-                    <div style="margin-top:10px" class="form-group">
-                        <div class="col-sm-12 controls">
-                            <input id="btn-login" class="btn btn-success" type="submit" value="Login">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="col-md-12 control">
-                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                Don't have an account! 
-                                <a href="<?php echo base_url()?>register">
-                                Sign Up Here
-                                </a>
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-at"></i></span>
+                                <input id="username" type="text" class="form-control" name="username" value="" placeholder="username" required>                                        
                             </div>
-                        </div>
-                    </div>    
-                </form>     
+                                
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="password" required>
+                            </div>
+                    
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                                <select name="level" class="form-control" required>
+                                    <option selected="selected" class="hide-select">-- Pilih Hak Akses --</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Operator</option>
+                                </select>
+                            </div>
 
-            </div>                     
-        </div>  
-    </div>
-</div>
-    
-</body>
+			                <button type="submit" class="btn btn-primary">Login</button>
+                            <p></p>
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" ></div>
+                            <p> Belum Punya Akun ? Silahkan Daftar <a href="<?php echo base_url()?>register"> Disini</a></p>
+
+                        </form>
+		            </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <script src="<?php echo base_url()?>assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url()?>assets/style/js/jquery.backstretch.js"></script>
+        <script src="<?php echo base_url()?>assets/style/js/retina-1.1.0.js"></script>
+        <script src="<?php echo base_url()?>assets/style/js/scripts.js"></script>
+
+    </body>
+
 </html>

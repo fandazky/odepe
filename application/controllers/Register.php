@@ -41,9 +41,9 @@ class Register extends CI_Controller
         $username = $this->input->post('username');
         $nik = $this->input->post('nik');
         $password = md5($this->input->post('passwd'));
-        $firstname = $this->input->post('firstname');
-        $lastname = $this->input->post('lastname');
-        $address = $this->input->post('address');
+        $firstname = $this->input->post('namadepan');
+        $lastname = $this->input->post('namabelakang');
+        $address = $this->input->post('alamat');
         $level = $this->input->post('level');
         $area = $this->input->post('area');
         //$this->load->model('m_manajemenuser');
