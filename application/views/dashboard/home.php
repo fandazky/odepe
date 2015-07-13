@@ -78,7 +78,7 @@
 
 			<div>
 				
-				<br><br>
+				<br> 
 				<h4>
 		            Statistik
 		        </h4>
@@ -195,7 +195,7 @@
 
 		            <div class="col-md-4 col-sm-6 col-xs-12">
 		              <div class="info-box">
-		              <a href="<?php echo base_url() ?>manajemen_odp">
+		              <a href="'. base_url() .'manajemen_odp">
 		                <span class="info-box-icon bg-aqua"><i class="fa fa-square"></i></span></a>
 		                <div class="info-box-content">
 		                  <span class="info-box-text">Tambah ODP</span>
@@ -205,7 +205,7 @@
 		            
 		            <div class="col-md-4 col-sm-6 col-xs-12">
 		              <div class="info-box">
-		              <a href="<?php echo base_url() ?>manajemen_odp/inputKluster">
+		              <a href="'. base_url() .'manajemen_odp/inputKluster">
 		                <span class="info-box-icon bg-green"><i class="fa fa-bookmark"></i></span></a>
 		                <div class="info-box-content">
 
@@ -216,7 +216,7 @@
 
 		            <div class="col-md-4 col-sm-6 col-xs-12">
 		              <div class="info-box">
-		              <a href="<?php echo base_url() ?>manajemen_odp/inputSO">
+		              <a href="'. base_url() .'manajemen_odp/inputSO">
 		                <span class="info-box-icon bg-purple"><i class="fa fa-archive"></i></span></a>
 		                <div class="info-box-content">
 
