@@ -178,7 +178,7 @@
             <!-- <?php //} ?> -->
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-tablet text-aqua"></i>
+                <i class="fa fa-square text-aqua"></i>
                 <span>Manajemen ODP</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>

@@ -22,8 +22,16 @@ class Access extends CI_Controller {
             $this->load->view('access/login-form');
         }else
         {
-            $this->load->model('m_login'); 
-            $data['pengguna'] = $this->m_login->dataPengguna($user);
+            $this->load->model('M_login');
+            $this->load->model('M_dashboard');
+            $this->load->model('M_manajemenuser');
+            $data['pengguna'] = $this->M_login->dataPengguna($user);
+            $data['odp'] = $this->M_dashboard->getStatsODP();
+            $data['kluster'] = $this->M_dashboard->getStatsKluster();
+            $data['site_operation'] = $this->M_dashboard->getStatsSO();
+            $data['daftar'] = $this->M_dashboard->getStatsSurvey();
+            $data['level'] = $this->session->userdata('level');
+            
 
             $this->load->view('design/header', $data);
             $this->load->view('dashboard/home', $data);
