@@ -8,12 +8,68 @@
         	
         <!-- Main content -->
         <section class="content">
-        	<div class="col-md-12">
+        	<div>
 		            <div class="running">
 		                <marquee align="center" direction="left" scrollamount="5" title="TARGET">
 		                    <font color="#666666" size="+2">
 		                        <b>
-		                            INDIKATOR ROSE C4 : SLG ACH > 95% | Q < 3 % | GAUL < 2% ||||| KPI (ROC &amp; WOC): ODS PSB > 50%  |  ODS GGN > 80%  |  FTTH PSB < 24 JAM  |  FTTH GGN < 24 JAM
+		                        No Error:
+			                        <?php
+					                  foreach ($noerror as $row) 
+					                  {
+					                    echo $row['JML_ERROR'];
+					                  }
+					                ?>
+		                        |
+		                        Error Keseluruhan:
+			                        <?php
+					                  foreach ($keseluruhan as $row) 
+					                  {
+					                    echo $row['JML_ERROR'];
+					                  }
+					                ?>
+					            |
+		                        Tidak Ada di Lokasi:
+			                        <?php
+					                  foreach ($errorlokasi as $row) 
+					                  {
+					                    echo $row['JML_ERROR'];
+					                  }
+					                ?>
+		                        |
+		                        Tidak Ada di Starclick:
+			                        <?php
+					                  foreach ($errorstarclick as $row) 
+					                  {
+					                    echo $row['JML_ERROR'];
+					                  }
+					                ?>
+		                        |
+		                        Wrong Label:
+			                        <?php
+					                  foreach ($wronglabel as $row) 
+					                  {
+					                    echo $row['JML_ERROR'];
+					                  }
+					                ?>
+		                        |
+		                        Salah Posisi:
+			                        <?php
+					                  foreach ($salahposisi as $row) 
+					                  {
+					                    echo $row['JML_ERROR'];
+					                  }
+					                ?>
+		                        |
+		                        Beririsan:
+			                        <?php
+					                  foreach ($beririsan as $row) 
+					                  {
+					                    echo $row['JML_ERROR'];
+					                  }
+					                ?>
+		                        
+
 		                        </b>
 		                    </font>
 		                </marquee>
@@ -31,7 +87,7 @@
 		          <div class="row">
 		            <div class="col-lg-3 col-xs-6">
 		              <!-- small box -->
-		              <div class="small-box bg-maroon">
+		              <div class="small-box bg-red">
 		                <div class="inner">
 		                <?php
 		                foreach ($odp as $row) 
@@ -104,11 +160,12 @@
 		                <div class="icon">
 		                  <i class="fa fa-road"></i>
 		                </div>
-		                <a href="<?php echo base_url() ?>media" class="small-box-footer">
+		                <a href="<?php echo base_url() ?>survey/showSurvey" class="small-box-footer">
 		                  Selengkapnya <i class="fa fa-arrow-circle-right"></i>
 		                </a>
 		              </div>
 		            </div><!-- ./col -->
+		            
 		          </div><!-- /.row -->
 
 		          
@@ -134,8 +191,7 @@
 		                </div><!-- /.info-box-content -->
 		              </div><!-- /.info-box -->
 		            </div><!-- /.col -->
-		            ';
-		            ?>
+		            
 
 		            <div class="col-md-4 col-sm-6 col-xs-12">
 		              <div class="info-box">
@@ -167,7 +223,8 @@
 		                  <span class="info-box-text">Tambah Site Operation</span>
 		                </div><!-- /.info-box-content -->
 		              </div><!-- /.info-box -->
-		            </div><!-- /.col -->
+		            </div><!-- /.col -->';
+		            ?>
 
 		            <div class="col-md-4 col-sm-6 col-xs-12">
 		              <div class="info-box">
@@ -192,7 +249,7 @@
 		            <div class="col-md-4 col-sm-6 col-xs-12">
 		              <div class="info-box">
 		              <a href="<?php echo base_url() ?>report/report_wilayah">
-		                <span class="info-box-icon bg-navy"><i class="fa fa-pie-chart"></i></span></a>
+		                <span class="info-box-icon" style="background-color:#996633; color: #FFFFFF;"><i class="fa fa-pie-chart"></i></span></a>
 		                <div class="info-box-content">
 		                  <span class="info-box-text">Report SO</span>
 		                </div><!-- /.info-box-content -->
@@ -223,3 +280,4 @@
 		    </div>
 
         </section><!-- /.content -->
+    </div>

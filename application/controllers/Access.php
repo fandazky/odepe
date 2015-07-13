@@ -23,21 +23,27 @@ class Access extends CI_Controller {
         }else
         {
             $this->load->model('M_login');
-            $this->load->model('M_dashboard');
-            $this->load->model('M_manajemenuser');
             $data['pengguna'] = $this->M_login->dataPengguna($user);
+            
+            $this->load->model('M_manajemenuser');
+            $data['level'] = $this->session->userdata('level');
+            
+            $this->load->model('M_dashboard');
             $data['odp'] = $this->M_dashboard->getStatsODP();
             $data['kluster'] = $this->M_dashboard->getStatsKluster();
             $data['site_operation'] = $this->M_dashboard->getStatsSO();
             $data['daftar'] = $this->M_dashboard->getStatsSurvey();
-            $data['level'] = $this->session->userdata('level');
-            
+            $data['noerror'] = $this->M_dashboard->getNoError();
+            $data['errorlokasi'] = $this->M_dashboard->getErrorLokasi();
+            $data['errorstarclick'] = $this->M_dashboard->getErrorStarclick();
+            $data['wronglabel'] = $this->M_dashboard->getWrongLabel();
+            $data['salahposisi'] = $this->M_dashboard->getSalahPosisi();
+            $data['beririsan'] = $this->M_dashboard->getBeririsan();
+            $data['keseluruhan'] = $this->M_dashboard->getKeseluruhan();
 
             $this->load->view('design/header', $data);
             $this->load->view('dashboard/home', $data);
             $this->load->view('design/footer');
         } 
-    }
-
-    
+    }    
 }

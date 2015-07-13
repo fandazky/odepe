@@ -163,7 +163,10 @@
               </a>
             </li>
             
-            <!-- <?php //if($jabatan == "Admin"){ ?> -->
+            <?php
+            if ($level == 1)
+            echo '
+            
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-user text-aqua"></i>
@@ -171,14 +174,15 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url() ?>manajemen_user/"><i class="fa fa-table"></i>Lihat semua user</a></li>
-                <li><a href="<?php echo base_url() ?>manajemen_user/lihat_request"><i class="fa fa-table"></i>Lihat user request</a></li>
+                <li><a href="';?><?php echo base_url() ?><?php echo 'manajemen_user/"><i class="fa fa-table"></i>Lihat semua user</a></li>
+                <li><a href="';?><?php echo base_url() ?><?php echo 'manajemen_user/lihat_request"><i class="fa fa-table"></i>Lihat user request</a></li>
+            
               </ul>
             </li>
-            <!-- <?php //} ?> -->
+            
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-square text-aqua"></i>
+                <i class="fa fa-tablet text-aqua"></i>
                 <span>Manajemen ODP</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -188,7 +192,9 @@
                 <li><a href="<?php echo base_url() ?>manajemen_odp/inputSO"><i class="fa fa-plus-square"></i>Tambah Site Operation</a></li>
                 <li><a href="<?php echo base_url() ?>manajemen_odp/manajemenOdp"><i class="fa fa-edit"></i>Manajemen</a></li>
               </ul>
-            </li>
+            </li>';
+            ?>
+
 
             <li class="treeview">
               <a href="#">

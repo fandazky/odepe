@@ -103,6 +103,140 @@ class M_dashboard extends CI_Model
             return 0;
         }
     }
+
+    public function getNoError()
+    {
+        $q = "SELECT COUNT(DAFTAR.ID_ERROR) as JML_ERROR
+              FROM DAFTAR, ERROR
+              WHERE ERROR.ID_ERROR = DAFTAR.ID_ERROR
+              AND NAMA_ERROR = 'No Error'";
+        $query = $this->db->query($q);
+        
+
+        if ($query->num_rows() > 0)
+        {
+            return $query->result_array();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public function getErrorLokasi()
+    {
+        $q = "SELECT COUNT(DAFTAR.ID_ERROR) as JML_ERROR
+              FROM DAFTAR, ERROR
+              WHERE ERROR.ID_ERROR = DAFTAR.ID_ERROR
+              AND NAMA_ERROR = 'Tidak Ada di Lokasi'";
+        $query = $this->db->query($q);
+        
+
+        if ($query->num_rows() > 0)
+        {
+            return $query->result_array();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public function getErrorStarclick()
+    {
+        $q = "SELECT COUNT(DAFTAR.ID_ERROR) as JML_ERROR
+              FROM DAFTAR, ERROR
+              WHERE ERROR.ID_ERROR = DAFTAR.ID_ERROR
+              AND NAMA_ERROR = 'Tidak Ada di Starclick'";
+        $query = $this->db->query($q);
+        
+
+        if ($query->num_rows() > 0)
+        {
+            return $query->result_array();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public function getWrongLabel()
+    {
+        $q = "SELECT COUNT(DAFTAR.ID_ERROR) as JML_ERROR
+              FROM DAFTAR, ERROR
+              WHERE ERROR.ID_ERROR = DAFTAR.ID_ERROR
+              AND NAMA_ERROR = 'Wrong Label'";
+        $query = $this->db->query($q);
+        
+
+        if ($query->num_rows() > 0)
+        {
+            return $query->result_array();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public function getSalahPosisi()
+    {
+        $q = "SELECT COUNT(DAFTAR.ID_ERROR) as JML_ERROR
+              FROM DAFTAR, ERROR
+              WHERE ERROR.ID_ERROR = DAFTAR.ID_ERROR
+              AND NAMA_ERROR = 'Salah Posisi'";
+        $query = $this->db->query($q);
+        
+
+        if ($query->num_rows() > 0)
+        {
+            return $query->result_array();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public function getBeririsan()
+    {
+        $q = "SELECT COUNT(DAFTAR.ID_ERROR) as JML_ERROR
+              FROM DAFTAR, ERROR
+              WHERE ERROR.ID_ERROR = DAFTAR.ID_ERROR
+              AND NAMA_ERROR = 'ID & Kluster beda, tetapi koordinat sama (IRISAN)'";
+        $query = $this->db->query($q);
+        
+
+        if ($query->num_rows() > 0)
+        {
+            return $query->result_array();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public function getKeseluruhan()
+    {
+        $q = "SELECT COUNT(DAFTAR.ID_ERROR) as JML_ERROR
+              FROM DAFTAR, ERROR
+              WHERE ERROR.ID_ERROR = DAFTAR.ID_ERROR
+              AND NAMA_ERROR != 'No Error'";
+        $query = $this->db->query($q);
+        
+
+        if ($query->num_rows() > 0)
+        {
+            return $query->result_array();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
  
 }
 
