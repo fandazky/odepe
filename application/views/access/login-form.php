@@ -77,16 +77,29 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="<?php echo base_url()?>login/login_form" method="post" class="registration-form">
+                        <!-- <form role="form" action="<?php //echo base_url()?>login/login_form" method="post" class="registration-form"> -->
+                        <?php echo form_open('login/login_form'); ?>
 
+                            <?php
+                                if(form_error('username'))
+                                {
+                                    echo '<div class="alert alert-danger" role="alert">'.form_error('username') .'</div> ';
+                                }
+                            ?>
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-at"></i></span>
-                                <input id="username" type="text" class="form-control" name="username" value="" placeholder="username" required>                                        
+                                <input id="username" type="text" class="form-control" name="username" value="" placeholder="username">                                        
                             </div>
                                 
+                            <?php
+                                if(form_error('passwd'))
+                                {
+                                    echo '<div class="alert alert-danger" role="alert">'.form_error('passwd') .'</div> ';
+                                }
+                            ?> 
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input id="password" type="password" class="form-control" name="password" placeholder="password" required>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="password">
                             </div>
                     
                             <div style="margin-bottom: 25px" class="input-group">
@@ -115,8 +128,46 @@
         <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url()?>assets/style/js/jquery.backstretch.js"></script>
         <script src="<?php echo base_url()?>assets/style/js/retina-1.1.0.js"></script>
-        <script src="<?php echo base_url()?>assets/style/js/scripts.js"></script>
-
+        <!-- <script src="<?php echo base_url()?>assets/style/js/scripts.js"></script> -->
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+    
+                /*
+                    Fullscreen background
+                */
+                $.backstretch("<?php echo base_url(); ?>assets/img/background/loginback.jpg");
+                
+                $('#top-navbar-1').on('shown.bs.collapse', function(){
+                    $.backstretch("resize");
+                });
+                $('#top-navbar-1').on('hidden.bs.collapse', function(){
+                    $.backstretch("resize");
+                });
+                
+                /*
+                    Form validation
+                */
+                $('.registration-form input[type="text"], .registration-form textarea').on('focus', function() {
+                    $(this).removeClass('input-error');
+                });
+                
+                $('.registration-form').on('submit', function(e) {
+                    
+                    $(this).find('input[type="text"], textarea').each(function(){
+                        if( $(this).val() == "" ) {
+                            e.preventDefault();
+                            $(this).addClass('input-error');
+                        }
+                        else {
+                            $(this).removeClass('input-error');
+                        }
+                    });
+                    
+                });
+                
+                
+            });
+        </script>
     </body>
 
 </html>

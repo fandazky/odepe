@@ -13,7 +13,7 @@ class Register extends CI_Controller
         
         $this->load->database();
         
-        $this->load->helper('url');
+        $this->load->helper(array('url','form'));
     
     }
   
@@ -24,7 +24,9 @@ class Register extends CI_Controller
     
         if($session == FALSE)
         {
-            $data['areakerja'] = $this->m_login->getArea();
+            $data['areakerja'] = $this->m_login->getAllArea();
+            $data['success'] = '<div></div>';
+            // $this->load->view('access/register-form', $data);
             $this->load->view('access/register-form', $data);
         }else
         {
@@ -35,8 +37,18 @@ class Register extends CI_Controller
   
     public function register_form()
     {
-        //$this->form_validation->set_rules('username', 'Username', 'callback_username_exists');
+        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
+        $this->form_validation->set_rules('nik', 'NIK', 'required|numeric');
+        $this->form_validation->set_rules('passwd', 'Password', 'required|min_length[8]');
+        $this->form_validation->set_rules('namadepan', 'Nama Depan', 'required');
+        $this->form_validation->set_rules('level', 'Hak Akses', 'required');
+        //$this->form_validation->set_rules('level', 'Level', 'required');
+        //$this->form_validation->set_rules('area', 'Area', 'required');
 
+        $this->form_validation->set_message('required', '%s wajib diisi');
+        $this->form_validation->set_message('is_unique', '%s sudah terdaftar');
+        $this->form_validation->set_message('min_length', '%s minimal 8 digit');
+        $this->form_validation->set_message('numeric', '%s harus terdiri dari angka');
 
         $username = $this->input->post('username');
         $nik = $this->input->post('nik');
@@ -46,22 +58,17 @@ class Register extends CI_Controller
         $address = $this->input->post('alamat');
         $level = $this->input->post('level');
         $area = $this->input->post('area');
-        //$this->load->model('m_manajemenuser');
-        //echo $this->m_manajemenuser->username_exists($username);
         
-        /*
         if($this->form_validation->run()==FALSE)
         {
-            echo 'belum ada';
+            $data['areakerja'] = $this->m_login->getAllArea();
+            $data['success'] = '<div></div>';
+            $this->load->view('access/register-form', $data);
         }
         else
         {
-            echo 'sudah ada';
-        }
-        */
-        
-        
-        $data = array(
+
+            $data = array(
                 'username' => $username,
                 'NIK' => $nik,
                 'password' => $password,
@@ -71,16 +78,18 @@ class Register extends CI_Controller
                 'level' => $level,
                 'status' => '1',
                 'id_area' => $area
-        );
+            );
 
-        $this->db->insert('registration_request',$data);
-        redirect('login');
+            $this->db->insert('registration_request',$data);
+            // redirect('login');
+            $pesan['success']= '<div class="alert alert-success" role="alert">Data berhasil diregistrasi, tunggu konfirmasi admin</div>';
+            $this->load->view('access/register-form', $pesan);
+        }    
+        
     }
 
     public function accept_request($username)
     {
-        //$this->load->model('m_login');
-        //$this->load->model('m_manajemenuser');
         $user_request = $this->m_manajemenuser->getOneRegistrationRequest($username);
         
         $data = array(
@@ -99,23 +108,13 @@ class Register extends CI_Controller
         $this->m_manajemenuser->deleteRegistrationRequest($username);
         redirect('manajemen_user/lihat_request');
 
-        
     }
 
     public function decline_request($username)
     {
-        //$this->load->model('m_manajemenuser');
         $this->m_manajemenuser->deleteRegistrationRequest($username);
         redirect('manajemen_user/lihat_request');
     }  
-
-
-    //validation username
-    function username_exists($id)
-    {
-        //$this->load->model('m_manajemenuser');
-        $this->m_manajemenuser->username_exists($id);
-    }   
 
 }
 

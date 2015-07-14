@@ -11,7 +11,7 @@ class M_login extends CI_Model
     public function ambilPengguna($username, $password, $status, $level)
     {
         $this->db->select('*');
-        $this->db->from('user');
+        $this->db->from('users');
         $this->db->where('username', $username);
         $this->db->where('password', $password);
         $this->db->where('status', $status);
@@ -28,7 +28,7 @@ class M_login extends CI_Model
         $this->db->select('last_name');
         $this->db->select('level');
         $this->db->where('username', $username);
-        $query = $this->db->get('user');
+        $query = $this->db->get('users');
         return $query->row_array();
     }
 
@@ -44,19 +44,26 @@ class M_login extends CI_Model
 
     public function getUserData($username)
     {
-        return $this->db->get_where('user', array('username'=>$username))->row();
+        return $this->db->get_where('users', array('username'=>$username))->row();
     }
 
     public function updateProfile($username, $data)
     {
         //echo $username." ".$this->input->post('namadepan')." ".$this->input->post('namabelakang')." ".$this->input->post('alamat');
         $this->db->where('username', $username);
-        $this->db->update('user', $data);
+        $this->db->update('users', $data);
     }
 
-    public function getArea()
+    public function getAllArea()
     {
         return $this->db->get('area')->result();
+    }
+
+    public function getUserArea($user)
+    {
+        $this->db->select('id_area');
+        $query =  $this->db->get_where('users', array('username'=>$user));
+        return $query->row();
     }
 }  
 

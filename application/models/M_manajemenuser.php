@@ -21,7 +21,7 @@ class M_manajemenuser extends CI_Model
 
     public function getAllActiveUser()
     {
-        $query = $this->db->query('SELECT username, nik, first_name, last_name, address, level, CASE WHEN id_area = NULL THEN \'\' ELSE (SELECT nama_area from area where area.id_area = user.id_area) END as nama_area FROM user ');
+        $query = $this->db->query('SELECT username, nik, first_name, last_name, address, level, CASE WHEN id_area = NULL THEN \'\' ELSE (SELECT nama_area from area where area.id_area = users.id_area) END as nama_area FROM users');
         return $query;
         //return $this->db->get('user');
     }
@@ -35,28 +35,9 @@ class M_manajemenuser extends CI_Model
     public function deleteActiveUser($id)
     {
         $this->db->where('username',$id); 
-        $this->db->delete('user');
+        $this->db->delete('users');
     }
 
-    public function username_exists($id)
-    {
-        // $this->db->where('username',$id);
-        // $query = $this->db->get('user');
-        $query = $this->db->get_where('user', array('username'=>$id));
-
-        //return $query->num_rows();
-        
-        
-        if ($query->num_rows() > 0){
-            return true;
-            //return "lebih";
-        }
-        else{
-            return false;
-            //return "sama";
-        }
-        
-    }
 }
   
 ?>

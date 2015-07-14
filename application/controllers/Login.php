@@ -24,7 +24,6 @@ class Login extends CI_Controller
         if($session == FALSE)
         {
             $this->load->view('access/login-form');
-            //redirect('login');
         }else
         {
             redirect('access');
@@ -40,6 +39,8 @@ class Login extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'required|trim|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'required|md5|xss_clean');
         $this->form_validation->set_error_delimiters('<br><span class="error">', '</span>');
+
+
         
         if($this->form_validation->run()==FALSE)
         {
@@ -49,6 +50,17 @@ class Login extends CI_Controller
         */
             //echo 'masuk else';
             //$this->load->view('access/login-form');
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('passwd', 'Password', 'required');
+
+        $this->form_validation->set_message('required', '%s wajib diisi');
+
+        if($this->form_validation->run()==FALSE)
+        {
+            $this->load->view('access/login-form');
+        }
+        else
+        {
             $username = $this->input->post('username');
             $password = md5($this->input->post('password'));
             $level = $this->input->post('level');
@@ -60,17 +72,24 @@ class Login extends CI_Controller
                 $this->session->set_userdata('isLogin', TRUE);
                 $this->session->set_userdata('username',$username);
                 $this->session->set_userdata('level',$level);
-         
+                if($level == 1)
+                {
+                    $this->session->set_userdata('area','0');
+                }else
+                {
+                    $area_op = $this->m_login->getUserArea($username);
+                    $this->session->set_userdata('area', $area_op->id_user);
+                }
+
                 redirect('access');
             }else
             {
                 echo " <script>
-		            alert('Gagal Login: Cek username , password dan level anda!');
-		            history.go(-1);
-		          </script>";        
+                    alert('Gagal Login: Cek username , password dan level anda!');
+                    history.go(-1);
+                  </script>";        
             }
-            
-        //} 
+        }
         
     }
 

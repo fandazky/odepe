@@ -78,16 +78,29 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="<?php echo base_url()?>register/register_form" method="post" class="registration-form">
-
+                        <!-- <form role="form" action="<?php echo base_url()?>register/register_form" method="post" class="registration-form"> -->
+                        <?php echo form_open('register/register_form'); ?>
+                            <?php
+                                if(form_error('username'))
+                                {
+                                    echo '<div class="alert alert-danger" role="alert">'.form_error('username') .'</div> ';
+                                }
+                            ?>
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-at"></i></span>
-                                <input id="username" type="text" class="form-control" name="username" value="" placeholder="username" required>                                        
+                                <input id="username" type="text" class="form-control" name="username" value="<?php echo set_value('username');?>" placeholder="username">
                             </div>
-
+                            
+                            <?php
+                                if(form_error('nik'))
+                                {
+                                    echo '<div class="alert alert-danger" role="alert">'.form_error('nik') .'</div> ';
+                                }
+                            ?>
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-suitcase"></i></span>
-                                <input id="nik" type="text" class="form-control" name="nik" value="" placeholder="NIK">                                        
+                                <input id="nik" type="text" class="form-control" name="nik" value="<?php echo set_value('nik');?>" placeholder="NIK">                                        
+                                
                             </div>
 
                             <div style="margin-bottom: 25px" class="input-group">
@@ -98,25 +111,37 @@
                                     <option value="2">Operator</option>
                                 </select>
                             </div>
-                                
+                            
+                            <?php
+                                if(form_error('passwd'))
+                                {
+                                    echo '<div class="alert alert-danger" role="alert">'.form_error('passwd') .'</div> ';
+                                }
+                            ?> 
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input id="password" type="password" class="form-control" name="password" placeholder="password" required>
+                                <input id="passwd" type="password" class="form-control" name="passwd" value="<?php echo set_value('passwd');?>" placeholder="password">
                             </div>
 
+                            <?php
+                                if(form_error('namadepan'))
+                                {
+                                    echo '<div class="alert alert-danger" role="alert">'.form_error('namadepan') .'</div> ';
+                                }
+                            ?>
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-font"></i></span>
-                                <input id="namadepan" type="text" class="form-control" name="namadepan" placeholder="Nama Depan" required>
+                                <input id="namadepan" type="text" class="form-control" name="namadepan" value="<?php echo set_value('namadepan');?>" placeholder="Nama Depan">
                             </div>
-
+                            
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-bold"></i></span>
-                                <input id="namabelakang" type="text" class="form-control" name="namabelakang" placeholder="Nama Belakang">
+                                <input id="namabelakang" type="text" class="form-control" name="namabelakang" value="<?php echo set_value('namabelakang');?>" placeholder="Nama Belakang">
                             </div>
 
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <textarea class="form-control" rows="2" name ="address" placeholder="Alamat"></textarea>
+                                <textarea class="form-control" rows="2" name ="address" value="<?php echo set_value('address');?>" placeholder="Alamat"></textarea>
                             </div> 
 
                             <div style="margin-bottom: 25px" class="input-group">
@@ -134,8 +159,11 @@
                     
                             
 
-                            <button type="submit" class="btn btn-primary">Register</button>
+                            <input type="submit" class="btn btn-primary" value="Register">
                             <p></p>
+                            <?php
+                                echo $success 
+                            ?>
                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" ></div>
                             <p> Sudah Punya Akun ? Silahkan Login <a href="<?php echo base_url()?>login"> Disini</a></p>
 
@@ -152,8 +180,46 @@
         <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url()?>assets/style/js/jquery.backstretch.js"></script>
         <script src="<?php echo base_url()?>assets/style/js/retina-1.1.0.js"></script>
-        <script src="<?php echo base_url()?>assets/style/js/scripts.js"></script>
-
+        <!-- <script src="<?php echo base_url()?>assets/style/js/scripts.js"></script> -->
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+    
+                /*
+                    Fullscreen background
+                */
+                $.backstretch("<?php echo base_url(); ?>assets/img/background/loginback.jpg");
+                
+                $('#top-navbar-1').on('shown.bs.collapse', function(){
+                    $.backstretch("resize");
+                });
+                $('#top-navbar-1').on('hidden.bs.collapse', function(){
+                    $.backstretch("resize");
+                });
+                
+                /*
+                    Form validation
+                */
+                $('.registration-form input[type="text"], .registration-form textarea').on('focus', function() {
+                    $(this).removeClass('input-error');
+                });
+                
+                $('.registration-form').on('submit', function(e) {
+                    
+                    $(this).find('input[type="text"], textarea').each(function(){
+                        if( $(this).val() == "" ) {
+                            e.preventDefault();
+                            $(this).addClass('input-error');
+                        }
+                        else {
+                            $(this).removeClass('input-error');
+                        }
+                    });
+                    
+                });
+                
+                
+            });
+        </script>
     </body>
 
 </html>
