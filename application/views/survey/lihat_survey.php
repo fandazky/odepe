@@ -1,8 +1,10 @@
-          <ol class="breadcrumb">
-            <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
-            <li><a href="#">Survey ODP</a></li>
-            <li class="active">Lihat Hasil Survey</li>
-          </ol>
+          
+            <ol class="breadcrumb">
+              <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
+              <li><a href="#">Survey ODP</a></li>
+              <li class="active">Lihat Hasil Survey</li>
+            </ol>
+          
         </section>
 
         <!-- Main content -->
@@ -26,7 +28,7 @@
                       <tr>
                         <th>NO</th>
                         <th>NAMA_KLUSTER</th>
-                        <th>NAMA_ODP</th>
+                        <th>OPTICAL_DISTRIBUTION_POINT</th>
                         <th>VALID_TAGING</th>
                         <th>LATITUDE</th>
                         <th>LONGITUDE</th>
@@ -35,7 +37,7 @@
                         <th>AVAILABLITY</th>
                         <th>BANGUNAN</th>
                         <th><i class="fa fa-angle-left">500JT</th>
-                        <th>500JT-1M</th>
+                        <th>500JT_SD_1M</th>
                         <th><i class="fa fa-angle-right">1M </th>
                         <th>PERKAMPUNGAN</th>
                         <th>RUKO</th>
@@ -44,6 +46,7 @@
                         <th>PERGURUAN_TINGGI</th>
                         <th>KOMPETITOR</th>
                         <th>KETERANGAN</th>
+                        <th>EDIT</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -56,24 +59,13 @@
                       ?>
                       <tr>
                         <td><?php echo $count; ?></td>
-                        <td><?php
-                          // $nama = $this->db->query
-                          // ('SELECT nama_kluster FROM daftar, kluster, odp
-                          //   WHERE daftar.id_odp = odp.id_odp and odp.id_kluster = kluster.id_kluster')->row_array();                         
-                          // echo $nama['nama_kluster'];
-                          $nama = $this->db->query
-                          ("SELECT nama_kluster FROM daftar, kluster, odp
-                            WHERE daftar.id_odp = odp.id_odp and odp.id_kluster = kluster.id_kluster and odp.id_odp = ".$row->ID_ODP.";
-                          ")->row_array();                         
-                          echo $nama['nama_kluster'];
-                        ?>
-                        </td>
-                        <td><?php echo $row->ID_ODP; ?></td>
+                        <td><?php echo $row->NAMA_KLUSTER ;?></td>
+                        <td><?php echo $row->NAMA_ODP; ?></td>
                         <td><?php echo $row->VALID_TAG; ?></td>
                         <td><?php echo $row->LATITUDE; ?></td>
                         <td><?php echo $row->LONGITUDE; ?></td>
                         <td><?php echo $row->LABEL; ?></td>
-                        <td><?php echo $row->ID_ERROR; ?></td>
+                        <td><?php echo $row->NAMA_ERROR; ?></td>
                         <td><?php echo $row->AVAILABILITY; ?></td>
                         <td><?php echo $row->BANGUNAN; ?></td>
                         <td><?php echo $row->KURANG_DARI_500JT; ?></td>
@@ -84,16 +76,17 @@
                         <td><?php echo $row->KANTOR_KECIL; ?></td>
                         <td><?php echo $row->KANTOR_BESAR; ?></td>
                         <td><?php echo $row->PERGURUAN_TINGGI; ?></td>
-                        <td></td>
+                        <td><?php echo $row->NAMA_KOMPETITOR; ?></td>
                         <td><?php echo $row->KETERANGAN; ?></td>
-                      </tr>
+                        <th><a href="<?php echo base_url() . 'Survey/formEdit/' . $row->ID_DAFTAR ?>"><i class="fa fa-pencil text-aqua"></i></a></th>
+                        
                       <?php $count = $count + 1; } }?>
                     </tbody>
                     <tfoot style="background-color: rgb(222, 227, 221)">
                       <tr>
                         <th>NO</th>
                         <th>NAMA_KLUSTER</th>
-                        <th>NAMA_ODP</th>
+                        <th>OPTICAL_DISTRIBUTION_POINT</th>
                         <th>VALID_TAGING</th>
                         <th>LATITUDE</th>
                         <th>LONGITUDE</th>
@@ -102,7 +95,7 @@
                         <th>AVAILABLITY</th>
                         <th>BANGUNAN</th>
                         <th><i class="fa fa-angle-left">500JT</th>
-                        <th>500JT-1M</th>
+                        <th>500JT_SD_1M</th>
                         <th><i class="fa fa-angle-right">1M </th>
                         <th>PERKAMPUNGAN</th>
                         <th>RUKO</th>
@@ -111,6 +104,7 @@
                         <th>PERGURUAN_TINGGI</th>
                         <th>KOMPETITOR</th>
                         <th>KETERANGAN</th>
+                        <th>EDIT</th>
                       </tr>
                     </tfoot>
                   </table>

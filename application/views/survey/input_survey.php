@@ -1,10 +1,10 @@
-          <div>
-            <ol class="breadcrumb pull-right">
+          
+            <ol class="breadcrumb">
               <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
               <li><a href="#">Survey ODP</a></li>
               <li class="active">Input Hasil Survey</li>
             </ol>
-          </div>
+          
         </section>
 
         <!-- Main content -->
@@ -53,11 +53,11 @@
                     <table class="table table-bordered table-striped" id="tabel" hidden>
                       <thead>
                         <tr>
-                          <th rowspan="2" style="vertical-align: middle;">ODP</th>
-                          <th rowspan="2" style="vertical-align: middle;">Valid Taging</th>
+                          <th rowspan="2" style="vertical-align: middle;">Optical_Distribution_Point</th>
+                          <th rowspan="2" style="vertical-align: middle;">Valid_Taging</th>
                           <th rowspan="2" style="vertical-align: middle;">Latitude</th>
                           <th rowspan="2" style="vertical-align: middle;">Longitude</th>
-                          <th rowspan="2" style="vertical-align: middle;">Label</th>
+                          <th rowspan="2" style="vertical-align: middle;">Label_ODP</th>
                           <th rowspan="2" style="vertical-align: middle;">Kesalahan</th>
                           <th rowspan="2" style="vertical-align: middle;">Availability</th>
                           <th rowspan="2" style="vertical-align: middle;">Bangunan Berpenghuni</th>
@@ -66,9 +66,9 @@
                           <th rowspan="2" style="vertical-align: middle;">Keterangan_Tambahan</th>
                         </tr>
                         <tr>
-                          <th>Perum_<_500JT</th>
-                          <th>Perum_500JT_sd_1M</th>
-                          <th>Perum_>_1M</th>
+                          <th><_500JT</th>
+                          <th>500JT_sd_1M</th>
+                          <th>>_1M</th>
                           <th>Perkampungan</th>
                           <th>Ruko</th>
                           <th>Kantor_Kecil</th>
@@ -79,6 +79,32 @@
                       <tbody id="detail_kluster">
 
                       </tbody>
+                      <tfoot>
+                        <tr>
+                          <th rowspan="2" style="vertical-align: middle;">Optical_Distribution_Point</th>
+                          <th rowspan="2" style="vertical-align: middle;">Valid_Taging</th>
+                          <th rowspan="2" style="vertical-align: middle;">Latitude</th>
+                          <th rowspan="2" style="vertical-align: middle;">Longitude</th>
+                          <th rowspan="2" style="vertical-align: middle;">Label_ODP</th>
+                          <th rowspan="2" style="vertical-align: middle;">Kesalahan</th>
+                          <th rowspan="2" style="vertical-align: middle;">Availability</th>
+                          <th rowspan="2" style="vertical-align: middle;">Bangunan Berpenghuni</th>
+                          <th><_500JT</th>
+                          <th>500JT_sd_1M</th>
+                          <th>>_1M</th>
+                          <th>Perkampungan</th>
+                          <th>Ruko</th>
+                          <th>Kantor_Kecil</th>
+                          <th>Kantor_Besar</th>
+                          <th>PT</th>
+                          <th rowspan="2" style="vertical-align: middle;">Kompetitor</th>
+                          <th rowspan="2" style="vertical-align: middle;">Keterangan_Tambahan</th>
+                        </tr>
+                        <tr>
+                          <th colspan="8" style="text-align: center;">Segmen</th>
+                          
+                        </tr>
+                      </tfoot>
                     </table>
                     
                   </div><!-- /.box -->
@@ -99,6 +125,10 @@
 
                      $("#namaKluster").change(function(){
                         $("#tombol").show();
+                     });
+
+                     $('#label').each(function(){
+                      $.uniform.update();
                      });
 
                      $("#namaKluster").change(function()
@@ -125,85 +155,87 @@
                               console.log('masuk for');
                               append = "";
                               append += "<tr>";
-                              append += "<input type='hidden' name='id_odp[]' value='"+data.odp[i].id_odp+"'/>";
+                              append += "<input type='hidden' name='id_odp[]-"+i+"' value='"+data.odp[i].id_odp+"'/>";
                               append += "<td>"+data.odp[i].nama_odp+"</td>";
                               append += "<td>";
-                              append += "<input type='radio' id='valid_tag' name='valid_tag' class='flat-red' value='Ya'/>";
-                              append += "<input type='hidden' id='valid_tag' name='valid_tag' value='Tidak'>";
+                              append += "<input type='radio' id='valid_tag-"+i+"' name='valid_tag[]-"+i+"' class='flat-red' value='Ya' checked='cheked'/>Ya &nbsp;";
+                              append += "<input type='radio' id='valid_tag-"+i+"' name='valid_tag[]-"+i+"' value='Tidak'>Tidak";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='text' id='latitude' name='latitude' class='form-control'>";
+                              append += "<input type='text' id='latitude-"+i+"' name='latitude[]-"+i+"' class='form-control'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='text' id='longitude'  name='longitude' class='form-control'>";
+                              append += "<input type='text' id='longitude-"+i+"'  name='longitude[]-"+i+"' class='form-control'>";
                               append += "</td>"
                               append += "<td>";
-                              append += "<input type='radio' id='label' name='label' class='flat-red' value='Ada'/>";
-                              append += "<input type='hidden' id='label' name='label' value='Tidak Ada'>";
+                              append += "<input type='radio' id='label-"+i+"' name='label[]-"+i+"' class='flat-red' value='Ada' checked/>Ada <br>";
+                              append += "<input type='radio' id='label-"+i+"' name='label[]-"+i+"' value='Tidak  &nbsp;Ada'>Tidak";
                               append += "</td>";
                               append += "<td>";
-                              append += "<select class='form-control'>";
+                              append += "<select class='form-control' name='id_error[]-"+i+"'>";
                               for(var j=0; j<data.error.length; j++)
                               {
-                              append += "<option id='id_error' name='id_error' value='"+data.error[j].id_error+"'>"+data.error[j].nama_error+"</option>";
+                              append += "<option id='id_error' value='"+data.error[j].id_error+"'>"+data.error[j].nama_error+"</option>";
                               
                               }
                               append += "</select>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='text' id='availability'  name='availability' class='form-control'>";
+                              append += "<input type='text' id='availability-"+i+"'  name='availability[]-"+i+"' class='form-control'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='text' id='bangunan'  name='bangunan' class='form-control'>";
+                              append += "<input type='text' id='bangunan-"+i+"'  name='bangunan[]-"+i+"' class='form-control'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='checkbox' id='kurang_dari_500jt' name='kurang_dari_500jt' class='flat-red' value='1'/>";
-                              append += "<input type='hidden' id='kurang_dari_500jt' name='kurang_dari_500jt' value='0'>";
+                              append += "<input type='checkbox' id='kurang_dari_500jt-"+i+"' name='kurang_dari_500jt[]-"+i+"' class='flat-red' value='1'/>";
+                              append += "<input type='hidden' id='kurang_dari_500jt-"+i+"' name='kurang_dari_500jt[]-"+i+"' value='0'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='checkbox' id='kurang_dari_500jt' name='kurang_dari_500jt' class='flat-red' value='1'/>"
-                              append += "<input type='hidden' id='kurang_dari_500jt' name='kurang_dari_500jt' value='0'>";
+                              append += "<input type='checkbox' id='antara_500jt_sd_1m-"+i+"' name='antara_500jt_sd_1m[]-"+i+"' class='flat-red' value='1'/>"
+                              append += "<input type='hidden' id='antara_500jt_sd_1m-"+i+"' name='antara_500jt_sd_1m[]-"+i+"' value='0'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='checkbox' id='kurang_dari_500jt' name='kurang_dari_500jt' class='flat-red' value='1'/>";
-                              append += "<input type='hidden' id='kurang_dari_500jt' name='kurang_dari_500jt' value='0'>";
+                              append += "<input type='checkbox' id='lebih_dari_1m-"+i+"' name='lebih_dari_1m[]-"+i+"' class='flat-red' value='1'/>";
+                              append += "<input type='hidden' id='lebih_dari_1m-"+i+"' name='lebih_dari_1m[]-"+i+"' value='0'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='checkbox' id='perkampungan' name='perkampungan' class='flat-red' value='1'/>";
-                              append += "<input type='hidden' id='perkampungan' name='perkampungan' value='0'>";
+                              append += "<input type='checkbox' id='perkampungan-"+i+"' name='perkampungan[]-"+i+"' class='flat-red' value='1'/>";
+                              append += "<input type='hidden' id='perkampungan-"+i+"' name='perkampungan[]-"+i+"' value='0'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='checkbox' id='ruko' name='ruko' class='flat-red' value='1'/>";
-                              append += "<input type='hidden' id='ruko' name='ruko' value='0'>";
+                              append += "<input type='checkbox' id='ruko-"+i+"' name='ruko[]-"+i+"' class='flat-red' value='1'/>";
+                              append += "<input type='hidden' id='ruko-"+i+"' name='ruko[]-"+i+"' value='0'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='checkbox' id='kantor_besar' name='kantor_besar' class='flat-red' value='1'/>";
-                              append += "<input type='hidden' id='kantor_besar' name='kantor_besar' value='0'>";
+                              append += "<input type='checkbox' id='kantor_besar-"+i+"' name='kantor_besar[]-"+i+"' class='flat-red' value='1'/>";
+                              append += "<input type='hidden' id='kantor_besar-"+i+"' name='kantor_besar[]-"+i+"' value='0'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='checkbox' id='kantor_kecil' name='kantor_kecil' class='flat-red' value='1'/>";
-                              append += "<input type='hidden' id='kantor_kecil' name='kantor_kecil' value='0'>";
+                              append += "<input type='checkbox' id='kantor_kecil-"+i+"' name='kantor_kecil[]-"+i+"' class='flat-red' value='1'/>";
+                              append += "<input type='hidden' id='kantor_kecil-"+i+"' name='kantor_kecil[]-"+i+"' value='0'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='checkbox' id='perguruan_tinggi' name='perguruan_tinggi' class='flat-red' value='1'/>";
-                              append += "<input type='hidden' id='perguruan_tinggi' name='perguruan_tinggi' value='0'>";
+                              append += "<input type='checkbox' id='perguruan_tinggi-"+i+"' name='perguruan_tinggi[]-"+i+"' class='flat-red' value='1'/>";
+                              append += "<input type='hidden' id='perguruan_tinggi-"+i+"' name='perguruan_tinggi[]-"+i+"' value='0'>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<select class='form-control'>";
+                              append += "<select class='form-control' name='id_kompetitor[]-"+i+"'>";
                               for(var k=0; k<data.kompetitor.length; k++)
                               {
-                              append += "<option id='id_kompetitor' name='id_kompetitor' value='"+data.kompetitor[k].id_kompetitor+"'>"+data.kompetitor[k].nama_kompetitor+"</option>";
+                              append += "<option id='id_kompetitor'  value='"+data.kompetitor[k].id_kompetitor+"'>"+data.kompetitor[k].nama_kompetitor+"</option>";
                               
                               }
                               append += "</select>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<textarea id='keterangan' name='keterangan' rows='2'/>";
+                              append += "<textarea id='keterangan-"+i+"' name='keterangan[]-"+i+"' rows='2'/>";
                               append += "</td>";
                               append += "</tr>";
                               $("#detail_kluster").append(append);  
                             }
-
+                            $('#label').each(function(){
+                              console.log('sad');
+                            });
                           }  
                         });  
                       });  
