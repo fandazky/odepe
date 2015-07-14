@@ -25,6 +25,24 @@
             <div class="box-body">
               <div class="table-responsive">
               <div class="col-md-11"> 
+
+                <div class="modal fade" id="konfirmasi-hapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Konfirmasi hapus</h4>
+                      </div>
+                      <div class="modal-body"> Apakah anda yakin menghapus data user ini? 
+                      </div>
+                      <div class="modal-footer">
+                        <a href="javascript:;" class="btn btn-danger" id="hapus-true">Ya</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <table class="table table-bordered table-striped" id="mytable">
                   <thead>
                     <tr>
@@ -56,10 +74,10 @@
                         echo "
                         <td>".$req->first_name." ".$req->last_name."</td>
                         <td>".$req->address."</td>
-                        <td>".$req->nama_area."</td>
-                        <td align=\"center\">".anchor('register/accept_request/'.$req->username,'<span title="Terima Request" align="center"><i class="fa fa-check"></i></span>')." | ".anchor('register/decline_request/'.$req->username,'  <span title="Tolak Request"><i class="fa fa-times"></i></span>')."</td>
+                        <td>".$req->nama_area."</td>";?>
+                        <td align="center"><span title="Terima Request"><a href="<?php echo base_url()?>register/accept_request/<?php echo $req->username?>"><i class="fa fa-pencil-square-o"></i></a></span> | <span title="Tolak User"><a href="javascript:;" data-id="<?php echo $req->username?>" data-toggle="modal" data-target="#konfirmasi-hapus"><i class="fa fa-times"></i></span></td>
                         </tr>  
-                        ";
+                    <?php 
                       }
                     ?>
                   </tbody>
@@ -70,6 +88,19 @@
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#mytable").dataTable();
+
+                        $('#konfirmasi-hapus').on('show.bs.modal', function (event) {
+                          var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+                          
+                          // Untuk mengambil nilai dari data-id="" yang telah kita tempatkan pada link hapus
+                          var id = div.data('id')
+                           
+                          var modal = $(this)
+                           
+                          // Mengisi atribut href pada tombol ya yang kita berikan id hapus-true pada modal .
+                          modal.find('#hapus-true').attr("href","<?php echo base_url()?>register/decline_request/"+id);
+                         
+                        });
                     });
                 </script>
               </div><!-- /.table-responsive -->

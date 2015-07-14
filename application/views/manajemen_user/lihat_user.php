@@ -24,6 +24,25 @@
             <div class="box-body">
               <div class="table-responsive">
               <div class="col-md-11"> 
+
+                <!-- Modal -->
+                <div class="modal fade" id="konfirmasi-hapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Konfirmasi hapus</h4>
+                      </div>
+                      <div class="modal-body"> Apakah anda yakin menghapus data user ini? 
+                      </div>
+                      <div class="modal-footer">
+                        <a href="javascript:;" class="btn btn-danger" id="hapus-true">Ya</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <table class="table table-bordered table-striped" id="mytable">
                   <thead>
                     <tr>
@@ -55,12 +74,12 @@
                         echo "
                         <td>".$active->first_name." ".$active->last_name."</td>
                         <td>".$active->address."</td>
-                        <td>".$active->nama_area."</td>
-                        <td align=\"center\">".anchor('manajemen_user/edit_user/'.$active->username,'<span title="Edit User"><i class="fa fa-pencil-square-o"></i></span>')." | ".anchor('manajemen_user/delete_user/'.$active->username,'<span title="Hapus User"><i class="fa fa-trash-o"></i></span>')."</td>
-                        </tr>  ";
+                        <td>".$active->nama_area."</td>"; ?>
+                        <td align="center"><span title="Edit User"><a href="<?php echo base_url()?>manajemen_user/edit_user/<?php echo $active->username?>"><i class="fa fa-pencil-square-o"></i></a></span> | <span title="Hapus User"><a href="javascript:;" data-id="<?php echo $active->username?>" data-toggle="modal" data-target="#konfirmasi-hapus"><i class="fa fa-trash-o"></i></span></td>
+                        </tr>
+                      <?php 
                       }
                     ?>
-                    
                     
                   </tbody>
                 </table>
@@ -70,6 +89,19 @@
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#mytable").dataTable();
+
+                        $('#konfirmasi-hapus').on('show.bs.modal', function (event) {
+                          var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+                          
+                          // Untuk mengambil nilai dari data-id="" yang telah kita tempatkan pada link hapus
+                          var id = div.data('id')
+                           
+                          var modal = $(this)
+                           
+                          // Mengisi atribut href pada tombol ya yang kita berikan id hapus-true pada modal .
+                          modal.find('#hapus-true').attr("href","<?php echo base_url()?>manajemen_user/delete_user/"+id);
+                         
+                        });
                     });
                 </script>
               </div><!-- /.table-responsive -->
@@ -77,9 +109,14 @@
               
               </div><!-- /.table-responsive --> 
             </div><!-- /.box-body -->
+
             </div>
           </div><!-- /.box -->
         </section><!-- /.content -->
         
       </div><!-- /.content-wrapper -->
+
+
+
+      <!-- 
 
