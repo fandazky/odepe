@@ -21,7 +21,7 @@
                 <div class="box-body">
                 <div class="table-responsive">
                      <div class="col-md-12"> 
-                        <form class="form-horizontal" action="<?php echo base_url();?>Survey/editSurvey" method="POST">
+                        <form class="form-horizontal" action="<?php echo site_url('survey/editSurvey') . '/' .  $ID_DAFTAR?>" method="POST">
 
                         <div class="form-group">
 	                      <label>Tanggal Survey</label>

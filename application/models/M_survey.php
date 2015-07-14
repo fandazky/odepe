@@ -121,13 +121,47 @@ class M_survey extends CI_Model
         return $this->db->get_where('daftar', array('id_daftar'=>$id_daftar))->row();
     }
 
-    public function updateDaftar($id_daftar, $dataSurvey)
+    //public function updateDaftar($id_daftar, $dataSurvey)
+    public function updateDaftar($id, $dataSurvey)
     {
-        
-        $this->db->where('id_daftar', $id_daftar);
-        return $this->db->update('daftar', $dataSurvey); 
+     
+     
+        $this->db->where('ID_DAFTAR', $id);
+        return $this->db->update('daftar', $dataSurvey);
 
     }
+
+
+    // //public function updateDaftar($id_daftar, $dataSurvey)
+    // public function updateDaftar(
+    //     $id,$tgl_survey,$latitude, $longitude, $label,$availability, $bangunan, 
+    //     $kurang_dari_500jt, $antara_500jt_sd_1m, $lebih_dari_1m,$perkampungan, $ruko, $kantor_kecil,
+    //     $kantor_besar, $perguruan_tinggi, $keterangan)
+
+    // {
+        
+    //     // $this->db->where('id_daftar', $id_daftar);
+    //     // return $this->db->update('daftar', $dataSurvey); 
+    //      $sql ="UPDATE daftar SET 
+    //         VALID_TAG          ='$tgl_survey',
+    //         LATITUDE           = '$latitude',
+    //         longitude          = '$longitude',
+    //         LABEL              = '$label',
+    //         AVAILABILITY       = '$availability',
+    //         BANGUNAN           = '$bangunan',
+    //         KURANG_DARI_500JT  = '$kurang_dari_500jt',
+    //         ANTARA_500JT_SD_1M = '$antara_500jt_sd_1m',
+    //         LEBIH_DARI_1M      = '$lebih_dari_1m',
+    //         PERKAMPUNGAN       = '$perkampungan',
+    //         RUKO               = '$ruko',
+    //         KANTOR_KECIL       = '$kantor_kecil',
+    //         KANTOR_BESAR       = '$kantor_besar',
+    //         PERGURUAN_TINGGI   = '$perguruan_tinggi',
+    //         KETERANGAN         = '$keterangan'
+    //      WHERE ID_DAFTAR='$id'";
+    //     return $this->db->query($sql);
+
+    // }
 
 }
 
