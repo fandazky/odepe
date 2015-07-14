@@ -99,7 +99,7 @@
                             ?> 
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input id="password" type="password" class="form-control" name="password" placeholder="password">
+                                <input id="passwd" type="password" class="form-control" name="passwd" placeholder="password">
                             </div>
                     
                             <div style="margin-bottom: 25px" class="input-group">
@@ -112,8 +112,8 @@
                             </div>
 
 			                <button type="submit" class="btn btn-primary">Login</button>
-                            <p></p>
-                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" ></div>
+                            <!-- <p></p> -->
+                            <!-- <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" ></div> -->
                             <p> Belum Punya Akun ? Silahkan Daftar <a href="<?php echo base_url()?>register"> Disini</a></p>
 
                         </form>

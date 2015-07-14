@@ -33,23 +33,7 @@ class Login extends CI_Controller
   
     public function login_form()
     {
-        //echo 'masuk fungsi login_form';
-        
-        /*
-        $this->form_validation->set_rules('username', 'Username', 'required|trim|xss_clean');
-        $this->form_validation->set_rules('password', 'Password', 'required|md5|xss_clean');
-        $this->form_validation->set_error_delimiters('<br><span class="error">', '</span>');
 
-
-        
-        if($this->form_validation->run()==FALSE)
-        {
-            $this->load->view('access/login-form');
-        }else
-        {
-        */
-            //echo 'masuk else';
-            //$this->load->view('access/login-form');
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('passwd', 'Password', 'required');
 
@@ -62,7 +46,7 @@ class Login extends CI_Controller
         else
         {
             $username = $this->input->post('username');
-            $password = md5($this->input->post('password'));
+            $password = md5($this->input->post('passwd'));
             $level = $this->input->post('level');
        
             $cek = $this->m_login->ambilPengguna($username, $password, 1, $level);

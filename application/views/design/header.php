@@ -32,6 +32,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="<?php echo base_url() ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
+    <link rel="icon" href="<?=base_url()?>assets/img/icon/icon.png" type="image/gif">
 
     <!-- Dropdown Search -->
     <script src="<?php  echo base_url() ?>/assets/plugins/chartjs/Chart.js"></script>

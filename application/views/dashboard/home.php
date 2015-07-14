@@ -1,13 +1,15 @@
-          <div>
-	          <ol class="breadcrumb pull-right">
-	            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-	          </ol>
+          
+          <div class="col-md-12">
+          <ol class="breadcrumb">
+            <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
+          </ol>
           </div>
         </section>
 
         	
         <!-- Main content -->
         <section class="content">
+        
         	<div>
 		            <div class="running">
 		                <marquee align="center" direction="left" scrollamount="5" title="TARGET">

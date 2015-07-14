@@ -164,7 +164,6 @@
                             <?php
                                 echo $success 
                             ?>
-                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" ></div>
                             <p> Sudah Punya Akun ? Silahkan Login <a href="<?php echo base_url()?>login"> Disini</a></p>
 
                         </form>
