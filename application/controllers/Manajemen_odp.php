@@ -30,6 +30,7 @@ class Manajemen_odp extends CI_Controller {
         {
             //$this->load->model('m_login'); 
             $this->load->model('m_manajemenodp');
+            $data['level'] = $this->session->userdata('level');
             $data['pengguna'] = $this->m_login->dataPengguna($user);
             //kluster
             $data['nama_kluster'] = $this->m_manajemenodp->getKluster();
@@ -88,6 +89,7 @@ class Manajemen_odp extends CI_Controller {
         }else
         {
             $this->load->model('m_manajemenodp');
+            $data['level'] = $this->session->userdata('level');
             $data['pengguna'] = $this->m_login->dataPengguna($user);
             $data['nama_so'] = $this->m_manajemenodp->getSo();
 
@@ -174,10 +176,14 @@ class Manajemen_odp extends CI_Controller {
         {
             $this->load->model('m_login');
             $this->load->model('m_manajemenodp');   
+            $data['level'] = $this->session->userdata('level');        
             $data['pengguna'] = $this->m_login->dataPengguna($user);
              
             $data['result'] = $this->m_manajemenodp->edit($id);
             $data['nama_so'] = $this->m_manajemenodp->getSo();
+            $data['nama_kluster'] = $this->m_manajemenodp->getKluster();
+
+            $data['tampil'] = $this->m_manajemenodp->edit($id);
 
             $this->load->view('design/header', $data);
             $this->load->view('manajemen_odp/edit_odp', $data);
@@ -189,8 +195,10 @@ class Manajemen_odp extends CI_Controller {
 
     public function update($id) {
         $data = array(
-            'NAMA_ODP' => $this->input->post('nama_odp'),
-            'NAMA_KLUSTER' => $this->input->post('nama_kluster'));
+            'NAMA_ODP' => $this->input->post('NAMA_ODP'),
+            'ID_KLUSTER' => $this->input->post('ID_KLUSTER'),
+            'ID_SO' => $this->input->post('ID_SO'));
+
             //'NAMA_SO' => $this->input->post('nama_so'));
         $this->load->model('M_manajemenodp');
         if($this->M_manajemenodp->update($id, $data))
@@ -210,6 +218,7 @@ class Manajemen_odp extends CI_Controller {
     }
 
 
+
      public function inputSo()
     {
         $session = $this->session->userdata('isLogin');
@@ -221,8 +230,10 @@ class Manajemen_odp extends CI_Controller {
         }else
         {
             $this->load->model('m_manajemenodp');
+            $data['level'] = $this->session->userdata('level');        
             $data['pengguna'] = $this->m_login->dataPengguna($user);
             //$data['nama_so'] = $this->m_manajemenodp->getSo();
+            $data['nama_area'] = $this->m_manajemenodp->getArea();
 
             $this->load->view('design/header', $data);
             $this->load->view('manajemen_odp/input_so', $data);
@@ -230,6 +241,36 @@ class Manajemen_odp extends CI_Controller {
         } 
         
         
+    }
+
+
+      public function inputDataSo()
+    {
+        $nama_so = $this->input->post('NAMA_SO');
+        $nama_area = $this->input->post('id_area');
+
+        //     $data = array(
+        //             'NAMA_KLUSTER' => $nama_kluster,
+        //             'SET_OPERATION' => $set_operation
+        //     );
+
+        // $this->db->insert('kluster',$data);
+        // redirect('manajemen_odp/inputKluster');
+        $this->load->model('M_manajemenodp');
+        if($this->M_manajemenodp->addSo($nama_so, $nama_area))
+        {
+            echo '<script language="javascript">';
+              echo 'alert("Site Operation berhasil ditambahkan");';
+              echo 'window.location.href = "' . site_url('Manajemen_odp') . '";';
+              //echo 'window.history.back();';
+              echo '</script>';
+        }
+        else
+        {
+              echo '<script language="javascript">';
+              echo 'alert("Site Operation gagal ditambahkan.");';
+              echo '</script>';
+        }
     }
 
 }

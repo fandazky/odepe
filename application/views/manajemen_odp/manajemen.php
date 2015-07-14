@@ -1,8 +1,7 @@
-         <section>
-          <ol class="breadcrumb">
+<ol class="breadcrumb">
             <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="#">Manajemen ODP</a></li>
-            <li class="active">Lihat Daftar ODP</li>
+            <li class="active">Daftar ODP</li>
           </ol>
         </section>
 
@@ -12,6 +11,9 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header with-border">
+                  <form action="<?php echo base_url() ?>manajemen_odp">
+                    <input type="submit" class="btn btn-primary" value="Tambah ODP">
+                  </form>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -25,9 +27,8 @@
                         <th>NO</th>
                         <th>SO</th>
                         <th>NAMA KLUSTER</th>
-                        <th>NAMA_ODP</th>
-                        <th width="30px">EDIT</th>
-                        <th width="30px">HAPUS</th>
+                        <th>NAMA ODP</th>
+                        <th width="30px">AKSI</th>
                       </tr>
                       
                     </thead>
@@ -49,8 +50,8 @@
                         <th> <?php echo $row->NAMA_SO;?></th>
                         <th><?php echo $row->NAMA_KLUSTER;?> </th>
                         <th><?php echo $row->NAMA_ODP; ?></th>
-                          <th><a href="<?php echo base_url() . 'manajemen_odp/edit/' . $row->ID_ODP ?>"><i class="fa fa-pencil text-aqua"></i></a></th>
-                          <th><a href="<?php echo base_url() . 'manajemen_odp/delete/' . $row->ID_ODP ?>" onclick="return deldata()"><i class="fa fa-trash text-red"></i></a></th>
+                          <th><a href="<?php echo base_url() . 'manajemen_odp/edit/' . $row->ID_ODP ?>"><i class="fa fa-pencil text-aqua"></i></a>
+                          <a href="<?php echo base_url() . 'manajemen_odp/delete/' . $row->ID_ODP ?>" onclick="return deldata()"><i class="fa fa-trash text-red"></i></a></th>
                       </tr>
                       <?php $count = $count + 1; } }?>
                     </tbody>
@@ -60,8 +61,7 @@
                         <th>SO</th>
                         <th>NAMA KLUSTER</th>
                         <th>NAMA ODP</th>
-                        <th>EDIT</th>
-                        <th>HAPUS</th>
+                        <th>AKSI</th>
                       </tr>
                     </tfoot>
                   </table>

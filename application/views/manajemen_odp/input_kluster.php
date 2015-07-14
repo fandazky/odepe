@@ -17,7 +17,9 @@
 
   </script>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#">Manajemen ODP</a></li>
+            <li class="active">Tambah Kluster</li>
           </ol>
         </section>
 
@@ -27,12 +29,16 @@
           
           <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-12">
 
               <div class="box box-danger">
-                <!-- <div class="box-header">
-                  <h3 class="box-title">Data Survey</h3>
-                </div> -->
+                <div class="box-header">
+                  <h3 class="box-title">Tambah Kluster</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div> 
                 <div class="box-body">
                   <form action="<?php echo base_url('manajemen_odp/inputDataKluster'); ?>" method="post" role="form">
       

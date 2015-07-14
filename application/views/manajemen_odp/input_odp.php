@@ -32,7 +32,9 @@
 </script>
 
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#">Manajemen ODP</a></li>
+            <li class="active">Tambah ODP</li>
           </ol>
         </section>
 
@@ -42,12 +44,18 @@
           
           <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-12">
 
               <div class="box box-danger">
-                <!-- <div class="box-header">
-                  <h3 class="box-title">Data Survey</h3>
-                </div> -->
+
+                <div class="box-header">
+                  <h3 class="box-title">Tambah ODP</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div> 
+
                 <div class="box-body">
                   <!--<?php echo validation_errors()?> -->
                   <form action="<?php echo base_url('manajemen_odp/inputOdp'); ?>" method="post" role="form">
@@ -57,7 +65,7 @@
                         <select class="form-control" name='ID_KLUSTER'>
                           <?php
                           foreach ($nama_kluster as $row) {
-                            echo '<option value="'.$row->id_kluster.'">'.$row->nama_kluster. ' ' . $row->id_kluster .  '</option>';
+                            echo '<option value="'.$row->id_kluster.'">'.$row->nama_kluster. '</option>';
                           }
                           ?>
                         </select>
