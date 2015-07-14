@@ -1,9 +1,9 @@
           
-          <div class="col-md-12">
+         
           <ol class="breadcrumb">
             <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
           </ol>
-          </div>
+          
         </section>
 
         	
