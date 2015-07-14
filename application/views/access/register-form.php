@@ -6,7 +6,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SIMODI | Sistem Monitoring ODP</title>
+        <link rel="icon" href="<?=base_url()?>assets/img/icon/icon.png" type="image/gif">
+        <title>MODIST</title>
 
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
@@ -70,8 +71,12 @@
                 <div class="col-sm-6 form-box col-sm-offset-3">
                     <div class="form-top">
                         <div class="form-top-left">
-                            <h3 align="center"><B>SIMODI</B></h3>
-                            <p align="center">Form Pendaftaran User</p>
+                            
+                                <h3 align="center"><B>MODIST</B></h3>
+                                <h6 align="center"><B>Monitoring Optical Distribution Point</B></h6>
+                                
+                                <p align="center">Form Pendaftaran User</p>
+
                         </div>
                         <div class="form-top-right">
                             <i class="fa fa-user-plus"></i>

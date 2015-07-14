@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>SI ODP</title>
+    <title>MODIST</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="<?php echo base_url() ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -48,9 +48,9 @@
         <!-- Logo -->
         <a href="" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>SI</b>O</span>
+          <span class="logo-mini">MOD</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Sisfor</b>ODP</span>
+          <span class="logo-lg">MODIST</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -241,4 +241,8 @@
 
       <div class="content-wrapper">
         <section class="content-header">
+          <h1>
+            MODIST
+            <small>Monitoring Optical Distribution Point</small>
+          </h1>
           

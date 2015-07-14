@@ -6,7 +6,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap Registration Form Template</title>
+        <link rel="icon" href="<?=base_url()?>assets/img/icon/icon.png" type="image/gif">
+        <title>MODIST</title>
 
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
@@ -69,7 +70,8 @@
                 <div class="col-sm-4 form-box col-sm-offset-4">
                     <div class="form-top">
                         <div class="form-top-left">
-                        	<h3 align="center"><B>SIMODI</B></h3>
+                        	<h3 align="center"><B>MODIST</B></h3>
+                            <h6 align="center"><B>Monitoring Optical Distribution Point</B></h6>
                             <p align="center">Silahkan Login Terlebih Dahulu</p>
                         </div>
                         <div class="form-top-right">
