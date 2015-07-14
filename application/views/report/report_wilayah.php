@@ -1,12 +1,14 @@
 
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
+            <li class="active">Report Site Operation</li>
           </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
-          <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12">
 
               <div class="box box-danger">
                 <div class="box-header with-border">
@@ -45,5 +47,6 @@
 
                   </form>
                 </div>
+              </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

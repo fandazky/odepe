@@ -1,16 +1,15 @@
-          <div class="col-md-10">
+
           <ol class="breadcrumb">
             <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="#">Report</a></li>
             <li class="active">Report Area <?php echo $namaarea->nama_area;?> </li>
           </ol>
-          </div>
         </section>
 
         <!-- Main content -->
         <section class="content">
           <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
               <div class="box box-danger">
                 <div class="box-header with-border">
                   <h1 class="box-title">
@@ -85,7 +84,7 @@
               </div>
             </div>
 
-            <div class="col-sm-5">              
+            <div class="col-sm-6">              
               <div class="info-box bg-red">
                 <span class="info-box-icon"><i class="fa fa-close"></i></span>
                 <div class="info-box-content">
@@ -101,7 +100,7 @@
               </div><!-- /.info-box -->
             </div>
 
-            <div class="col-sm-5">              
+            <div class="col-sm-6">              
               <div class="info-box bg-aqua">
                 <span class="info-box-icon"><i class="fa fa-check"></i></span>
                 <div class="info-box-content">
@@ -117,7 +116,7 @@
               </div><!-- /.info-box -->
             </div>
 
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <div class="box box-default">
                 <div class="box-header with-border">
                   <h1 class="box-title">
