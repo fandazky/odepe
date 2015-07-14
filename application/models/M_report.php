@@ -26,7 +26,7 @@ class M_report extends CI_Model
     	{
     		return false;
     	}
-    	//$query = $this->db->get_where('daftar',array())
+
     	
     }
 
@@ -38,30 +38,109 @@ class M_report extends CI_Model
         $this->db->where('id_error', $errorid);
         
         $query = $this->db->get();
-        //echo $query;
         return $query->num_rows();
     }
 
-    public function ambilErrorCluster($idkluster,$errorid)
+    public function ambilErrorCluster($klusterid,$erroreid)
     {
-        //$this->db->select('id_error');
-        //$this->db->from('daftar,kluster,odp');
-        //$this->db->where('daftar.id_error', $errorid);
-        //$this->db->where('odp.id_kluster', $idkluster);
-        //$this->db->where('odp.id_odp = daftar.id_odp');
-        //$this->db->where();
-
-
         
-        $query = $this->db->query("select id_daftar,daftar.id_error from daftar,odp,kluster where daftar.id_odp = odp.id_odp and odp.id_kluster = kluster.id_kluster and kluster.id_kluster = ".$idkluster." and daftar.id_error = ".$errorid."");
+        $query = $this->db->query("select 
+        									daftar.id_error,odp.nama_odp,kluster.nama_kluster
+        								from
+        									daftar,odp,kluster
+        								where
+        										daftar.id_odp = odp.id_odp 
+        									and
+        										odp.id_kluster = kluster.id_kluster 
+        									and
+        										kluster.id_kluster = '$klusterid'
+        									and
+        										daftar.id_error = '$erroreid'");
+        // print_r($query->result());
+
+        return $query->num_rows();
+    }
+
+    public function ambilErrorSetOperation($soid,$erroraid)
+    {
+        
+        $query = $this->db->query("select
+										daftar.id_daftar,daftar.id_error
+								    from 
+								    	daftar, kluster, odp, site_operation 
+								    where 
+								    		daftar.id_odp = odp.id_odp 
+								    	and 
+								        	odp.id_kluster = kluster.id_kluster 
+								    	and 
+								        	kluster.id_so = site_operation.id_so
+								        and
+								        	kluster.id_so = '$soid' 
+								        and
+								        	daftar.id_error = '$erroraid'");
+        return $query->num_rows();
+    }
+
+    public function ambilErrorArea($areaid,$errorid)
+    {
+        
+        $query = $this->db->query("select
+										daftar.id_error, odp.nama_odp, kluster.nama_kluster, site_operation.nama_so, area.nama_area
+										from 
+											area, daftar, kluster, odp, site_operation
+										where 
+										 		daftar.id_odp = odp.id_odp
+										and
+										       	odp.id_kluster = kluster.id_kluster
+										and
+										      	kluster.id_so = site_operation.id_so
+										and
+									    		site_operation.id_area = area.id_area
+									    and
+										       	site_operation.id_area = '$areaid'
+										and
+										       	daftar.id_error = '$errorid'");
         //echo $query;
         //print_r($query->result());
         return $query->num_rows();
     }
 
+    public function getArea()
+    {
+    	$this->db->select('nama_area, id_area');
+		$query = $this->db->get('area');
+
+		if ($query->num_rows() > 0)
+		{
+            foreach ($query->result() as $row) 
+            {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else
+        {
+        	return false;	
+        }
+    }
+
     public function getSetOperation()
     {
+    	$this->db->select('nama_so, id_so');
+		$query = $this->db->get('site_operation');
 
+		if ($query->num_rows() > 0)
+		{
+            foreach ($query->result() as $row) 
+            {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else
+        {
+        	return false;	
+        }
     }
 
     public function getKluster()
@@ -88,7 +167,7 @@ class M_report extends CI_Model
  		$this->db->select('nama_odp, id_odp');
         $this->db->order_by('nama_odp', 'asc');
 
-        //$query = $this->db->get_where('odp', array('id_kluster' => $id_kluster));
+
 
 		$query = $this->db->get('odp');
 
@@ -106,7 +185,139 @@ class M_report extends CI_Model
         }
  	}
 
+ 	public function getNamaCluster($id_kluster)
+ 	{
+ 		$this->db->select('nama_kluster');
+ 		$this->db->from('kluster');
+ 		$this->db->where('id_kluster',$id_kluster);
 
+ 		$query=$this->db->get();
+ 		return $query->row();
+ 	}
 
+ 	public function getNamaSiteOperation($idso)
+ 	{
+ 		$this->db->select('nama_so');
+ 		$this->db->from('site_operation');
+ 		$this->db->where('id_so',$idso);
+
+ 		$query=$this->db->get();
+ 		return $query->row();
+ 	}
+
+ 	public function getNamaArea($idarea)
+ 	{
+ 		$this->db->select('nama_area');
+ 		$this->db->from('area');
+ 		$this->db->where('id_area',$idarea);
+
+ 		$query=$this->db->get();
+ 		return $query->row();
+ 	}
+
+ 	public function totalODPWitel()
+ 	{
+ 		$this->db->select('*');
+ 		$this->db->from('odp');
+
+ 		$query = $this->db->get();
+ 		return $query->num_rows();
+ 	}
+
+ 	public function totalODPArea($idarea)
+ 	{
+ 		$query = $this->db->query("select * 
+ 									from 
+ 										odp,kluster,area,site_operation 
+ 									where 
+ 										area.id_area = '$idarea' 
+ 									and 
+ 										area.id_area = site_operation.id_area 
+ 									and 
+ 										site_operation.id_so = kluster.id_so 
+ 									and 
+ 										kluster.id_kluster=odp.id_kluster");
+ 		return $query->num_rows();
+ 	}
+
+ 	public function totalODPSO($idso)
+ 	{
+ 		$query = $this->db->query("select * 
+ 									from 
+ 										odp,kluster,site_operation 
+ 									where 
+ 										site_operation.id_so = '$idso' 
+ 									and 
+ 										site_operation.id_so = kluster.id_so 
+ 									and 
+ 										kluster.id_kluster=odp.id_kluster");
+ 		return $query->num_rows();
+ 	}
+
+ 	public function totalODPKluster($idkluster)
+ 	{
+ 		$query = $this->db->query("select * 
+ 									from 
+ 										odp,kluster 
+ 									where 
+ 										kluster.id_kluster = '$idkluster' 
+ 									and 
+ 										kluster.id_kluster=odp.id_kluster");
+ 		return $query->num_rows();
+ 	}
+
+ 	public function sudahSurveyWitel()
+ 	{
+ 		$query = $this->db->query("select * from odp, daftar where odp.id_odp = daftar.id_odp");
+ 		return $query->num_rows();
+ 	}
+
+ 	public function sudahSurveyArea($idarea)
+ 	{
+ 		$query = $this->db->query("select * 
+ 									from 
+ 										odp,kluster,area,site_operation,daftar
+ 									where 
+ 										area.id_area = '$idarea' 
+ 									and 
+ 										area.id_area = site_operation.id_area 
+ 									and 
+ 										site_operation.id_so = kluster.id_so 
+ 									and 
+ 										kluster.id_kluster=odp.id_kluster
+ 									and
+ 										odp.id_odp = daftar.id_odp");
+ 		return $query->num_rows();
+ 	}
+
+ 	public function sudahSurveySO($idso)
+ 	{
+ 		$query = $this->db->query("select * 
+ 									from 
+ 										odp,kluster,site_operation,daftar 
+ 									where 
+ 										site_operation.id_so = '$idso' 
+ 									and 
+ 										site_operation.id_so = kluster.id_so 
+ 									and 
+ 										kluster.id_kluster=odp.id_kluster
+ 									and
+ 										odp.id_odp = daftar.id_odp");
+ 		return $query->num_rows();
+ 	}
+
+ 	public function sudahSurveyKluster($idkluster)
+ 	{
+ 		$query = $this->db->query("select * 
+ 									from 
+ 										odp,kluster,daftar 
+ 									where 
+ 										kluster.id_kluster = '$idkluster' 
+ 									and 
+ 										kluster.id_kluster=odp.id_kluster
+ 									and
+ 										odp.id_odp = daftar.id_odp");
+ 		return $query->num_rows();
+ 	}
 
 }

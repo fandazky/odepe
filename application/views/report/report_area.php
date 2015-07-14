@@ -11,7 +11,7 @@
               <div class="box box-danger">
                 <div class="box-header with-border">
                   <h1 class="box-title">
-                    Chart Site Operation
+                    Chart Area
                   </h1>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -19,16 +19,16 @@
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body" style="height:300px;">
-                  <form action="<?php echo site_url('Report/show_setoperation'); ?>" method="post" role="form">
+                  <form action="<?php echo site_url('Report/show_area'); ?>" method="post" role="form">
                     <div class="form-group">
                       
                       <label>Site Operation</label>
                       <div class="input-group">
-                        <select name="id_so" class="selectpicker  form-control scrollable-menu" role="menu" data-live-search="true" data-size="3">
+                        <select name="idnyaarea" class="selectpicker  form-control scrollable-menu" role="menu" data-live-search="true" data-size="3">
                           <?php
-                          foreach ($nama_setoperation as $row) 
+                          foreach ($areaname as $row) 
                           {
-                            echo '<option value="'.$row->id_so.'"> '.$row->nama_so.'</option>';
+                            echo '<option value="'.$row->id_area.'"> '.$row->nama_area.'</option>';
                           }
                           ?>
                         </select>

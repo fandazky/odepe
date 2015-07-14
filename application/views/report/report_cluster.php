@@ -1,10 +1,4 @@
 
-      
-          <script src="<?php  echo base_url() ?>/assets/plugins/chartjs/Chart.js"></script>
-          <script src="<?php  echo base_url() ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
-          <link rel="stylesheet" type="text/css" href="<?php  echo base_url() ?>/assets/plugins/bootstrap-select-master/dist/css/bootstrap-select.css">
-          <script src="<?php  echo base_url() ?>/assets/plugins/bootstrap-select-master/dist/js/bootstrap-select.js"></script>
-
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
           </ol>
