@@ -1,18 +1,16 @@
 
-          <div class="col-md-11">
           <ol class="breadcrumb">
             <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="#">Manajemen User</a></li>
             <li class="active">Lihat Semua User</li>
           </ol>
-          </div>
         </section>
 
         <!-- Main content -->
         
         <section class="content">
         <div class="row">
-        <div class="col-md-11"> 
+        <div class="col-md-12"> 
           <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"><B>User Aktif</B></h3>
@@ -112,11 +110,9 @@
 
             </div>
           </div><!-- /.box -->
+          </div>
         </section><!-- /.content -->
         
       </div><!-- /.content-wrapper -->
 
-
-
-      <!-- 
 

@@ -1,11 +1,9 @@
 
-          <div class="col-md-11">
           <ol class="breadcrumb">
             <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="#">Manajemen User</a></li>
             <li class="active">Lihat User Request</li>
           </ol>
-          </div>
         </section>
 
         <!-- Main content -->
@@ -13,7 +11,7 @@
         <section class="content">
         
         <div class="row">
-          <div class="col-md-11"> 
+          <div class="col-md-12"> 
           <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"><B>Permintaan Pembuatan User</B></h3>
@@ -75,7 +73,7 @@
                         <td>".$req->first_name." ".$req->last_name."</td>
                         <td>".$req->address."</td>
                         <td>".$req->nama_area."</td>";?>
-                        <td align="center"><span title="Terima Request"><a href="<?php echo base_url()?>register/accept_request/<?php echo $req->username?>"><i class="fa fa-pencil-square-o"></i></a></span> | <span title="Tolak User"><a href="javascript:;" data-id="<?php echo $req->username?>" data-toggle="modal" data-target="#konfirmasi-hapus"><i class="fa fa-times"></i></span></td>
+                        <td align="center"><span title="Terima Request"><a href="<?php echo base_url()?>register/accept_request/<?php echo $req->username?>"><i class="glyphicon glyphicon-ok"></i></a></span> | <span title="Tolak User"><a href="javascript:;" data-id="<?php echo $req->username?>" data-toggle="modal" data-target="#konfirmasi-hapus"><i class="glyphicon glyphicon-remove"></i></span></td>
                         </tr>  
                     <?php 
                       }
@@ -108,7 +106,6 @@
             </div><!-- /.box-body -->
 
           </div><!-- /.box -->
-          </div>
         </div>
         </section><!-- /.content -->
         
