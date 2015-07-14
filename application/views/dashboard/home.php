@@ -80,7 +80,6 @@
 
 			<div>
 				
-				<br> 
 				<h4>
 		            Statistik
 		        </h4>

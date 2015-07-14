@@ -1,8 +1,60 @@
-<footer class="main-footer no-print">
+      <footer class="main-footer no-print">
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.0
         </div>
-        <strong>Copyright &copy; 2015 <a href="#">Kerja Praktik Teknik Informatika ITS</a>.</strong> All rights reserved.
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center><h4 class="modal-title" id="myModalLabel">Anggota Kerja Praktik<br>Teknik Informatika ITS<br>2015</h4></center>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p style="text-align:center;">
+                      <img src="<?php echo base_url() ?>assets/dist/img/iqbal.jpg" alt="User Image" style="border-radius:50%;max-width:50%;height:auto;"/>
+                      <a class="users-list-name" href="#">Muhammad Iqbal Tanjung</a>
+                      <span class="users-list-date">5112100069</span>
+                      <span class="users-list-date"><a href="mailto:m.iqbaltanjung@gmail.com" target="_blank">m.iqbaltanjung@gmail.com</a></span>
+                    </p>
+
+                    <p style="text-align:center;">
+                      <img src="<?php echo base_url() ?>assets/dist/img/fandy.jpg" alt="User Image" style="border-radius:50%;max-width:50%;height:auto;"/>
+                      <a class="users-list-name" href="#">Fandy Ahmad</a>
+                      <span class="users-list-date">5112100047</span>
+                      <span class="users-list-date"><a href="mailto:fandazky@gmail.com" target="_blank">fandazky@gmail.com</a></span>            
+                    </p>
+                  </div>
+
+                  <div class="col-xs-6">
+
+                    <p style="text-align:center;">
+                      <img src="<?php echo base_url() ?>assets/dist/img/rina.jpg" alt="User Image" style="border-radius:50%;max-width:50%;height:auto;"/>
+                      <a class="users-list-name" href="#">Bima Nisrina Madjid</a>
+                      <span class="users-list-date">5112100019</span>
+                      <span class="users-list-date"><a href="mailto:nisrinabia@gmail.com" target="_blank">nisrinabia@gmail.com</a></span>
+                    </p>
+
+                    <p style="text-align:center;">
+                      <img src="<?php echo base_url() ?>assets/dist/img/shoffi.jpg" alt="User Image" style="border-radius:50%;max-width:50%;height:auto;"/>
+                      <a class="users-list-name" href="#">Shoffi Izza Sabilla</a>
+                      <span class="users-list-date">5112100132</span>
+                      <span class="users-list-date"><a href="mailto:shoffi.izza@gmail.com" target="_blank">shoffi.izza@gmail.com</a></span>
+                    </p>
+                  </div>
+              </div>
+              <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+              </div> -->
+              </div>
+            </div>
+          </div>
+        </div><!-- .Modal -->
+
+        <strong>Copyright &copy; 2015 <a href="#" data-toggle="modal" data-target="#myModal">Kerja Praktik Teknik Informatika ITS</a>.</strong> All rights reserved.
       </footer>
     
       <!-- Add the sidebar's background. This div must be placed
