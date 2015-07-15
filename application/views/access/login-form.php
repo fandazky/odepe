@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="<?=base_url()?>assets/img/icon/icon.png" type="image/gif">
-        <title>MODist</title>
+        <title>MODIST</title>
 
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
