@@ -16,11 +16,9 @@ class Manajemen_user extends CI_Controller {
     {
         if($this->session->userdata('isLogin') == FALSE)
         {
-            //redirect('login/login_form');
             redirect('login');
         }else
         {
-            // $this->load->model('m_login');
             $this->load->model('m_manajemenuser');
           
             $user = $this->session->userdata('username');
@@ -30,12 +28,9 @@ class Manajemen_user extends CI_Controller {
             $data['active_user'] = $this->m_manajemenuser->getAllActiveUser();
             if ($data['level'] == 1)
             {
-                //echo 'masuk admin';
-                //$this->load->view('dashboard/admin', $data);
                 $this->load->view('design/header', $data);
                 $this->load->view('manajemen_user/lihat_user', $data);
                 $this->load->view('design/footer');
-                
             }
             else
             {
@@ -48,7 +43,6 @@ class Manajemen_user extends CI_Controller {
     {
         if($this->session->userdata('isLogin') == FALSE)
         {
-            //redirect('login/login_form');
             redirect('login');
         }else
         {   
@@ -74,29 +68,34 @@ class Manajemen_user extends CI_Controller {
 
     public function edit_user($username)
     {
-        $this->load->model('m_manajemenuser');
-        $user = $this->session->userdata('username');
-        $row = $this->m_login->getUSerData($username);
+        if($this->session->userdata('isLogin') == FALSE)
+        {
+            redirect('login');
+        }else
+        {   
+            $this->load->model('m_manajemenuser');
+            $user = $this->session->userdata('username');
+            $row = $this->m_login->getUSerData($username);
 
-        $data['pengguna'] = $this->m_login->dataPengguna($user);
-        if ($row) {
-            $data['username'] = $row->username;
-            $data['namadepan'] = $row->first_name;
-            $data['namabelakang'] = $row->last_name;
-            $data['alamat'] = $row->address;
+            $data['pengguna'] = $this->m_login->dataPengguna($user);
+            if ($row) {
+                $data['username'] = $row->username;
+                $data['namadepan'] = $row->first_name;
+                $data['namabelakang'] = $row->last_name;
+                $data['alamat'] = $row->address;
 
-            $this->load->view('design/header', $data);
-            $this->load->view('access/update-profile', $data);
-            $this->load->view('design/footer', $data);
-
-        }
+                $this->load->view('design/header', $data);
+                $this->load->view('access/update-profile', $data);
+                $this->load->view('design/footer', $data);
+            }
+        }     
+        
     }
 
     public function delete_user($username)
     {
         if($this->session->userdata('isLogin') == FALSE)
         {
-            //redirect('login/login_form');
             redirect('login');
         }else
         {   

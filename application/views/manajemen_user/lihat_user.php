@@ -71,10 +71,35 @@
 
                         echo "
                         <td>".$active->first_name." ".$active->last_name."</td>
-                        <td>".$active->address."</td>
-                        <td>".$active->nama_area."</td>"; ?>
-                        <td align="center"><span title="Edit User"><a href="<?php echo base_url()?>manajemen_user/edit_user/<?php echo $active->username?>"><i class="fa fa-pencil-square-o"></i></a></span> | <span title="Hapus User"><a href="javascript:;" data-id="<?php echo $active->username?>" data-toggle="modal" data-target="#konfirmasi-hapus"><i class="fa fa-trash-o"></i></span></td>
-                        </tr>
+                        <td>" .$active->address. "</td>";
+                        
+                    ?>
+                    <?php
+                      if($active->level==1)
+                      {
+                        echo "<td>Semua</td>";
+                      }
+                      else
+                      {
+                        echo '<td>' .$active->nama_area. '</td>';
+                      }
+                    ?>
+
+                      <?php
+                        if($active->level==1)
+                        {
+                          // echo '<td align="center"><span title="Edit User"><a href="#"><i class="fa fa-pencil-square-o"></i></a></span> | <span title="Hapus User"><a href="#" ><i class="fa fa-trash-o"></i></span></td>
+                          //       </tr>';
+                          echo '<td align="center"> - </td>';
+                        }
+                        else
+                        {
+                          echo '<td align="center"><span title="Edit User"><a href="'. base_url() .'manajemen_user/edit_user/'. $active->username .'"><i class="fa fa-pencil-square-o"></i></a></span> | <span title="Hapus User"><a href="javascript:;" data-id="'. $active->username .'" data-toggle="modal" data-target="#konfirmasi-hapus"><i class="fa fa-trash-o"></i></span></td>
+                                </tr>';
+                        }
+                        
+                      ?>
+
                       <?php 
                       }
                     ?>
