@@ -155,7 +155,7 @@
                                     <option selected="selected" class="hide-select">-- Pilih Area Kerja --</option>
                                     <?php 
                                         foreach ($areakerja as $area) {
-                                            echo "<option value=\"".$area->id_area."\">".$area->nama_area."</option>";
+                                            echo "<option value=\"".$area->ID_AREA."\">".$area->NAMA_AREA."</option>";
                                         }
                                     ?>
                                     

@@ -82,6 +82,7 @@ class Login extends CI_Controller
         $this->load->model('m_manajemenuser');
         $user = $this->session->userdata('username');
         $row = $this->m_login->getUSerData($user);
+        $data['level'] = $this->session->userdata('level');
 
         $data['pengguna'] = $this->m_login->dataPengguna($user);
         if ($row) {
