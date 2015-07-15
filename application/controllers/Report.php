@@ -23,7 +23,7 @@ class Report extends CI_Controller{
         $data['level']=$this->session->userdata('level');
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            redirect('login');
         }
         else
         {   
@@ -41,8 +41,8 @@ class Report extends CI_Controller{
             $data['jumlah_tersurvey'] = $this->m_report->sudahSurveyKluster($idkluster);
             $data['belum_survey'] = $data['jumlah_odp'] - $data['jumlah_tersurvey'];
 
-            $data['persen_survey'] = $data['jumlah_tersurvey']/$data['jumlah_odp'] *100;
-            $data['persen_error'] = $data['jumlah_error']/$data['jumlah_odp'] *100;
+            $data['persen_survey'] = $this->persen($data['jumlah_tersurvey'],$data['jumlah_odp']);
+            $data['persen_error'] = $this->persen($data['jumlah_error'],$data['jumlah_odp']);
 
             $data['persen_1'] = $this->persen($data['noerror1'],$data['jumlah_odp']);
             $data['persen_2'] = $this->persen($data['nolocation2'],$data['jumlah_odp']);
@@ -50,6 +50,13 @@ class Report extends CI_Controller{
             $data['persen_4'] = $this->persen($data['wronglabel4'],$data['jumlah_odp']);
             $data['persen_5'] = $this->persen($data['irisan5'],$data['jumlah_odp']);
             $data['persen_6'] = $this->persen($data['wrongpos6'],$data['jumlah_odp']);
+
+            $data['persen1'] = $this->persen($data['noerror1'],$data['jumlah_tersurvey']);
+            $data['persen2'] = $this->persen($data['nolocation2'],$data['jumlah_tersurvey']);
+            $data['persen3'] = $this->persen($data['nostarclick3'],$data['jumlah_tersurvey']);
+            $data['persen4'] = $this->persen($data['wronglabel4'],$data['jumlah_tersurvey']);
+            $data['persen5'] = $this->persen($data['irisan5'],$data['jumlah_tersurvey']);
+            $data['persen6'] = $this->persen($data['wrongpos6'],$data['jumlah_tersurvey']);
 
             $this->load->view('design/header',$data);
             $this->load->view('report/hasil_cluster',$data);
@@ -67,7 +74,7 @@ class Report extends CI_Controller{
         
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            redirect('login');
         }
         else
         {   
@@ -85,8 +92,8 @@ class Report extends CI_Controller{
             $data['jumlah_tersurvey'] = $this->m_report->sudahSurveySO($idsiteoperation);
             $data['belum_survey'] = $data['jumlah_odp'] - $data['jumlah_tersurvey'];
 
-            $data['persen_survey'] = $data['jumlah_tersurvey']/$data['jumlah_odp'] *100;
-            $data['persen_error'] = $data['jumlah_error']/$data['jumlah_odp'] *100;
+            $data['persen_survey'] = $this->persen($data['jumlah_tersurvey'],$data['jumlah_odp']);
+            $data['persen_error'] = $this->persen($data['jumlah_error'],$data['jumlah_odp']);
 
             $data['persen_1'] = $this->persen($data['noerror1'],$data['jumlah_odp']);
             $data['persen_2'] = $this->persen($data['nolocation2'],$data['jumlah_odp']);
@@ -94,6 +101,13 @@ class Report extends CI_Controller{
             $data['persen_4'] = $this->persen($data['wronglabel4'],$data['jumlah_odp']);
             $data['persen_5'] = $this->persen($data['irisan5'],$data['jumlah_odp']);
             $data['persen_6'] = $this->persen($data['wrongpos6'],$data['jumlah_odp']);
+
+            $data['persen1'] = $this->persen($data['noerror1'],$data['jumlah_tersurvey']);
+            $data['persen2'] = $this->persen($data['nolocation2'],$data['jumlah_tersurvey']);
+            $data['persen3'] = $this->persen($data['nostarclick3'],$data['jumlah_tersurvey']);
+            $data['persen4'] = $this->persen($data['wronglabel4'],$data['jumlah_tersurvey']);
+            $data['persen5'] = $this->persen($data['irisan5'],$data['jumlah_tersurvey']);
+            $data['persen6'] = $this->persen($data['wrongpos6'],$data['jumlah_tersurvey']);
                     
             $this->load->view('design/header',$data);
             $this->load->view('report/hasil_wilayah',$data);
@@ -112,7 +126,7 @@ class Report extends CI_Controller{
         
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            redirect('login');
         }
         else
         {   
@@ -132,15 +146,22 @@ class Report extends CI_Controller{
             $data['jumlah_tersurvey'] = $this->m_report->sudahSurveyArea($areaidnya);
             $data['belum_survey'] = $data['jumlah_odp'] - $data['jumlah_tersurvey'];
             
-            $data['persen_survey'] = $data['jumlah_tersurvey']/$data['jumlah_odp'] *100;
-            $data['persen_error'] = $data['jumlah_error']/$data['jumlah_odp'] *100;
-
+            $data['persen_survey'] = $this->persen($data['jumlah_tersurvey'],$data['jumlah_odp']);
+            $data['persen_error'] = $this->persen($data['jumlah_error'],$data['jumlah_odp']);
+            
             $data['persen_1'] = $this->persen($data['noerror1'],$data['jumlah_odp']);
             $data['persen_2'] = $this->persen($data['nolocation2'],$data['jumlah_odp']);
             $data['persen_3'] = $this->persen($data['nostarclick3'],$data['jumlah_odp']);
             $data['persen_4'] = $this->persen($data['wronglabel4'],$data['jumlah_odp']);
             $data['persen_5'] = $this->persen($data['irisan5'],$data['jumlah_odp']);
             $data['persen_6'] = $this->persen($data['wrongpos6'],$data['jumlah_odp']);
+
+            $data['persen1'] = $this->persen($data['noerror1'],$data['jumlah_tersurvey']);
+            $data['persen2'] = $this->persen($data['nolocation2'],$data['jumlah_tersurvey']);
+            $data['persen3'] = $this->persen($data['nostarclick3'],$data['jumlah_tersurvey']);
+            $data['persen4'] = $this->persen($data['wronglabel4'],$data['jumlah_tersurvey']);
+            $data['persen5'] = $this->persen($data['irisan5'],$data['jumlah_tersurvey']);
+            $data['persen6'] = $this->persen($data['wrongpos6'],$data['jumlah_tersurvey']);
 
             $this->load->view('design/header',$data);
             $this->load->view('report/hasil_area',$data);
@@ -151,8 +172,15 @@ class Report extends CI_Controller{
 
     public function persen($a,$b)
     {
-        $c = $a/$b*100;
-        $d = number_format($c,2);
+        if($b>0)
+        {
+            $c = $a/$b*100;
+            $d = number_format($c,2);    
+        }
+        else
+        {
+            $d=0;
+        }
         return $d;
     }
 
@@ -164,7 +192,7 @@ class Report extends CI_Controller{
         
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            redirect('login');
         }
         else
         {   
@@ -181,8 +209,8 @@ class Report extends CI_Controller{
             $data['jumlah_tersurvey'] = $this->m_report->sudahSurveyWitel();
             $data['belum_survey'] = $data['jumlah_odp'] - $data['jumlah_tersurvey'];
 
-            $data['persen_survey'] = $data['jumlah_tersurvey']/$data['jumlah_odp'] *100;
-            $data['persen_error'] = $data['jumlah_error']/$data['jumlah_odp'] *100;
+            $data['persen_survey'] = $this->persen($data['jumlah_tersurvey'],$data['jumlah_odp']);
+            $data['persen_error'] = $this->persen($data['jumlah_error'],$data['jumlah_odp']);
 
             $data['persen_1'] = $this->persen($data['noerror1'],$data['jumlah_odp']);
             $data['persen_2'] = $this->persen($data['nolocation2'],$data['jumlah_odp']);
@@ -191,6 +219,12 @@ class Report extends CI_Controller{
             $data['persen_5'] = $this->persen($data['irisan5'],$data['jumlah_odp']);
             $data['persen_6'] = $this->persen($data['wrongpos6'],$data['jumlah_odp']);
 
+            $data['persen1'] = $this->persen($data['noerror1'],$data['jumlah_tersurvey']);
+            $data['persen2'] = $this->persen($data['nolocation2'],$data['jumlah_tersurvey']);
+            $data['persen3'] = $this->persen($data['nostarclick3'],$data['jumlah_tersurvey']);
+            $data['persen4'] = $this->persen($data['wronglabel4'],$data['jumlah_tersurvey']);
+            $data['persen5'] = $this->persen($data['irisan5'],$data['jumlah_tersurvey']);
+            $data['persen6'] = $this->persen($data['wrongpos6'],$data['jumlah_tersurvey']);
                     
             $this->load->view('design/header',$data);
             $this->load->view('report/report_witel',$data);
@@ -206,7 +240,7 @@ class Report extends CI_Controller{
         
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            redirect('login');
         }else
         {   
             $data['pengguna'] = $this->m_login->dataPengguna($user);
@@ -227,7 +261,7 @@ class Report extends CI_Controller{
         
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            redirect('login');
         }else
         {   
             $data['pengguna'] = $this->m_login->dataPengguna($user);
@@ -247,7 +281,7 @@ class Report extends CI_Controller{
         
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            redirect('login');
         }else
         {   
             $data['pengguna'] = $this->m_login->dataPengguna($user);

@@ -36,42 +36,42 @@
                       //value: 300,
                       color: "#46BFBD",
                       highlight: "#5AD3D1",
-                      label: "No Error"
+                      label: "No Error:<?php echo $persen1?>%"
                       },
                       {
                       value: <?php echo $nolocation2;?>,
                       //value: 50,
                       color:"#F7464A",
                       highlight: "#FF5A5E",
-                      label: "Tidak di Lokasi"
+                      label: "Tidak di Lokasi:<?php echo $persen1?>%"
                       },
                       {
                       value: <?php echo $nostarclick3;?>,
                       //value: 60,
                       color: "#FDB45C",
                       highlight: "#FFC870",
-                      label: "Tidak Ada di Starclick"
+                      label: "Tidak Ada di Starclick:<?php echo $persen1?>%"
                       },
                       {
                       //value: 89,
                       value: <?php echo $wronglabel4;?>,
                       color: "#949FB1",
                       highlight: "#A8B3C5",
-                      label: "Wrong Label"
+                      label: "Wrong Label:<?php echo $persen1?>%"
                       },
                       {
                       value: <?php echo $irisan5;?>,
                       //value: 56,
                       color: "#4D5360",
                       highlight: "#616774",
-                      label: "ID & Kluster Beda, Tapi Koordinat Sama"
+                      label: "ID & Kluster Beda, Tapi Koordinat Sama:<?php echo $persen1?>%"
                       },
                       {
                       value: <?php echo $wrongpos6;?>,
                       //value: 49,
                       color:"#CC0066",
                       highlight: "#D63385",
-                      label: "Salah Posisi"
+                      label: "Salah Posisi:<?php echo $persen1?>%"
                       }
                     ];
 

@@ -78,6 +78,7 @@ class M_report extends CI_Model
 								        	kluster.id_so = '$soid' 
 								        and
 								        	daftar.id_error = '$erroraid'");
+
         return $query->num_rows();
     }
 
@@ -112,7 +113,7 @@ class M_report extends CI_Model
 
 		if ($query->num_rows() > 0)
 		{
-            foreach ($query->result() as $row) 
+            foreach ($query->result() as $row)
             {
                 $data[] = $row;
             }
