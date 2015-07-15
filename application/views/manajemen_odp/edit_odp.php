@@ -40,11 +40,19 @@
                       <label>Kluster</label>
                       <div class="input-group">
                         <select class="form-control" name='ID_KLUSTER'>
+
                           <?php
-                          foreach ($nama_kluster as $row) {
-                            echo '<option value="'.$row->id_kluster.'" selected>'.$row->nama_kluster. '</option>';
-                          }
-                          ?>
+                            
+                            foreach ($nama_kluster as $row) {
+                              if ($namakluster == $row->nama_kluster){
+                                echo '<option value="' . $row->id_kluster . '" selected >' .$row->nama_kluster.'</option>';
+                              }
+                              else{
+                                echo '<option value="' . $row->nama_kluster . '">' .$row->nama_kluster.'</option>';
+                              }
+                              
+                            }
+                            ?>
                         </select>
                       </div><!-- /.input group -->
                     </div><!-- /.form group -->
@@ -54,10 +62,15 @@
                       <label>Site Operation</label>
                       <div class="input-group">
                         <select class="form-control" name='ID_SO'>
-                          <?php
-                          foreach ($nama_so as $row) {
-                            echo '<option value="'.$row->id_so.'" selected>'.$row->nama_so. '</option>';
-                          }
+                          <?php                            
+                            foreach ($nama_so as $row) {
+                              if ($namaso == $row->nama_so){
+                                echo '<option value="' . $row->id_so . '" selected >' .$row->nama_so.'</option>';
+                              }
+                              else{
+                                echo '<option value="' . $row->id_so . '">' .$row->nama_so.'</option>';
+                              }                              
+                            }                         
                           ?>
                         </select>
                       </div><!-- /.input group --> 

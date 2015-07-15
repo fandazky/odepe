@@ -53,14 +53,14 @@
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
                         
-                        
+      
+
                         <div class="form-group">
 	                      <label>Valid Tag</label>
 	                      <div class="input-group">
-	                        <div class="input-group-addon">
-	                          <i class="fa fa-"></i>
-	                        </div>
-	                        <input name="valid_tag" id="valid_tag" type="text" class="form-control" value="<?php echo $valid ?>">
+							    <input type="radio" name="valid_tag" value="Ya"  />Ya
+							    <input type="radio" name="valid_tag" value="Tidak"  />Tidak
+						
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
@@ -87,10 +87,7 @@
 	                    <div class="form-group">
 	                      <label>Label</label>
 	                      <div class="input-group">
-	                        <div class="input-group-addon">
-	                          <i class="fa fa-"></i>
-	                        </div>
-	                        <input name="label" id="label" type="text" class="form-control" value="<?php echo $label ?>">
+							    <input type="checkbox" name="label" value="1"  />Label                   
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
@@ -101,12 +98,17 @@
 	                          <i class="fa fa-"></i>
 	                        </div>
 							<select name="error" class="form-control">
-								<?php
-								foreach ($error as $row)
-								{
-								  echo '<option value="'.$row->id_error.'">'.$row->nama_error.'</option>';
-								}
-								?>
+								<?php                            
+                            	foreach ($error as $row) {
+                              		if ($namaerror == $row->error){
+                               		echo '<option value="' . $row->id_error . '" selected >' .$row->nama_error. $row->id_error .'</option>';
+                              		}
+                              		else{
+                                	echo '<option value="' . $row->id_error . '">' .$row->nama_error.'</option>';
+                              	}                              
+                            	}                         
+                          		?>
+								
 							</select>
 						  </div>
 	                    </div>
@@ -135,20 +137,15 @@
 
 	                    <div class="form-group">
 	                      <label>Perumahan < 500 JT</label>
-	                      <div class="input-group">
-	                        <div class="input-group-addon">
-	                          <i class="fa fa-"></i>
-	                        </div>
-	                        <input name="kurang" id="kurang" type="text" class="form-control" value="<?php echo $kurang ?>">
+	                      <div class="input-group">	                      	
+							    <input type="checkbox" name="kurang" value="1" class="flat-red"  />
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
 	                    <div class="form-group">
 	                      <label>Perumahan Antara 500JT - 1M</label>
-	                      <div class="input-group">
-	                        <div class="input-group-addon">
-	                          <i class="fa fa-"></i>
-	                        </div>
+	                      <div class="input-group">                      	
+							    <input type="checkbox" name="kurang" value="1"  />
 	                        <input name="antara_500jt_sd_1m" id="antara_500jt_sd_1m" type="text" class="form-control" value="<?php echo $antara ?>">
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
@@ -220,12 +217,16 @@
 	                          <i class="fa fa-"></i>
 	                        </div>
 							<select name="kompetitor" class="form-control">
-								<?php
-								foreach ($kompetitor as $row)
-								{
-								  echo '<option value="'.$row->id_kompetitor.'">'.$row->nama_kompetitor.'</option>';
-								}
-								?>
+								<?php                            
+                            	foreach ($kompetitor as $row) {
+                              		if ($km == $row->kompetitor){
+                               		echo '<option value="' . $row->id_kompetitor . '" selected >' .$row->nama_kompetitor.'</option>';
+                              		}
+                              		else{
+                                	echo '<option value="' . $row->id_kompetitor . '">' .$row->nama_kompetitor.'</option>';
+                              	}                              
+                            	}                         
+                          		?>
 							</select>
 						  </div>
 	                    </div>

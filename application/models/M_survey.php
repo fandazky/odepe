@@ -116,17 +116,44 @@ class M_survey extends CI_Model
 		return TRUE;
  	}
 
-    public function getDaftarData($id_daftar)
+
+
+    public function getDaftarData($id)
     {
-        return $this->db->get_where('daftar', array('id_daftar'=>$id_daftar))->row();
+        $query = $this->db->get_where('daftar', array('id_daftar'=>$id));
+        if ($query->num_rows() > 0) 
+        {
+            return $query->result_array();
+        }
+        else 
+        {
+            return FALSE;
+        }
     }
+    
 
     //public function updateDaftar($id_daftar, $dataSurvey)
     public function updateDaftar($id, $dataSurvey)
     {
      
          $data = array(
-            'ID_KOMPETITOR' => $dataSurvey['ID_KOMPETITOR']
+            'VALID_TAG'          => $dataSurvey['VALID_TAG'],
+            'LATITUDE'           => $dataSurvey['LATITUDE'],
+            'LONGITUDE'          => $dataSurvey['LONGITUDE'],
+            'LABEL'              => $dataSurvey['LABEL'],
+            'AVAILABILITY'       => $dataSurvey['AVAILABILITY'],
+            'BANGUNAN'           => $dataSurvey['BANGUNAN'],
+            'KURANG_DARI_500JT'  => $dataSurvey['KURANG_DARI_500JT'],
+            'ANTARA_500JT_SD_1M' => $dataSurvey['ANTARA_500JT_SD_1M'],
+            'LEBIH_DARI_1M'      => $dataSurvey['LEBIH_DARI_1M'],
+            'PERKAMPUNGAN'       => $dataSurvey['PERKAMPUNGAN'],
+            'RUKO'               => $dataSurvey['RUKO'],
+            'KANTOR_KECIL'       => $dataSurvey['KANTOR_KECIL'],
+            'KANTOR_BESAR'       => $dataSurvey['KANTOR_BESAR'],
+            'PERGURUAN_TINGGI'   => $dataSurvey['PERGURUAN_TINGGI'],
+            'KETERANGAN' => $dataSurvey['KETERANGAN'],
+            'ID_KOMPETITOR' => $dataSurvey['ID_KOMPETITOR'],
+            'ID_ERROR' => $dataSurvey['ID_ERROR']
             );
 
         $this->db->where('ID_DAFTAR', $id);

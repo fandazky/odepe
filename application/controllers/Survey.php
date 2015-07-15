@@ -142,6 +142,10 @@ class Survey extends CI_Controller {
             
             $data['level'] = $this->session->userdata('level');        
             $data['pengguna'] = $this->m_login->dataPengguna($user);
+
+            $data['result'] = $this->m_survey->getDaftarData($id);
+           // $data['tampil'] = $this->m_survey->getDaftarData($id);
+
             $data['error'] = $this->m_survey->getError();
             $data['kompetitor']=$this->m_survey->getKompetitor(); 
             $data['ID_DAFTAR'] = $id;
