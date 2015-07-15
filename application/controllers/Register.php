@@ -37,7 +37,9 @@ class Register extends CI_Controller
   
     public function register_form()
     {
-        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
+        $this->load->helper('security');
+
+        $this->form_validation->set_rules('username', 'Username', 'required|alpha_numeric|is_unique[users.username]');
         $this->form_validation->set_rules('nik', 'NIK', 'required|numeric');
         $this->form_validation->set_rules('passwd', 'Password', 'required|min_length[8]');
         $this->form_validation->set_rules('namadepan', 'Nama Depan', 'required');
@@ -46,6 +48,7 @@ class Register extends CI_Controller
         //$this->form_validation->set_rules('area', 'Area', 'required');
 
         $this->form_validation->set_message('required', '%s wajib diisi');
+        $this->form_validation->set_message('alpha_numeric', '%s hanya boleh menggunakan karakter alpha numeric');
         $this->form_validation->set_message('is_unique', '%s sudah terdaftar');
         $this->form_validation->set_message('min_length', '%s minimal 8 digit');
         $this->form_validation->set_message('numeric', '%s harus terdiri dari angka');
@@ -94,7 +97,7 @@ class Register extends CI_Controller
         
         $data = array(
                 'username' => $user_request->username,
-                'NIK' => $user_request->NIK,
+                'nik' => $user_request->nik,
                 'password' => $user_request->password,
                 'first_name' => $user_request->first_name,
                 'last_name' => $user_request->last_name,
@@ -104,9 +107,10 @@ class Register extends CI_Controller
                 'id_area' => $user_request->id_area
             ); 
 
-        $this->db->insert('user', $data);
+        $this->db->insert('users', $data);
         $this->m_manajemenuser->deleteRegistrationRequest($username);
         redirect('manajemen_user/lihat_request');
+        // echo $user_request->nik;
 
     }
 
