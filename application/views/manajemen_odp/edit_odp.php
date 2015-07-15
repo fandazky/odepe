@@ -44,14 +44,8 @@
                           <?php
                             
                             foreach ($nama_kluster as $row) {
-                              if ($namakluster == $row->nama_kluster){
                                 echo '<option value="' . $row->id_kluster . '" selected >' .$row->nama_kluster.'</option>';
                               }
-                              else{
-                                echo '<option value="' . $row->nama_kluster . '">' .$row->nama_kluster.'</option>';
-                              }
-                              
-                            }
                             ?>
                         </select>
                       </div><!-- /.input group -->

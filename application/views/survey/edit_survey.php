@@ -58,8 +58,8 @@
                         <div class="form-group">
 	                      <label>Valid Tag</label>
 	                      <div class="input-group">
-							    <input type="radio" name="valid_tag" value="Ya"  />Ya
-							    <input type="radio" name="valid_tag" value="Tidak"  />Tidak
+							    <input type="radio" name="valid_tag" value="Ya" class="flat-red" />Ya
+							    <input type="radio" name="valid_tag" value="Tidak" class="flat-red" />Tidak
 						
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
@@ -87,7 +87,7 @@
 	                    <div class="form-group">
 	                      <label>Label</label>
 	                      <div class="input-group">
-							    <input type="checkbox" name="label" value="1"  />Label                   
+							    <input type="checkbox" name="label" value="1" class="flat-red"/>                
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
@@ -138,75 +138,62 @@
 	                    <div class="form-group">
 	                      <label>Perumahan < 500 JT</label>
 	                      <div class="input-group">	                      	
-							    <input type="checkbox" name="kurang" value="1" class="flat-red"  />
+							    <input type="checkbox" name="kurang_dari_500jt" value="1" class="flat-red"  />
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
 	                    <div class="form-group">
 	                      <label>Perumahan Antara 500JT - 1M</label>
-	                      <div class="input-group">                      	
-							    <input type="checkbox" name="kurang" value="1"  />
-	                        <input name="antara_500jt_sd_1m" id="antara_500jt_sd_1m" type="text" class="form-control" value="<?php echo $antara ?>">
+	                      <div class="input-group"> 
+	                      	<input type="checkbox" name="antara_500jt_sd_1m" value="1" class="flat-red"  />
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
 	                    <div class="form-group">
 	                      <label>Perumahan Lebih dari 1M</label>
 	                      <div class="input-group">
-	                        <div class="input-group-addon">
-	                          <i class="fa fa-"></i>
-	                        </div>
-	                        <input name="lebih_dari_1m" id="lebih_dari_" type="text" class="form-control" value="<?php echo $lebih ?>">
+	                      	<input type="checkbox" name="lebih_dari_1m" value="1" class="flat-red"  />
+
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
 	                    <div class="form-group">
 	                      <label>Perkampungan</label>
 	                      <div class="input-group">
-	                        <div class="input-group-addon">
-	                          <i class="fa fa-"></i>
-	                        </div>
-	                        <input name="perkampungan" id="perkampungan" type="text" class="form-control" value="<?php echo $kampung ?>">
+	                      	<input type="checkbox" name="perkampungan" value="1" class="flat-red"  />
+
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
 	                    <div class="form-group">
 	                      <label>Ruko</label>
 	                      <div class="input-group">
-	                        <div class="input-group-addon">
-	                          <i class="fa fa-"></i>
-	                        </div>
-	                        <input name="ruko" id="ruko" type="text" class="form-control" value="<?php echo $ruko ?>">
+	                      	<input type="checkbox" name="ruko" value="1" class="flat-red"  />
+
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
 	                    <div class="form-group">
 	                      <label>Kantor Kecil</label>
 	                      <div class="input-group">
-	                        <div class="input-group-addon">
-	                          <i class="fa fa-"></i>
-	                        </div>
-	                        <input name="kantor_kecil" id="kantor_kecil" type="text" class="form-control" value="<?php echo $kecil ?>">
+	                      	<input type="checkbox" name="kantor_kecil" value="1" class="flat-red"  />
+
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
 	                    <div class="form-group">
 	                      <label>Kantor Besar</label>
 	                      <div class="input-group">
-	                        <div class="input-group-addon">
-	                          <i class="fa fa-"></i>
-	                        </div>
-	                        <input name="kantor_besar" id="kantor_besar" type="text" class="form-control" value="<?php echo $besar ?>">
+	                      	<input type="checkbox" name="kantor_besar" value="1" class="flat-red"  />
+
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
 	                    <div class="form-group">
 	                      <label>Perguruan Tinggi</label>
 	                      <div class="input-group">
-	                        <div class="input-group-addon">
-	                          <i class="fa fa-"></i>
-	                        </div>
-	                        <input name="perguruan_tinggi" id="perguruan_tinggi" type="text" class="form-control" value="<?php echo $pt ?>">
+	                      	<input type="checkbox" name="perguruan_tinggi" value="1" class="flat-red"  />
+
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
