@@ -43,6 +43,7 @@ class Report extends CI_Controller{
 
             $data['persen_survey'] = $this->persen($data['jumlah_tersurvey'],$data['jumlah_odp']);
             $data['persen_error'] = $this->persen($data['jumlah_error'],$data['jumlah_odp']);
+            $data['persen_belum'] = $this->persen($data['belum_survey'],$data['jumlah_odp']);
 
             $data['persen_1'] = $this->persen($data['noerror1'],$data['jumlah_odp']);
             $data['persen_2'] = $this->persen($data['nolocation2'],$data['jumlah_odp']);
@@ -94,6 +95,7 @@ class Report extends CI_Controller{
 
             $data['persen_survey'] = $this->persen($data['jumlah_tersurvey'],$data['jumlah_odp']);
             $data['persen_error'] = $this->persen($data['jumlah_error'],$data['jumlah_odp']);
+            $data['persen_belum'] = $this->persen($data['belum_survey'],$data['jumlah_odp']);
 
             $data['persen_1'] = $this->persen($data['noerror1'],$data['jumlah_odp']);
             $data['persen_2'] = $this->persen($data['nolocation2'],$data['jumlah_odp']);
@@ -148,6 +150,7 @@ class Report extends CI_Controller{
             
             $data['persen_survey'] = $this->persen($data['jumlah_tersurvey'],$data['jumlah_odp']);
             $data['persen_error'] = $this->persen($data['jumlah_error'],$data['jumlah_odp']);
+            $data['persen_belum'] = $this->persen($data['belum_survey'],$data['jumlah_odp']);
             
             $data['persen_1'] = $this->persen($data['noerror1'],$data['jumlah_odp']);
             $data['persen_2'] = $this->persen($data['nolocation2'],$data['jumlah_odp']);
@@ -211,6 +214,7 @@ class Report extends CI_Controller{
 
             $data['persen_survey'] = $this->persen($data['jumlah_tersurvey'],$data['jumlah_odp']);
             $data['persen_error'] = $this->persen($data['jumlah_error'],$data['jumlah_odp']);
+            $data['persen_belum'] = $this->persen($data['belum_survey'],$data['jumlah_odp']);
 
             $data['persen_1'] = $this->persen($data['noerror1'],$data['jumlah_odp']);
             $data['persen_2'] = $this->persen($data['nolocation2'],$data['jumlah_odp']);

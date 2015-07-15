@@ -26,7 +26,8 @@
                       
                       <label>Site Operation</label>
                       <div class="input-group">
-                        <select name="idnyaarea" class="selectpicker  form-control scrollable-menu" role="menu" data-live-search="true" data-size="3">
+                        <select name="idnyaarea" class="selectpicker  form-control scrollable-menu" role="menu" data-live-search="true" data-size="3" required>
+                        <option style="display:none" value="">Pilih Area</option>
                           <?php
                           foreach ($areaname as $row) 
                           {

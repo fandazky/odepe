@@ -16,6 +16,8 @@
                   Chart Area
                   <?php echo $namaarea->nama_area;?>
                   </h1>
+                  <br>
+                  <font size="2">*berdasarkan <?php echo $jumlah_tersurvey;?> ODP yang sudah tersurvey</font> 
                   <div class="box-tools pull-right">
                   <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                   <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -24,7 +26,7 @@
                 <div class="box-body">
 
                   <div style="width: 100% ">
-                    <center><canvas id="canvas" height="406%" width="406%"></canvas></center>
+                    <center><canvas id="canvas" height="424%" width="424%"></canvas></center>
                   </div>
                   <script>
                     
@@ -120,7 +122,7 @@
                 <div class="box box-default">
                 <div class="box-header with-border">
                   <h1 class="box-title">
-                  Legend
+                  Legend <font size="2">*berdasarkan <?php echo $jumlah_odp?> ODP keseluruhan</font>
                   </h1>
                   <div class="box-tools pull-right">
                   <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -163,6 +165,12 @@
                     <td>Salah Posisi > 5m</td>
                     <td><?php echo $wrongpos6;?></td>
                     <td><?php echo $persen_6;?>%</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>Belum tersurvey</td>
+                    <td><?php echo $belum_survey;?></td>
+                    <td><?php echo $persen_belum;?>%</td>
                   </tr>
                   </table>
                 </div>
