@@ -186,7 +186,7 @@ class Survey extends CI_Controller {
             'LATITUDE'           => $this->input->post('latitude'),
             'LONGITUDE'          => $this->input->post('longitude'),
             'LABEL'              => $this->input->post('label'),
-            //'ID_ERROR'           => $this->input->post('id_error'),
+            'ID_ERROR'           => $this->input->post('error'),
             'AVAILABILITY'       => $this->input->post('availability'),
             'BANGUNAN'           => $this->input->post('bangunan'),
             'KURANG_DARI_500JT'  => $this->input->post('kurang_dari_500jt'),
@@ -197,7 +197,7 @@ class Survey extends CI_Controller {
             'KANTOR_KECIL'       => $this->input->post('kantor_kecil'),
             'KANTOR_BESAR'       => $this->input->post('kantor_besar'),
             'PERGURUAN_TINGGI'   => $this->input->post('perguruan_tinggi'),
-            //'ID_KOMPETITOR'      => $this->input->post('id_kompetitor'),
+            'ID_KOMPETITOR'      => $this->input->post('kompetitor'),
             'KETERANGAN'         => $this->input->post('keterangan')
         );
 
@@ -219,50 +219,5 @@ class Survey extends CI_Controller {
                   echo '</script>';
             }
     }
-
-    // public function editSurvey()
-    // {
-    //     $tgl_survey = $this->input->post('tgl_survey');
-    //     //$ID_ODP = $this->input->post('id_odp');
-    //     $latitude = $this->input->post('latitude');
-    //     $longitude = $this->input->post('longitude');
-    //     $label = $this->input->post('label');
-    //     //$ID_ERROR = $this->input->post('id_error');
-    //     $availability = $this->input->post('availability');
-    //     $bangunan = $this->input->post('bangunan');
-    //     $kurang_dari_500jt = $this->input->post('kurang_dari_500jt');
-    //     $antara_500jt_sd_1m = $this->input->post('antara_500jt_sd_1m');
-    //     $lebih_dari_1m = $this->input->post('lebih_dari_1m');
-    //     $perkampungan = $this->input->post('perkampungan');
-    //     $ruko = $this->input->post('ruko');
-    //     $kantor_kecil = $this->input->post('kantor_kecil');
-    //     $kantor_besar = $this->input->post('kantor_besar');
-    //     $perguruan_tinggi = $this->input->post('perguruan_tinggi');
-    //     //$ID_KOMPETITOR = $this->input->post('id_kompetitor');
-    //     $keterangan = $this->input->post('keterangan');
-
-
-    //     $this->load->model('m_survey');
-
-    //     if($this->m_survey->updateDaftar(
-    //         $id,$tgl_survey,$latitude, $longitude, $label,$availability, $bangunan, 
-    //         $kurang_dari_500jt, $antara_500jt_sd_1m, $lebih_dari_1m,$perkampungan, $ruko, $kantor_kecil,
-    //         $kantor_besar, $perguruan_tinggi,  $keterangan))
-    //         {
-    //               echo '<script language="javascript">';
-    //               echo 'alert("Data berhasil dimasukkan");';
-    //               echo 'window.location.href = "' . site_url('survey/showSurvey') . '";';
-    //               //echo 'window.history.back();';
-    //               echo '</script>';
-    //         }
-    //         else
-    //         {
-    //               echo '<script language="javascript">';
-    //               echo 'alert("Gagal memasukkan data");';
-    //               echo 'window.history.back();';
-    //               echo '</script>';
-    //         }
-    // }
-
 
 }

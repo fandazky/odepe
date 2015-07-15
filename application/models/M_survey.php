@@ -125,9 +125,12 @@ class M_survey extends CI_Model
     public function updateDaftar($id, $dataSurvey)
     {
      
-     
+         $data = array(
+            'ID_KOMPETITOR' => $dataSurvey['ID_KOMPETITOR']
+            );
+
         $this->db->where('ID_DAFTAR', $id);
-        return $this->db->update('daftar', $dataSurvey);
+        return $this->db->update('daftar', $data);
 
     }
 
