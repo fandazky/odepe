@@ -27,7 +27,7 @@
                       <label>Kluster</label>
                       <div class="input-group">
                         <select name="id_kluster" class="selectpicker  form-control scrollable-menu" role="menu" data-live-search="true" data-size="3" required>
-                          <option value="">Pilih Cluster</option>
+                          <option style="display:none;" value="">Pilih Cluster</option>
                           <?php
                           foreach ($nama_kluster as $row) 
                           {

@@ -58,7 +58,7 @@
                          <select class="form-control" name='ID_SO'>
                           <?php
                           foreach ($nama_so as $row) {
-                            echo '<option value="'.$row->id_so.'">'.$row->nama_so. ' ' . $row->id_so .  '</option>';
+                            echo '<option value="'.$row->id_so.'">'.$row->nama_so. '</option>';
                           }
                           ?>
                         </select>

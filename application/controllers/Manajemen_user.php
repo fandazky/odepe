@@ -76,6 +76,7 @@ class Manajemen_user extends CI_Controller {
             $this->load->model('m_manajemenuser');
             $user = $this->session->userdata('username');
             $row = $this->m_login->getUSerData($username);
+            $data['level'] = $this->session->userdata('level');        
 
             $data['pengguna'] = $this->m_login->dataPengguna($user);
             if ($row) {
@@ -85,7 +86,7 @@ class Manajemen_user extends CI_Controller {
                 $data['alamat'] = $row->address;
 
                 $this->load->view('design/header', $data);
-                $this->load->view('access/update-profile', $data);
+                $this->load->view('access/edit-user', $data);
                 $this->load->view('design/footer', $data);
             }
         }     
@@ -103,5 +104,18 @@ class Manajemen_user extends CI_Controller {
             $this->m_manajemenuser->deleteActiveUser($username);
             redirect('manajemen_user');
         }
+    }
+
+    public function simpan_update()
+    {
+        $username = $this->input->post('username');
+        $data = array(
+            'first_name' => $this->input->post('namadepan'),
+            'last_name' => $this->input->post('namabelakang'),
+            'address' => $this->input->post('alamat')
+        );
+
+        $this->m_login->updateProfile($username, $data);
+        redirect('manajemen_user');
     }
 }

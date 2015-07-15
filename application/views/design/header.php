@@ -289,7 +289,7 @@
             <li class="treeview">
               <a href="#" data-toggle="modal" data-target="#myModal">
                 <i><img style="max-width:9%;" src="<?php echo base_url() ?>assets/dist/img/author.png"></i>
-                <span>&nbsp;Author</span>
+                <span>&nbsp;Developer</span>
                 <i class=" pull-right"></i>
               </a>
               
@@ -301,7 +301,7 @@
       </aside>
 
       <div class="content-wrapper">
-        <section class="content-header"> 
+        <section class="content-header">
           <h1>
             <b>Monitoring Optical Distribution Point</b>
           </h1>

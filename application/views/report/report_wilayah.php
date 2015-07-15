@@ -27,7 +27,7 @@
                       <label>Site Operation</label>
                       <div class="input-group">
                         <select name="id_so" class="selectpicker  form-control scrollable-menu" role="menu" data-live-search="true" data-size="3" required>
-                          <option value="">Pilih Site Operation</option>
+                          <option style="display:none;"value="">Pilih Site Operation</option>
                           <?php
                           foreach ($nama_setoperation as $row) 
                           {
