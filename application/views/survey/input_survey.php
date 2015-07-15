@@ -1,4 +1,4 @@
-          
+         
             <ol class="breadcrumb">
               <li><a href="<?php echo base_url() ?>access"><i class="fa fa-home"></i> Home</a></li>
               <li><a href="#">Survey ODP</a></li>
@@ -20,16 +20,17 @@
                     Form Hasil Survey
                   </h1>
                   <br><br>
+                  <p><span style="color:red;"><b>*Wajib diisi</b></span></p>
                   <form action="<?php echo site_url('Survey/insertSurvey'); ?>" method="post" role="form">
                     <div class="form-group">
                         
                       <div class="form-group">
-                        <label>Tanggal Survey</label>
+                        <label>Tanggal Survey<span style="color:red;"><b>*</b></span></label>
                         <div class="input-group col-lg-2">
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
-                          <input name="tgl_survey" type="date" class="form-control" placeholder="yyyy-mm-dd"/>
+                          <input name="tgl_survey" type="date" class="form-control" placeholder="yyyy-mm-dd" required/>
                         </div><!-- /.input group --> 
                       </div><!-- /.form group -->
 
@@ -54,15 +55,15 @@
                       <thead>
                         <tr>
                           <th rowspan="2" style="vertical-align: middle;">Optical_Distribution_Point</th>
-                          <th rowspan="2" style="vertical-align: middle;">Valid_Taging</th>
+                          <th rowspan="2" style="vertical-align: middle;">Valid_Taging<span style="color:red;"><b>*</b></span></th>
                           <th rowspan="2" style="vertical-align: middle;">Latitude</th>
                           <th rowspan="2" style="vertical-align: middle;">Longitude</th>
-                          <th rowspan="2" style="vertical-align: middle;">Label_ODP</th>
-                          <th rowspan="2" style="vertical-align: middle;">Kesalahan</th>
-                          <th rowspan="2" style="vertical-align: middle;">Availability</th>
-                          <th rowspan="2" style="vertical-align: middle;">Bangunan Berpenghuni</th>
+                          <th rowspan="2" style="vertical-align: middle;">Label_ODP<span style="color:red;"><b>*</b></span></th>
+                          <th rowspan="2" style="vertical-align: middle;">Kesalahan<span style="color:red;"><b>*</b></span></th>
+                          <th rowspan="2" style="vertical-align: middle;">Availability<span style="color:red;"><b>*</b></span></th>
+                          <th rowspan="2" style="vertical-align: middle;">Bangunan Berpenghuni<span style="color:red;"><b>*</b></span></th>
                           <th colspan="8" style="text-align: center;">Segmen</th>
-                          <th rowspan="2" style="vertical-align: middle;">Kompetitor</th>
+                          <th rowspan="2" style="vertical-align: middle;">Kompetitor<span style="color:red;"><b>*</b></span></th>
                           <th rowspan="2" style="vertical-align: middle;">Keterangan_Tambahan</th>
                         </tr>
                         <tr>
@@ -82,13 +83,13 @@
                       <tfoot>
                         <tr>
                           <th rowspan="2" style="vertical-align: middle;">Optical_Distribution_Point</th>
-                          <th rowspan="2" style="vertical-align: middle;">Valid_Taging</th>
+                          <th rowspan="2" style="vertical-align: middle;">Valid_Taging<span style="color:red;"><b>*</b></span></th>
                           <th rowspan="2" style="vertical-align: middle;">Latitude</th>
                           <th rowspan="2" style="vertical-align: middle;">Longitude</th>
-                          <th rowspan="2" style="vertical-align: middle;">Label_ODP</th>
-                          <th rowspan="2" style="vertical-align: middle;">Kesalahan</th>
-                          <th rowspan="2" style="vertical-align: middle;">Availability</th>
-                          <th rowspan="2" style="vertical-align: middle;">Bangunan Berpenghuni</th>
+                          <th rowspan="2" style="vertical-align: middle;">Label_ODP<span style="color:red;"><b>*</b></span></th>
+                          <th rowspan="2" style="vertical-align: middle;">Kesalahan<span style="color:red;"><b>*</b></span></th>
+                          <th rowspan="2" style="vertical-align: middle;">Availability<span style="color:red;"><b>*</b></span></th>
+                          <th rowspan="2" style="vertical-align: middle;">Bangunan Berpenghuni<span style="color:red;"><b>*</b></span></th>
                           <th><_500JT</th>
                           <th>500JT_sd_1M</th>
                           <th>>_1M</th>
@@ -97,7 +98,7 @@
                           <th>Kantor_Kecil</th>
                           <th>Kantor_Besar</th>
                           <th>PT</th>
-                          <th rowspan="2" style="vertical-align: middle;">Kompetitor</th>
+                          <th rowspan="2" style="vertical-align: middle;">Kompetitor<span style="color:red;"><b>*</b></span></th>
                           <th rowspan="2" style="vertical-align: middle;">Keterangan_Tambahan</th>
                         </tr>
                         <tr>
@@ -175,16 +176,16 @@
                               append += "<select class='form-control' name='id_error[]-"+i+"'>";
                               for(var j=0; j<data.error.length; j++)
                               {
-                              append += "<option id='id_error' value='"+data.error[j].id_error+"'>"+data.error[j].nama_error+"</option>";
+                              append += "<option id='id_error' value='"+data.error[j].id_error+"'>"+data.error[j].nama_error+" </option>";
                               
                               }
                               append += "</select>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='text' id='availability-"+i+"'  name='availability[]-"+i+"' class='form-control'>";
+                              append += "<input type='text' id='availability-"+i+"'  name='availability[]-"+i+"' class='form-control' required>";
                               append += "</td>";
                               append += "<td>";
-                              append += "<input type='text' id='bangunan-"+i+"'  name='bangunan[]-"+i+"' class='form-control'>";
+                              append += "<input type='text' id='bangunan-"+i+"'  name='bangunan[]-"+i+"' class='form-control' required>";
                               append += "</td>";
                               append += "<td>";
                               append += "<input type='checkbox' id='kurang_dari_500jt-"+i+"' name='kurang_dari_500jt[]-"+i+"' class='flat-red' value='1'/>";

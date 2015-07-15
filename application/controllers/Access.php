@@ -19,7 +19,7 @@ class Access extends CI_Controller {
         $user = $this->session->userdata('username');
         if($session == FALSE)
         {
-            $this->load->view('access/login-form');
+            redirect('login');
         }else
         {
             $this->load->model('M_login');

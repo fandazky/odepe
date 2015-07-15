@@ -141,7 +141,7 @@
 		                <div class="icon">
 		                  <i class="fa fa-archive"></i>
 		                </div>
-		                <a href="<?php echo base_url() ?>jenis_komplain" class="small-box-footer">
+		                <a href="<?php echo base_url() ?>Manajemen_odp/manajemenOdp" class="small-box-footer">
 		                  Selengkapnya <i class="fa fa-arrow-circle-right"></i>
 		                </a>
 		              </div>
