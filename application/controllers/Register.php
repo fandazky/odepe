@@ -79,11 +79,11 @@ class Register extends CI_Controller
                 'last_name' => $lastname,
                 'address' => $address,
                 'level' => $level,
-                'status' => '1',
+                'aktif' => '0',
                 'id_area' => $area
             );
 
-            $this->db->insert('registration_request',$data);
+            $this->db->insert('users',$data);
             // redirect('login');
             $pesan['success']= '<div class="alert alert-success" role="alert">Data berhasil diregistrasi, tunggu konfirmasi admin</div>';
             $this->load->view('access/register-form', $pesan);
@@ -93,24 +93,38 @@ class Register extends CI_Controller
 
     public function accept_request($username)
     {
-        $user_request = $this->m_manajemenuser->getOneRegistrationRequest($username);
+        // $user_request = $this->m_manajemenuser->getOneRegistrationRequest($username);
         
-        $data = array(
-                'username' => $user_request->username,
-                'nik' => $user_request->nik,
-                'password' => $user_request->password,
-                'first_name' => $user_request->first_name,
-                'last_name' => $user_request->last_name,
-                'address' => $user_request->address,
-                'level' => '2',
-                'status' => '1',
-                'id_area' => $user_request->id_area
-            ); 
+        // $data = array(
+        //         'username' => $user_request->username,
+        //         'nik' => $user_request->nik,
+        //         'password' => $user_request->password,
+        //         'first_name' => $user_request->first_name,
+        //         'last_name' => $user_request->last_name,
+        //         'address' => $user_request->address,
+        //         'level' => '2',
+        //         'status' => '1',
+        //         'id_area' => $user_request->id_area
+        //     ); 
 
-        $this->db->insert('users', $data);
-        $this->m_manajemenuser->deleteRegistrationRequest($username);
-        redirect('manajemen_user/lihat_request');
-        // echo $user_request->nik;
+        // $this->db->insert('users', $data);
+        // $this->m_manajemenuser->deleteRegistrationRequest($username);
+        // redirect('manajemen_user/lihat_request');
+
+        if($this->session->userdata('isLogin') == FALSE)
+        {
+            redirect('login');
+        }
+        else
+        {
+            $data = array(
+                'aktif' => '1'
+            );
+
+            $this->db->where('username', $username);
+            $this->db->update('users', $data);
+        }
+        
 
     }
 

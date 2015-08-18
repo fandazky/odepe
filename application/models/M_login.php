@@ -8,13 +8,13 @@ class M_login extends CI_Model
     }
   
   
-    public function ambilPengguna($username, $password, $status, $level)
+    public function ambilPengguna($username, $password, $aktif, $level)
     {
         $this->db->select('*');
         $this->db->from('users');
         $this->db->where('username', $username);
         $this->db->where('password', $password);
-        $this->db->where('status', $status);
+        $this->db->where('aktif', $aktif);
         $this->db->where('level', $level);
         $query = $this->db->get();
         //echo $query;
