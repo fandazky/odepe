@@ -119,47 +119,48 @@
             <div class="col-sm-6">
                 <div class="box box-default">
                 <div class="box-header with-border">
-                  <span class="box-title">
+                  <h1 class="box-title">
                   Legend <font size="2">*berdasarkan <?php echo $jumlah_odp?> ODP keseluruhan</font>
-                  </span>
+                  </h1>
                   <div class="box-tools pull-right">
                   <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
                 </div><!-- /.box-header -->
                   <table class="table table-hover">
                   <tr>
                     <td bgcolor="#46BFBD" ></td>
-                    <td>Valid No Errror</td>
+                    <td><a data-toggle="modal" href="#modal1">Valid No Errror</a></td> 
                     <td><?php echo $noerror1;?></td>
                     <td><?php echo $persen_1;?>%</td>
                   </tr>
                   <tr>
                     <td bgcolor="#F7464A"></td>
-                    <td>Tidak Ditemukan di Lokasi</td>
+                    <td><a data-toggle="modal" href="#modal2">Tidak Ditemukan di Lokasi</a></td>
                     <td><?php echo $nolocation2;?></td>
                     <td><?php echo $persen_2;?>%</td>
                   </tr>
                   <tr>
                     <td bgcolor="#FDB45C"></td>
-                    <td>Tidak Tercatat di StarClick</td>
+                    <td><a data-toggle="modal" href="#modal3">Tidak Tercatat di StarClick</a></td>
                     <td><?php echo $nostarclick3;?></td>
                     <td><?php echo $persen_3;?>%</td>
                   </tr>
                   <tr>
                     <td bgcolor="949FB1"></td>
-                    <td>Salah Pelabelan</td>
+                    <td><a data-toggle="modal" href="#modal4">Salah Pelabelan</a></td>
                     <td><?php echo $wronglabel4;?></td>
                     <td><?php echo $persen_4;?>%</td>
                   </tr>
                   <tr>
                     <td bgcolor="#4D5360"></td>
-                    <td>ID dan Kluster beda, tetapi koordinat sama</td>
+                    <td><a data-toggle="modal" href="#modal5">ID dan Kluster beda, tetapi koordinat sama</a></td>
                     <td><?php echo $irisan5;?></td>
                     <td><?php echo $persen_5;?>%</td>
                   </tr>
                   <tr>
                     <td bgcolor="#CC0066"></td>
-                    <td>Salah Posisi > 5m</td>
+                    <td><a data-toggle="modal" href="#modal6">Salah Posisi > 5m</a></td>
                     <td><?php echo $wrongpos6;?></td>
                     <td><?php echo $persen_6;?>%</td>
                   </tr>
@@ -172,6 +173,342 @@
                   </table>
                 </div>
               </div>
-    			</div>
+          </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
+
+      <div class="modal fade" id="modal1" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Valid No Errror</h4>
+            </div>
+            <div class="modal-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $count=1;
+                    if($list1 != NULL)
+                    {
+                      foreach($list1 as $row)
+                    {
+                  ?>
+                  <tr>
+                    <td><?php echo $count; ?></td>
+                    <td><?php echo $row->NAMA_ODP; ?></td>
+                    <td><?php echo $row->LATITUDE; ?></td>
+                    <td><?php echo $row->LONGITUDE; ?></td>
+                    <td><?php echo $row->AVAILABILITY; ?></td>
+                    <td><?php echo $row->BANGUNAN; ?></td>
+                    
+                  <?php $count = $count + 1; } }?>
+                </tbody>
+                <tfoot style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modal2" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Tidak Ditemukan di Lokasi</h4>
+            </div>
+            <div class="modal-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $count=1;
+                    if($list2 != NULL)
+                    {
+                      foreach($list2 as $row)
+                    {
+                  ?>
+                  <tr>
+                    <td><?php echo $count; ?></td>
+                    <td><?php echo $row->NAMA_ODP; ?></td>
+                    <td><?php echo $row->LATITUDE; ?></td>
+                    <td><?php echo $row->LONGITUDE; ?></td>
+                    <td><?php echo $row->AVAILABILITY; ?></td>
+                    <td><?php echo $row->BANGUNAN; ?></td>
+                    
+                  <?php $count = $count + 1; } }?>
+                </tbody>
+                <tfoot style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modal3" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Tidak Tercatat di StarClick</h4>
+            </div>
+            <div class="modal-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $count=1;
+                    if($list3 != NULL)
+                    {
+                      foreach($list3 as $row)
+                    {
+                  ?>
+                  <tr>
+                    <td><?php echo $count; ?></td>
+                    <td><?php echo $row->NAMA_ODP; ?></td>
+                    <td><?php echo $row->LATITUDE; ?></td>
+                    <td><?php echo $row->LONGITUDE; ?></td>
+                    <td><?php echo $row->AVAILABILITY; ?></td>
+                    <td><?php echo $row->BANGUNAN; ?></td>
+                    
+                  <?php $count = $count + 1; } }?>
+                </tbody>
+                <tfoot style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modal4" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Salah Pelabelan</h4>
+            </div>
+            <div class="modal-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $count=1;
+                    if($list4 != NULL)
+                    {
+                      foreach($list4 as $row)
+                    {
+                  ?>
+                  <tr>
+                    <td><?php echo $count; ?></td>
+                    <td><?php echo $row->NAMA_ODP; ?></td>
+                    <td><?php echo $row->LATITUDE; ?></td>
+                    <td><?php echo $row->LONGITUDE; ?></td>
+                    <td><?php echo $row->AVAILABILITY; ?></td>
+                    <td><?php echo $row->BANGUNAN; ?></td>
+                    
+                  <?php $count = $count + 1; } }?>
+                </tbody>
+                <tfoot style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modal5" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">ID dan Kluster beda, tetapi koordinat sama</h4>
+            </div>
+            <div class="modal-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $count=1;
+                    if($list5 != NULL)
+                    {
+                      foreach($list5 as $row)
+                    {
+                  ?>
+                  <tr>
+                    <td><?php echo $count; ?></td>
+                    <td><?php echo $row->NAMA_ODP; ?></td>
+                    <td><?php echo $row->LATITUDE; ?></td>
+                    <td><?php echo $row->LONGITUDE; ?></td>
+                    <td><?php echo $row->AVAILABILITY; ?></td>
+                    <td><?php echo $row->BANGUNAN; ?></td>
+                    
+                  <?php $count = $count + 1; } }?>
+                </tbody>
+                <tfoot style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modal6" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Salah Posisi > 5m</h4>
+            </div>
+            <div class="modal-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $count=1;
+                    if($list6 != NULL)
+                    {
+                      foreach($list6 as $row)
+                    {
+                  ?>
+                  <tr>
+                    <td><?php echo $count; ?></td>
+                    <td><?php echo $row->NAMA_ODP; ?></td>
+                    <td><?php echo $row->LATITUDE; ?></td>
+                    <td><?php echo $row->LONGITUDE; ?></td>
+                    <td><?php echo $row->AVAILABILITY; ?></td>
+                    <td><?php echo $row->BANGUNAN; ?></td>
+                    
+                  <?php $count = $count + 1; } }?>
+                </tbody>
+                <tfoot style="background-color: rgb(222, 227, 221)">
+                  <tr>
+                    <th>NO</th>
+                    <th>OPTICAL_DISTRIBUTION_POINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>AVAILABLITY</th>
+                    <th>BANGUNAN</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>

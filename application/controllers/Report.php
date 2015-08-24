@@ -13,11 +13,37 @@ class Report extends CI_Controller{
         $this->load->database();
     }
 
-    
+    public function detailed_error($errorid)
+    {
+        $idklu = $this->session->userdata('idlocation');
+        echo $errorid;
+        echo $idklu;
+        
+        if($this->session->userdata('isLogin') == FALSE)
+        {
+            redirect('login');
+        }else
+        {   
+            $this->load->model('m_login');
+            $this->load->model('m_report');
+
+            $user = $this->session->userdata('username');
+            
+            $data['level'] = $this->session->userdata('level');        
+            $data['pengguna'] = $this->m_login->dataPengguna($user);
+            $data['list'] = $this->m_report->getDetailedErrorKluster($errorid,$idklu);
+
+            $this->load->view('design/header', $data);
+            $this->load->view('report/detailed_error',$data);
+            $this->load->view('design/footer');
+        }
+        
+    }
     //controller untuk mengambil data error tiap kluster
     public function show_cluster()
     {
         $idkluster = $this->input->post('id_kluster');
+        //$this->session->set_userdata('idlocation', $idkluster);
         $session = $this->session->userdata('isLogin');
         $user = $this->session->userdata('username');
         $data['level']=$this->session->userdata('level');
@@ -27,6 +53,12 @@ class Report extends CI_Controller{
         }
         else
         {   
+            $data['list1'] = $this->m_report->getDetailedErrorKluster(1,$idkluster);
+            $data['list2'] = $this->m_report->getDetailedErrorKluster(2,$idkluster);
+            $data['list3'] = $this->m_report->getDetailedErrorKluster(3,$idkluster);
+            $data['list4'] = $this->m_report->getDetailedErrorKluster(4,$idkluster);
+            $data['list5'] = $this->m_report->getDetailedErrorKluster(5,$idkluster);
+            $data['list6'] = $this->m_report->getDetailedErrorKluster(6,$idkluster);
             $data['pengguna'] = $this->m_login->dataPengguna($user);
             //$data['errorid'] = $this->m_report->getReport();
             $data['noerror1'] = $this->m_report->ambilErrorCluster($idkluster,1);
@@ -69,6 +101,7 @@ class Report extends CI_Controller{
     public function show_setoperation()
     {
         $idsiteoperation = $this->input->post('id_so');
+        $this->session->set_userdata('idlocation', $idsiteoperation);
         $session = $this->session->userdata('isLogin');
         $user = $this->session->userdata('username');
         $data['level']=$this->session->userdata('level');
@@ -81,6 +114,13 @@ class Report extends CI_Controller{
         {   
             $data['pengguna'] = $this->m_login->dataPengguna($user);
             //$data['errorid'] = $this->m_report->getReport();
+            $data['list1'] = $this->m_report->getDetailedErrorSiteOperation(1,$idsiteoperation);
+            $data['list2'] = $this->m_report->getDetailedErrorSiteOperation(2,$idsiteoperation);
+            $data['list3'] = $this->m_report->getDetailedErrorSiteOperation(3,$idsiteoperation);
+            $data['list4'] = $this->m_report->getDetailedErrorSiteOperation(4,$idsiteoperation);
+            $data['list5'] = $this->m_report->getDetailedErrorSiteOperation(5,$idsiteoperation);
+            $data['list6'] = $this->m_report->getDetailedErrorSiteOperation(6,$idsiteoperation);
+            
             $data['noerror1'] = $this->m_report->ambilErrorSetOperation($idsiteoperation,1);
             $data['nolocation2']= $this->m_report->ambilErrorSetOperation($idsiteoperation,2);
             $data['nostarclick3'] = $this->m_report->ambilErrorSetOperation($idsiteoperation,3);
@@ -122,6 +162,7 @@ class Report extends CI_Controller{
     public function show_area()
     {
         $areaidnya = $this->input->post('idnyaarea');
+        $this->session->set_userdata('idlocation', $areaidnya);
         $session = $this->session->userdata('isLogin');
         $user = $this->session->userdata('username');
         $data['level']=$this->session->userdata('level');
@@ -132,6 +173,12 @@ class Report extends CI_Controller{
         }
         else
         {   
+            $data['list1'] = $this->m_report->getDetailedErrorArea(1,$areaidnya);
+            $data['list2'] = $this->m_report->getDetailedErrorArea(2,$areaidnya);
+            $data['list3'] = $this->m_report->getDetailedErrorArea(3,$areaidnya);
+            $data['list4'] = $this->m_report->getDetailedErrorArea(4,$areaidnya);
+            $data['list5'] = $this->m_report->getDetailedErrorArea(5,$areaidnya);
+            $data['list6'] = $this->m_report->getDetailedErrorArea(6,$areaidnya);
             $data['pengguna'] = $this->m_login->dataPengguna($user);
             //$data['errorid'] = $this->m_report->getReport();
             $data['noerror1'] = $this->m_report->ambilErrorArea($areaidnya,1);
@@ -199,6 +246,13 @@ class Report extends CI_Controller{
         }
         else
         {   
+            $data['list1'] = $this->m_report->getDetailedErrorWitel(1);
+            $data['list2'] = $this->m_report->getDetailedErrorWitel(2);
+            $data['list3'] = $this->m_report->getDetailedErrorWitel(3);
+            $data['list4'] = $this->m_report->getDetailedErrorWitel(4);
+            $data['list5'] = $this->m_report->getDetailedErrorWitel(5);
+            $data['list6'] = $this->m_report->getDetailedErrorWitel(6);
+            
             $data['pengguna'] = $this->m_login->dataPengguna($user);
             //$data['errorid'] = $this->m_report->getReport();
             $data['noerror1'] = $this->m_report->ambilError(1);
@@ -270,7 +324,7 @@ class Report extends CI_Controller{
         {   
             $data['pengguna'] = $this->m_login->dataPengguna($user);
             $data['nama_setoperation'] = $this->m_report->getSetOperation();
-            
+
             $this->load->view('design/header',$data);
             $this->load->view('report/report_wilayah',$data);
             $this->load->view('design/footer');

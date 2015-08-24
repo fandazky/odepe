@@ -7,6 +7,113 @@ class M_report extends CI_Model
         parent::__construct();
     }
 
+    public function getDetailedErrorKluster($errorid,$idklu)
+    {
+        $query = $this->db->query(
+            "SELECT ID_DAFTAR, DAFTAR.ID_ERROR, DAFTAR.ID_ODP, NAMA_ODP,
+            LATITUDE, LONGITUDE, AVAILABILITY, BANGUNAN
+            FROM ODP, DAFTAR
+            WHERE ODP.ID_KLUSTER = '$idklu'
+            AND DAFTAR.ID_ODP = ODP.ID_ODP
+            AND DAFTAR.ID_ERROR = '$errorid'
+            ORDER BY NAMA_ODP"
+            );
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else{
+            return false;   
+        }
+    }
+
+    public function getDetailedErrorSiteOperation($erroraid,$soid)
+    {
+        
+        $query = $this->db->query("select
+                                        ID_DAFTAR, DAFTAR.ID_ERROR, DAFTAR.ID_ODP, NAMA_ODP,
+                                        LATITUDE, LONGITUDE, AVAILABILITY, BANGUNAN
+                                    from 
+                                        daftar, kluster, odp, site_operation 
+                                    where 
+                                            daftar.id_odp = odp.id_odp 
+                                        and 
+                                            odp.id_kluster = kluster.id_kluster 
+                                        and 
+                                            kluster.id_so = site_operation.id_so
+                                        and
+                                            kluster.id_so = '$soid' 
+                                        and
+                                            daftar.id_error = '$erroraid'
+                                        order by NAMA_ODP");
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else{
+            return false;   
+        }
+        
+    }
+
+    public function getDetailedErrorArea($errorid,$areaid)
+    {
+        
+        $query = $this->db->query("select
+                                        ID_DAFTAR, DAFTAR.ID_ERROR, DAFTAR.ID_ODP, NAMA_ODP,
+                                        LATITUDE, LONGITUDE, AVAILABILITY, BANGUNAN
+                                        from 
+                                            area, daftar, kluster, odp, site_operation
+                                        where 
+                                                daftar.id_odp = odp.id_odp
+                                        and
+                                                odp.id_kluster = kluster.id_kluster
+                                        and
+                                                kluster.id_so = site_operation.id_so
+                                        and
+                                                site_operation.id_area = area.id_area
+                                        and
+                                                site_operation.id_area = '$areaid'
+                                        and
+                                                daftar.id_error = '$errorid'");
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else{
+            return false;   
+        }
+    }
+
+    public function getDetailedErrorWitel($errorid)
+    {
+        $query = $this->db->query(
+            "SELECT ID_DAFTAR, DAFTAR.ID_ERROR, DAFTAR.ID_ODP, NAMA_ODP,
+            LATITUDE, LONGITUDE, AVAILABILITY, BANGUNAN
+            FROM ODP, DAFTAR
+            WHERE DAFTAR.ID_ODP = ODP.ID_ODP
+            AND '$errorid' = DAFTAR.ID_ERROR
+            ORDER BY NAMA_ODP"
+            );
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else{
+            return false;   
+        }
+    }
 
     public function getReport()
     {
