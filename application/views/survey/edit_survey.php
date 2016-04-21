@@ -58,8 +58,8 @@
                         <div class="form-group">
 	                      <label>Valid Tag</label>
 	                      <div class="input-group">
-							    <input type="radio" name="valid_tag" value="Ya" class="flat-red" />Ya
-							    <input type="radio" name="valid_tag" value="Tidak" class="flat-red" />Tidak
+							    <input type="radio" name="valid_tag" value="Ya" class="flat-red" <?php if($valid == "Ya") echo " checked=\"checked\""; ?> />Ya
+							    <input type="radio" name="valid_tag" value="Tidak" class="flat-red" <?php if($valid == "Tidak") echo " checked=\"checked\""; ?>/>Tidak
 						
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
@@ -87,7 +87,7 @@
 	                    <div class="form-group">
 	                      <label>Label</label>
 	                      <div class="input-group">
-							    <input type="checkbox" name="label" value="1" class="flat-red"/>                
+							    <input type="checkbox" name="label" value="1" class="flat-red" <?php if($label == "Ada") echo " checked=\"checked\""; ?>/>
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
@@ -100,8 +100,12 @@
 							<select name="error" class="form-control">
 								<?php                            
                             	foreach ($error as $row) {
+                            		$checked = "";
+                            		if($result[0][0]["ID_ERROR"] == $row->error) {
+                            			$checked = "selected=\"selected\"";
+                            		}
                               		if ($namaerror == $row->error){
-                               		echo '<option value="' . $row->id_error . '" selected >' .$row->nama_error. $row->id_error .'</option>';
+                               		echo '<option value="' . $row->id_error . ' '.$checked.'" >' .$row->nama_error. $row->id_error .'</option>';
                               		}
                               		else{
                                 	echo '<option value="' . $row->id_error . '">' .$row->nama_error.'</option>';
@@ -138,21 +142,21 @@
 	                    <div class="form-group">
 	                      <label>Perumahan < 500 JT</label>
 	                      <div class="input-group">	                      	
-							    <input type="checkbox" name="kurang_dari_500jt" value="1" class="flat-red"  />
+							    <input type="checkbox" name="kurang_dari_500jt" value="1" class="flat-red"  <?php if ($result[0]["KURANG_DARI_500JT"] == 1) { echo "checked=\"checked\""; } ?>/>
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
 	                    <div class="form-group">
 	                      <label>Perumahan Antara 500JT - 1M</label>
 	                      <div class="input-group"> 
-	                      	<input type="checkbox" name="antara_500jt_sd_1m" value="1" class="flat-red"  />
+	                      	<input type="checkbox" name="antara_500jt_sd_1m" value="1" class="flat-red"  <?php if ($result[0]["ANTARA_500JT_SD_1M"] == 1) { echo "checked=\"checked\""; } ?>/>
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
 
 	                    <div class="form-group">
 	                      <label>Perumahan Lebih dari 1M</label>
 	                      <div class="input-group">
-	                      	<input type="checkbox" name="lebih_dari_1m" value="1" class="flat-red"  />
+	                      	<input type="checkbox" name="lebih_dari_1m" value="1" class="flat-red"  <?php if ($result[0]["LEBIH_DARI_1M"] == 1) { echo "checked=\"checked\""; } ?>/>
 
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
@@ -160,7 +164,7 @@
 	                    <div class="form-group">
 	                      <label>Perkampungan</label>
 	                      <div class="input-group">
-	                      	<input type="checkbox" name="perkampungan" value="1" class="flat-red"  />
+	                      	<input type="checkbox" name="perkampungan" value="1" class="flat-red"  <?php if ($result[0]["PERKAMPUNGAN"] == 1) { echo "checked=\"checked\""; } ?>/>
 
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
@@ -168,7 +172,7 @@
 	                    <div class="form-group">
 	                      <label>Ruko</label>
 	                      <div class="input-group">
-	                      	<input type="checkbox" name="ruko" value="1" class="flat-red"  />
+	                      	<input type="checkbox" name="ruko" value="1" class="flat-red"  <?php if ($result[0]["RUKO"] == 1) { echo "checked=\"checked\""; } ?>/>
 
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
@@ -176,7 +180,7 @@
 	                    <div class="form-group">
 	                      <label>Kantor Kecil</label>
 	                      <div class="input-group">
-	                      	<input type="checkbox" name="kantor_kecil" value="1" class="flat-red"  />
+	                      	<input type="checkbox" name="kantor_kecil" value="1" class="flat-red"  <?php if ($result[0]["KANTOR_KECIL"] == 1) { echo "checked=\"checked\""; } ?>/>
 
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
@@ -184,7 +188,7 @@
 	                    <div class="form-group">
 	                      <label>Kantor Besar</label>
 	                      <div class="input-group">
-	                      	<input type="checkbox" name="kantor_besar" value="1" class="flat-red"  />
+	                      	<input type="checkbox" name="kantor_besar" value="1" class="flat-red"  <?php if ($result[0]["KANTOR_BESAR"] == 1) { echo "checked=\"checked\""; } ?>/>
 
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
@@ -192,7 +196,7 @@
 	                    <div class="form-group">
 	                      <label>Perguruan Tinggi</label>
 	                      <div class="input-group">
-	                      	<input type="checkbox" name="perguruan_tinggi" value="1" class="flat-red"  />
+	                      	<input type="checkbox" name="perguruan_tinggi" value="1" class="flat-red"  <?php if ($result[0]["PERGURUAN_TINGGI"] == 1) { echo "checked=\"checked\""; } ?>/>
 
 	                      </div><!-- /.input group -->
 	                    </div><!-- /.form group -->
@@ -206,8 +210,12 @@
 							<select name="kompetitor" class="form-control">
 								<?php                            
                             	foreach ($kompetitor as $row) {
+                            		$checked = "";
+                            		if($result[0]['ID_KOMPETITOR'] == $row->id_kompetitor) {
+                            			$checked = "selected=\"selected\"";
+                            		}
                               		if ($km == $row->kompetitor){
-                               		echo '<option value="' . $row->id_kompetitor . '" selected >' .$row->nama_kompetitor.'</option>';
+                               		echo '<option value="' . $row->id_kompetitor . '" '.$checked.' >' .$row->nama_kompetitor.'</option>';
                               		}
                               		else{
                                 	echo '<option value="' . $row->id_kompetitor . '">' .$row->nama_kompetitor.'</option>';
